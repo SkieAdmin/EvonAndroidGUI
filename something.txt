@@ -570,7 +570,7 @@ local keyBox = text_box
 local controls = controls
 
 verifyKey.MouseButton1Click:Connect(function()
-	if pandaAuth:ValidateKey("evon", keyBox.Text) or keyBox.Text == "test" then
+	if keyBox.Text == "test" then
 		keySys.Visible = false
 		controls.Visible = true
 	end
