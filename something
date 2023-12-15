@@ -1,0 +1,801 @@
+-- Perm Dev Key : 6d98d2ced894b1ee9b1d1fa53151b1837f886ea3673930a352ccea164bf492ad
+
+--// Instances
+local evon = Instance.new("ScreenGui")
+evon.ResetOnSpawn = false
+evon.Name = "Evon"
+evon.Parent = cloneref(game:GetService("CoreGui"))
+
+local background = Instance.new("Frame")
+background.AnchorPoint = Vector2.new(0.5, 0.5)
+background.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+background.BorderColor3 = Color3.new(0, 0, 0)
+background.BorderSizePixel = 0
+background.Position = UDim2.new(0.5, 0, 0.5, 0)
+background.Size = UDim2.new(0, 518, 0, 289)
+background.Visible = false
+background.ZIndex = 0
+background.Name = "Background"
+background.Parent = evon
+
+local uicorner = Instance.new("UICorner")
+uicorner.Parent = background
+
+local editor_btn = Instance.new("TextButton")
+editor_btn.Font = Enum.Font.SourceSans
+editor_btn.Text = "Editor"
+editor_btn.TextColor3 = Color3.new(1, 1, 1)
+editor_btn.TextSize = 14
+editor_btn.BackgroundColor3 = Color3.new(0.0941176, 0.0941176, 0.0941176)
+editor_btn.BorderColor3 = Color3.new(1, 1, 1)
+editor_btn.BorderSizePixel = 0
+editor_btn.Position = UDim2.new(0.306889355, 0, 0.0528301895, 0)
+editor_btn.Size = UDim2.new(0, 83, 0, 18)
+editor_btn.Visible = true
+editor_btn.Name = "EditorBTN"
+editor_btn.Parent = background
+
+local uicorner_2 = Instance.new("UICorner")
+uicorner_2.CornerRadius = UDim.new(0, 4)
+uicorner_2.Parent = editor_btn
+
+local uistroke = Instance.new("UIStroke")
+uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke.Thickness = 1.5
+uistroke.Parent = editor_btn
+uistroke.Enabled = true
+
+local scripts_btn = Instance.new("TextButton")
+scripts_btn.Font = Enum.Font.SourceSans
+scripts_btn.Text = "Scripts"
+scripts_btn.TextColor3 = Color3.new(1, 1, 1)
+scripts_btn.TextSize = 14
+scripts_btn.BackgroundColor3 = Color3.new(0.0941176, 0.0941176, 0.0941176)
+scripts_btn.BackgroundTransparency = 1
+scripts_btn.BorderColor3 = Color3.new(0, 0, 0)
+scripts_btn.BorderSizePixel = 0
+scripts_btn.Position = UDim2.new(0.519832969, 0, 0.0528301895, 0)
+scripts_btn.Size = UDim2.new(0, 83, 0, 18)
+scripts_btn.Visible = true
+scripts_btn.Name = "ScriptsBTN"
+scripts_btn.Parent = background
+
+local uicorner_3 = Instance.new("UICorner")
+uicorner_3.CornerRadius = UDim.new(0, 4)
+uicorner_3.Parent = scripts_btn
+
+local uistroke_2 = Instance.new("UIStroke")
+uistroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_2.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_2.Thickness = 1.5
+uistroke_2.Parent = scripts_btn
+uistroke_2.Enabled = false
+
+local uistroke_3 = Instance.new("UIStroke")
+uistroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_3.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_3.Thickness = 1.5
+uistroke_3.Parent = background
+
+local scripts = Instance.new("Frame")
+scripts.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
+scripts.BackgroundTransparency = 0.5
+scripts.BorderColor3 = Color3.new(0, 0, 0)
+scripts.BorderSizePixel = 0
+scripts.Position = UDim2.new(0.0229645371, 0, 0.178530529, 0)
+scripts.Size = UDim2.new(0, 495, 0, 226)
+scripts.Visible = false
+scripts.Name = "Scripts"
+scripts.Parent = background
+
+local uistroke_4 = Instance.new("UIStroke")
+uistroke_4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_4.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_4.Thickness = 1.5
+uistroke_4.Parent = scripts
+
+local scrolling_frame = Instance.new("ScrollingFrame")
+scrolling_frame.ScrollBarImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+scrolling_frame.VerticalScrollBarInset = Enum.ScrollBarInset.Always
+scrolling_frame.Active = true
+scrolling_frame.BackgroundColor3 = Color3.new(1, 1, 1)
+scrolling_frame.BackgroundTransparency = 1
+scrolling_frame.BorderColor3 = Color3.new(0, 0, 0)
+scrolling_frame.BorderSizePixel = 0
+scrolling_frame.Position = UDim2.new(-6.16516758e-08, 0, 0.150951892, 0)
+scrolling_frame.Size = UDim2.new(0, 495, 0, 188)
+scrolling_frame.Visible = true
+scrolling_frame.Parent = scripts
+
+local uipadding = Instance.new("UIPadding")
+uipadding.PaddingLeft = UDim.new(0, 15)
+uipadding.PaddingTop = UDim.new(0, 12)
+uipadding.Parent = scrolling_frame
+
+local uigrid_layout = Instance.new("UIGridLayout")
+uigrid_layout.CellSize = UDim2.new(0, 135, 0, 150)
+uigrid_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+uigrid_layout.SortOrder = Enum.SortOrder.LayoutOrder
+uigrid_layout.Parent = scrolling_frame
+
+local script_temp = Instance.new("Frame")
+script_temp.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+script_temp.BorderColor3 = Color3.new(0, 0, 0)
+script_temp.BorderSizePixel = 0
+script_temp.Size = UDim2.new(0, 136, 0, 150)
+script_temp.Visible = true
+script_temp.Name = "ScriptTemp"
+script_temp.Parent = scrolling_frame
+
+local thumbnail = Instance.new("ImageLabel")
+thumbnail.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
+thumbnail.BorderColor3 = Color3.new(0, 0, 0)
+thumbnail.BorderSizePixel = 0
+thumbnail.Position = UDim2.new(0, 0, 0.00125895184, 0)
+thumbnail.Size = UDim2.new(0, 136, 0, 81)
+thumbnail.Visible = true
+thumbnail.Name = "Thumbnail"
+thumbnail.Parent = script_temp
+
+local uicorner_4 = Instance.new("UICorner")
+uicorner_4.CornerRadius = UDim.new(0, 4)
+uicorner_4.Parent = thumbnail
+
+local uicorner_5 = Instance.new("UICorner")
+uicorner_5.CornerRadius = UDim.new(0, 4)
+uicorner_5.Parent = script_temp
+
+local script_name = Instance.new("TextLabel")
+script_name.Font = Enum.Font.Unknown
+script_name.Text = "Logi Hub"
+script_name.TextColor3 = Color3.new(1, 1, 1)
+script_name.TextSize = 14
+script_name.TextTruncate = Enum.TextTruncate.AtEnd
+script_name.BackgroundColor3 = Color3.new(1, 1, 1)
+script_name.BackgroundTransparency = 1
+script_name.BorderColor3 = Color3.new(0, 0, 0)
+script_name.BorderSizePixel = 0
+script_name.Position = UDim2.new(0.237037033, 0, 0.593333304, 0)
+script_name.Size = UDim2.new(0, 71, 0, 20)
+script_name.Visible = true
+script_name.Name = "ScriptName"
+script_name.Parent = script_temp
+
+local execute = Instance.new("ImageButton")
+execute.Image = "rbxassetid://3926307971"
+execute.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+execute.ImageRectOffset = Vector2.new(44, 284)
+execute.ImageRectSize = Vector2.new(36, 36)
+execute.BackgroundTransparency = 1
+execute.LayoutOrder = 1
+execute.Position = UDim2.new(0.792853892, 0, 0.824085891, 0)
+execute.Size = UDim2.new(0, 20, 0, 20)
+execute.Visible = true
+execute.ZIndex = 2
+execute.Name = "Execute"
+execute.Parent = script_temp
+
+local script = Instance.new("TextBox")
+script.Font = Enum.Font.SourceSans
+script.TextColor3 = Color3.new(0, 0, 0)
+script.TextSize = 14
+script.BackgroundColor3 = Color3.new(1, 1, 1)
+script.BackgroundTransparency = 1
+script.BorderColor3 = Color3.new(0, 0, 0)
+script.BorderSizePixel = 0
+script.Size = UDim2.new(0, 10, 0, 50)
+script.Visible = false
+script.Name = "Script"
+script.Parent = script_temp
+
+local search_box = Instance.new("TextBox")
+search_box.Font = Enum.Font.Unknown
+search_box.PlaceholderColor3 = Color3.new(1, 1, 1)
+search_box.PlaceholderText = "Search"
+search_box.Text = ""
+search_box.TextColor3 = Color3.new(0, 0, 0)
+search_box.TextSize = 14
+search_box.TextWrapped = true
+search_box.BackgroundColor3 = Color3.new(1, 1, 1)
+search_box.BackgroundTransparency = 1
+search_box.BorderColor3 = Color3.new(0, 0, 0)
+search_box.BorderSizePixel = 0
+search_box.Position = UDim2.new(0.381818205, 0, 0.0398230106, 0)
+search_box.Size = UDim2.new(0, 120, 0, 22)
+search_box.Visible = true
+search_box.Name = "SearchBox"
+search_box.Parent = scripts
+
+local uistroke_5 = Instance.new("UIStroke")
+uistroke_5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_5.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_5.Thickness = 1.5
+uistroke_5.Parent = search_box
+
+local uicorner_6 = Instance.new("UICorner")
+uicorner_6.CornerRadius = UDim.new(0, 4)
+uicorner_6.Parent = search_box
+
+local uicorner_7 = Instance.new("UICorner")
+uicorner_7.CornerRadius = UDim.new(0, 4)
+uicorner_7.Parent = scripts
+
+local editor = Instance.new("Frame")
+editor.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
+editor.BackgroundTransparency = 0.5
+editor.BorderColor3 = Color3.new(0, 0, 0)
+editor.BorderSizePixel = 0
+editor.Position = UDim2.new(0.026457062, 0, 0.185613245, 0)
+editor.Size = UDim2.new(0, 492, 0, 225)
+editor.Visible = true
+editor.Name = "Editor"
+editor.Parent = background
+
+local container = Instance.new("ScrollingFrame")
+container.CanvasSize = UDim2.new(0, 0, 1, 0)
+container.ElasticBehavior = Enum.ElasticBehavior.Never
+container.ScrollBarImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+container.Active = true
+container.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
+container.BackgroundTransparency = 1
+container.BorderColor3 = Color3.new(0, 0, 0)
+container.BorderSizePixel = 0
+container.Position = UDim2.new(0, 0, -3.3908421e-08, 0)
+container.Size = UDim2.new(0, 447, 0, 225)
+container.Visible = true
+container.Name = "container"
+container.Parent = editor
+
+local uipadding_2 = Instance.new("UIPadding")
+uipadding_2.PaddingBottom = UDim.new(0, 5)
+uipadding_2.PaddingLeft = UDim.new(0, 5)
+uipadding_2.PaddingRight = UDim.new(0, 5)
+uipadding_2.PaddingTop = UDim.new(0, 5)
+uipadding_2.Parent = container
+
+local display_code = Instance.new("TextLabel")
+display_code.Font = Enum.Font.Unknown
+display_code.RichText = true
+display_code.Text = ""
+display_code.TextColor3 = Color3.new(1, 1, 1)
+display_code.TextSize = 10
+display_code.TextWrapped = true
+display_code.TextXAlignment = Enum.TextXAlignment.Left
+display_code.TextYAlignment = Enum.TextYAlignment.Top
+display_code.BackgroundColor3 = Color3.new(1, 1, 1)
+display_code.BackgroundTransparency = 1
+display_code.BorderColor3 = Color3.new(0, 0, 0)
+display_code.BorderSizePixel = 0
+display_code.Position = UDim2.new(0.038901601, 0, 0.0139534883, 0)
+display_code.Size = UDim2.new(0, 425, 0, 217)
+display_code.Visible = true
+display_code.Name = "DisplayCode"
+display_code.Parent = container
+
+local write_code = Instance.new("TextBox")
+write_code.Font = Enum.Font.Unknown
+write_code.MultiLine = true
+write_code.Text = ""
+write_code.TextColor3 = Color3.new(1, 1, 1)
+write_code.TextSize = 10
+write_code.TextTransparency = 1
+write_code.TextXAlignment = Enum.TextXAlignment.Left
+write_code.TextYAlignment = Enum.TextYAlignment.Top
+write_code.BackgroundColor3 = Color3.new(1, 1, 1)
+write_code.BackgroundTransparency = 1
+write_code.BorderColor3 = Color3.new(0, 0, 0)
+write_code.BorderSizePixel = 0
+write_code.Position = UDim2.new(0.038901601, 0, 0.0139534883, 0)
+write_code.Size = UDim2.new(0, 425, 0, 217)
+write_code.Visible = true
+write_code.Name = "WriteCode"
+write_code.Parent = container
+
+local line_numbers = Instance.new("TextBox")
+line_numbers.Font = Enum.Font.Unknown
+line_numbers.MultiLine = true
+line_numbers.RichText = true
+line_numbers.Text = "1"
+line_numbers.TextColor3 = Color3.new(1, 1, 1)
+line_numbers.TextSize = 10
+line_numbers.TextYAlignment = Enum.TextYAlignment.Top
+line_numbers.BackgroundColor3 = Color3.new(1, 1, 1)
+line_numbers.BackgroundTransparency = 1
+line_numbers.BorderColor3 = Color3.new(0, 0, 0)
+line_numbers.BorderSizePixel = 0
+line_numbers.Position = UDim2.new(-0.0120000001, 0, 0.0140000004, 0)
+line_numbers.Size = UDim2.new(0, 23, 0, 215)
+line_numbers.Visible = true
+line_numbers.Name = "LineNumbers"
+line_numbers.Parent = container
+
+local uistroke_6 = Instance.new("UIStroke")
+uistroke_6.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_6.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_6.Thickness = 1.5
+uistroke_6.Parent = editor
+
+local uicorner_8 = Instance.new("UICorner")
+uicorner_8.CornerRadius = UDim.new(0, 4)
+uicorner_8.Parent = editor
+
+local uiaspect_ratio_constraint = Instance.new("UIAspectRatioConstraint")
+uiaspect_ratio_constraint.AspectRatio = 1.7923874855041504
+uiaspect_ratio_constraint.Parent = background
+
+local controls = Instance.new("Frame")
+controls.AnchorPoint = Vector2.new(0.5, 0)
+controls.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+controls.BorderColor3 = Color3.new(0, 0, 0)
+controls.BorderSizePixel = 0
+controls.Position = UDim2.new(0.5, 0, 0, 0)
+controls.Size = UDim2.new(0, 148, 0, 41)
+controls.Visible = false
+controls.Name = "Controls"
+controls.Parent = evon
+
+local btn_container = Instance.new("Frame")
+btn_container.BackgroundColor3 = Color3.new(1, 1, 1)
+btn_container.BackgroundTransparency = 1
+btn_container.BorderColor3 = Color3.new(0, 0, 0)
+btn_container.BorderSizePixel = 0
+btn_container.Position = UDim2.new(0.300260097, 0, -0.0111974897, 0)
+btn_container.Size = UDim2.new(0, 92, 0, 20)
+btn_container.Visible = true
+btn_container.Name = "BtnContainer"
+btn_container.Parent = controls
+
+local clear = Instance.new("ImageButton")
+clear.Image = "rbxassetid://3926307971"
+clear.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+clear.ImageRectOffset = Vector2.new(84, 84)
+clear.ImageRectSize = Vector2.new(36, 36)
+clear.BackgroundTransparency = 1
+clear.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+clear.LayoutOrder = 4
+clear.Position = UDim2.new(0.5, 0, 0.5, 0)
+clear.Size = UDim2.new(0, 20, 0, 20)
+clear.Visible = true
+clear.ZIndex = 2
+clear.Name = "Clear"
+clear.Parent = btn_container
+
+local execute_2 = Instance.new("ImageButton")
+execute_2.Image = "rbxassetid://3926307971"
+execute_2.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+execute_2.ImageRectOffset = Vector2.new(44, 284)
+execute_2.ImageRectSize = Vector2.new(36, 36)
+execute_2.BackgroundTransparency = 1
+execute_2.LayoutOrder = 1
+execute_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+execute_2.Size = UDim2.new(0, 20, 0, 20)
+execute_2.Visible = true
+execute_2.ZIndex = 2
+execute_2.Name = "Execute"
+execute_2.Parent = btn_container
+
+local uipadding_3 = Instance.new("UIPadding")
+uipadding_3.PaddingRight = UDim.new(0, 3)
+uipadding_3.Parent = btn_container
+
+local uilist_layout = Instance.new("UIListLayout")
+uilist_layout.Padding = UDim.new(0, 10)
+uilist_layout.FillDirection = Enum.FillDirection.Horizontal
+uilist_layout.SortOrder = Enum.SortOrder.LayoutOrder
+uilist_layout.Parent = btn_container
+
+local window_open = Instance.new("ImageButton")
+window_open.Image = "rbxassetid://3926305904"
+window_open.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+window_open.ImageRectOffset = Vector2.new(44, 644)
+window_open.ImageRectSize = Vector2.new(36, 36)
+window_open.BackgroundTransparency = 1
+window_open.Position = UDim2.new(0.18571429, 0, -0.0357142873, 0)
+window_open.Size = UDim2.new(0, 20, 0, 20)
+window_open.Visible = true
+window_open.ZIndex = 2
+window_open.Name = "WindowOpen"
+window_open.Parent = btn_container
+
+local separator = Instance.new("Frame")
+separator.BackgroundColor3 = Color3.new(0.517647, 0.00392157, 1)
+separator.BorderColor3 = Color3.new(0, 0, 0)
+separator.BorderSizePixel = 0
+separator.Position = UDim2.new(0.150000006, 0, 0.299032271, 0)
+separator.Rotation = 90
+separator.Size = UDim2.new(0, 29, 0, 2)
+separator.Visible = true
+separator.Name = "Separator"
+separator.Parent = controls
+
+local uicorner_9 = Instance.new("UICorner")
+uicorner_9.CornerRadius = UDim.new(1, 0)
+uicorner_9.Parent = separator
+
+local uicorner_10 = Instance.new("UICorner")
+uicorner_10.Parent = controls
+
+local uipadding_4 = Instance.new("UIPadding")
+uipadding_4.PaddingLeft = UDim.new(0, 5)
+uipadding_4.PaddingTop = UDim.new(0, 10)
+uipadding_4.Parent = controls
+
+local uistroke_7 = Instance.new("UIStroke")
+uistroke_7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_7.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_7.Parent = controls
+
+local evon_logo = Instance.new("ImageButton")
+evon_logo.Image = "rbxassetid://15509574978"
+evon_logo.BackgroundColor3 = Color3.new(1, 1, 1)
+evon_logo.BackgroundTransparency = 1
+evon_logo.BorderColor3 = Color3.new(0, 0, 0)
+evon_logo.BorderSizePixel = 0
+evon_logo.Position = UDim2.new(0.0177359004, 0, -0.0967741907, 0)
+evon_logo.Size = UDim2.new(0, 29, 0, 27)
+evon_logo.Visible = true
+evon_logo.Name = "EvonLogo"
+evon_logo.Parent = controls
+
+local uicorner_11 = Instance.new("UICorner")
+uicorner_11.CornerRadius = UDim.new(1, 0)
+uicorner_11.Parent = evon_logo
+
+local key_s = Instance.new("Frame")
+key_s.AnchorPoint = Vector2.new(0.5, 0.5)
+key_s.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+key_s.BorderColor3 = Color3.new(0, 0, 0)
+key_s.BorderSizePixel = 0
+key_s.Position = UDim2.new(0.5, 0, 0.5, 0)
+key_s.Size = UDim2.new(0, 332, 0, 200)
+key_s.Visible = true
+key_s.Name = "KeyS"
+key_s.Parent = evon
+
+local uicorner_12 = Instance.new("UICorner")
+uicorner_12.Parent = key_s
+
+local uistroke_8 = Instance.new("UIStroke")
+uistroke_8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_8.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_8.Thickness = 1.5
+uistroke_8.Parent = key_s
+
+local evon_logo_2 = Instance.new("ImageButton")
+evon_logo_2.Image = "rbxassetid://15517910778"
+evon_logo_2.BackgroundColor3 = Color3.new(1, 1, 1)
+evon_logo_2.BackgroundTransparency = 1
+evon_logo_2.BorderColor3 = Color3.new(0, 0, 0)
+evon_logo_2.BorderSizePixel = 0
+evon_logo_2.Position = UDim2.new(0.409302115, 0, 0.0782257095, 0)
+evon_logo_2.Size = UDim2.new(0, 60, 0, 60)
+evon_logo_2.Visible = true
+evon_logo_2.Name = "EvonLogo"
+evon_logo_2.Parent = key_s
+
+local verify_key = Instance.new("TextButton")
+verify_key.Font = Enum.Font.Unknown
+verify_key.Text = "Verify Key"
+verify_key.TextColor3 = Color3.new(1, 1, 1)
+verify_key.TextSize = 12
+verify_key.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
+verify_key.BorderColor3 = Color3.new(0, 0, 0)
+verify_key.BorderSizePixel = 0
+verify_key.Position = UDim2.new(0.0813253, 0, 0.764999986, 0)
+verify_key.Size = UDim2.new(0, 108, 0, 28)
+verify_key.Visible = true
+verify_key.Name = "VerifyKey"
+verify_key.Parent = key_s
+
+local uicorner_13 = Instance.new("UICorner")
+uicorner_13.CornerRadius = UDim.new(0, 4)
+uicorner_13.Parent = verify_key
+
+local get_key = Instance.new("TextButton")
+get_key.Font = Enum.Font.Unknown
+get_key.Text = "Get Key"
+get_key.TextColor3 = Color3.new(1, 1, 1)
+get_key.TextSize = 12
+get_key.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
+get_key.BackgroundTransparency = 1
+get_key.BorderColor3 = Color3.new(0, 0, 0)
+get_key.BorderSizePixel = 0
+get_key.Position = UDim2.new(0.587349415, 0, 0.764999986, 0)
+get_key.Size = UDim2.new(0, 108, 0, 28)
+get_key.Visible = true
+get_key.Name = "GetKey"
+get_key.Parent = key_s
+
+local uicorner_14 = Instance.new("UICorner")
+uicorner_14.CornerRadius = UDim.new(0, 4)
+uicorner_14.Parent = get_key
+
+local uistroke_9 = Instance.new("UIStroke")
+uistroke_9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_9.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_9.Thickness = 1.5
+uistroke_9.Parent = get_key
+
+local text_box = Instance.new("TextBox")
+text_box.Font = Enum.Font.Roboto
+text_box.PlaceholderText = "Input Key Here"
+text_box.Text = ""
+text_box.TextColor3 = Color3.new(1, 1, 1)
+text_box.TextSize = 12
+text_box.TextTruncate = Enum.TextTruncate.AtEnd
+text_box.TextWrapped = true
+text_box.BackgroundColor3 = Color3.new(1, 1, 1)
+text_box.BackgroundTransparency = 1
+text_box.BorderColor3 = Color3.new(0, 0, 0)
+text_box.BorderSizePixel = 0
+text_box.Position = UDim2.new(0.198795184, 0, 0.50999999, 0)
+text_box.Size = UDim2.new(0, 200, 0, 31)
+text_box.Visible = true
+text_box.Parent = key_s
+
+local uicorner_15 = Instance.new("UICorner")
+uicorner_15.CornerRadius = UDim.new(0, 4)
+uicorner_15.Parent = text_box
+
+local uistroke_10 = Instance.new("UIStroke")
+uistroke_10.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroke_10.Color = Color3.new(0.501961, 0.00392157, 1)
+uistroke_10.Thickness = 1.5
+uistroke_10.Parent = text_box
+
+local separator_2 = Instance.new("Frame")
+separator_2.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
+separator_2.BorderColor3 = Color3.new(0, 0, 0)
+separator_2.BorderSizePixel = 0
+separator_2.Position = UDim2.new(0.4246988, 0, 0.430000007, 0)
+separator_2.Size = UDim2.new(0, 50, 0, -2)
+separator_2.Visible = true
+separator_2.Name = "Separator"
+separator_2.Parent = key_s
+
+local uicorner_16 = Instance.new("UICorner")
+uicorner_16.Parent = separator_2
+
+local uiaspect_ratio_constraint_2 = Instance.new("UIAspectRatioConstraint")
+uiaspect_ratio_constraint_2.AspectRatio = 1.659999966621399
+uiaspect_ratio_constraint_2.Parent = key_s
+
+
+-- PandaAuth
+local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaBetaLib.lua"))()
+local keySys = key_s
+local getKey = get_key
+local verifyKey = verify_key
+local keyBox = text_box
+local controls = controls
+
+verifyKey.MouseButton1Click:Connect(function()
+	if pandaAuth:ValidateKey("evon", keyBox.Text) then
+		keySys.Visible = false
+		controls.Visible = true
+	end
+end)
+
+getKey.MouseButton1Click:Connect(function()
+	setclipboard(pandaAuth:GetLink("evon"))
+	keyBox.PlaceholderText = "Link Copied to Clipboard"
+end)
+
+-- Editor
+local editor = editor
+local lineNumbers = line_numbers
+local writeCode = write_code
+local displayCode = display_code
+local clearBtn = clear
+
+local function updateLineNumbers()
+	local lines = string.split(writeCode.Text, "\n")
+	lineNumbers.Text = ""
+
+	for i, _ in ipairs(lines) do
+		lineNumbers.Text = lineNumbers.Text .. i .. "\n"
+	end
+end
+
+
+local function updateDisplayCode()
+	-- I gave up on strings because gsub and roblox just hates them or me in general :pensive:
+	local code = writeCode.Text
+	displayCode.Text = ""
+
+	local keywords = {"function", "if", "else", "end", "local", "for", "while", "do", "repeat", "until", "then"}
+	local others = {"and", "or", "not", "true", "false"}
+
+	code = string.gsub(code, "([%a_][%w_]*)%s*%(", '<font color="rgb(90, 189, 247)">%1</font>(')
+
+	for _, keyword in ipairs(keywords) do
+		code = string.gsub(code, "%f[%a]" .. keyword .. "%f[%A]", '<font color="rgb(248, 109, 124)"><b>' .. keyword .. '</b></font>')
+	end
+
+	for _, other in ipairs(others) do
+		code = string.gsub(code, "%f[%a]" .. other .. "%f[%A]", '<font color="rgb(255, 198, 0)">' .. other .. '</font>')
+	end
+
+	displayCode.Text = code
+end
+
+writeCode.InputBegan:Connect(function(input, gameProcessedEvent)
+	if input.KeyCode == Enum.KeyCode.Return and not gameProcessedEvent then
+		writeCode.Text = writeCode.Text .. "\n"
+		updateLineNumbers()
+		updateDisplayCode()
+	end
+end)
+
+writeCode:GetPropertyChangedSignal("Text"):Connect(function()
+	updateLineNumbers()
+	updateDisplayCode()
+end)
+
+clearBtn.MouseButton1Click:Connect(function()
+	writeCode.Text = ""
+	displayCode.Text = ""
+end)
+
+updateLineNumbers()
+updateDisplayCode()
+
+-- Script Hub
+local httpService = cloneref(game:GetService("HttpService"))
+local scrollFrame = scrolling_frame
+local oldScript = script_temp
+oldScript.Parent = nil
+local oldScripts = {}
+local searchBox = search_box
+
+local function clearOldScripts()
+	for _, scriptInstance in ipairs(oldScripts) do
+		scriptInstance:Destroy()
+	end
+	oldScripts = {}
+end
+
+local function getScripts(query)
+	clearOldScripts()
+
+	local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
+	local req = game:HttpGet(apiUrl, true)
+	local data = httpService:JSONDecode(req).result
+
+	for i, v in ipairs(data.scripts) do
+		local newScript = oldScript:Clone()
+		newScript.Name = "Script" .. i
+		newScript.ScriptName = v.slug
+		newScript.Parent = scrollFrame
+		newScript.Thumbnail =  v.game.imageUrl
+		newScript.Script.Text = v.script
+		newScript.Execute.MouseButton1Click:Connect(function() 
+			runcode(v.script)    
+		end)
+
+		table.insert(oldScripts, newScript)
+	end
+end
+
+searchBox.FocusLost:Connect(function()
+	local query = searchBox.Text
+	getScripts(query)
+end)
+
+-- Click Handling
+local background = background
+local scriptsBtn = scripts_btn
+local editorBtn = editor_btn
+local editor = editor
+local scripts = scripts
+local logoBtn = evon_logo
+
+local cSizeYScale = controls.Size.Y.Scale
+local cSizeTOffset = controls.Size.Y.Offset
+
+local miniSize = UDim2.new(0, 44, cSizeYScale, cSizeTOffset)
+local expSize = UDim2.new(0, 148, cSizeYScale, cSizeTOffset)
+local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local tweenService = cloneref(game:GetService("TweenService"))
+
+local function setVisible(isVisible)
+	for _, ctrl in next, controls:GetChildren() do
+		if ctrl:IsA("Frame") or ctrl:IsA("TextButton") then
+			ctrl.Visible = isVisible
+		end
+	end
+end
+
+local function isClicked()
+	if controls.Size == expSize then
+		local tweenGoal = {Size = miniSize}
+		local tween = tweenService:Create(controls, tweenInfo, tweenGoal)
+
+		tween:Play()
+		setVisible(false)
+	else
+		local tweenGoal = {Size = expSize}
+		local tween = tweenService:Create(controls, tweenInfo, tweenGoal)
+
+		tween:Play()
+		task.wait(0.5)
+		setVisible(true)
+	end
+end
+
+logoBtn.MouseButton1Click:Connect(isClicked)
+
+editorBtn.MouseButton1Click:Connect(function()
+	if scriptsBtn.UIStroke.Enabled and not editorBtn.UIStroke.Enabled then
+		scriptsBtn.UIStroke.Enabled = false
+		scriptsBtn.BackgroundTransparency = 1
+
+		editorBtn.UIStroke.Enabled = true
+		editorBtn.BackgroundTransparency = 0
+
+		scripts.Visible = false
+		editor.Visible = true
+	end
+end)
+
+scriptsBtn.MouseButton1Click:Connect(function()
+	if not scriptsBtn.UIStroke.Enabled and editorBtn.UIStroke.Enabled then
+		scriptsBtn.UIStroke.Enabled = true
+		scriptsBtn.BackgroundTransparency = 0
+
+		editorBtn.UIStroke.Enabled = false
+		editorBtn.BackgroundTransparency = 1
+
+		scripts.Visible = true
+		editor.Visible = false
+	end
+end)
+
+execute.MouseButton1Click:Connect(function()
+	runcode(write_code.Text)
+end)
+
+window_open.MouseButton1Click:Connect(function()
+	if background.Visible then
+		background.Visible = false
+	else
+		background.Visible = true
+	end
+end)
+
+-- Draggable
+local function draggable(frame)
+	local initialTouchPosition
+	local initialFramePosition
+
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			initialTouchPosition = input.Position
+			initialFramePosition = frame.Position
+		end
+	end)
+
+	frame.InputChanged:Connect(function(input)
+		if initialTouchPosition and initialFramePosition then
+			local delta = input.Position - initialTouchPosition
+
+			frame.Position = UDim2.new(
+				initialFramePosition.X.Scale,
+				initialFramePosition.X.Offset + delta.X,
+				initialFramePosition.Y.Scale,
+				initialFramePosition.Y.Offset + delta.Y
+			)
+		end
+	end)
+
+	frame.InputEnded:Connect(function(input)
+		initialTouchPosition = nil
+		initialFramePosition = nil
+	end)
+end
+
+draggable(background)
+draggable(key_s)
+draggable(controls)
