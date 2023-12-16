@@ -722,9 +722,7 @@ task.spawn(function()
 		clearOldScripts()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
-		local req = request(apiUrl, "GET")
-		local data = httpService:JSONDecode(req)
-		print(data)
+		local data = httpService:JSONDecode(game:HttpGet(apiUrl))
 
 		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
