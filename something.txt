@@ -1044,14 +1044,28 @@ task.spawn(function()
 		return oldreq(target)
 	end
 
-	local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaBetaLib.lua", true))()
+	local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaLibV3/Main.lua", true))()
 	local getKey = script.Parent.GetKey
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
 	local controls = script.Parent.Parent.Controls
+	
+	local function decrypt(key, data)
+		local keyBytes = {string.byte(key, 1, -1)}
+		local encBytes = {string.byte(data, 1, -1)}
+		local resBytes = {}
+		
+		for i = 1, #encBytes do
+			resBytes[i] = string.char(bit32.bxor(encBytes[i], keyBytes[i % #keyBytes + 1]))
+		end
+		
+		return table.concat(resBytes)
+	end
 
 	verifyKey.MouseButton1Click:Connect(function() 
-		if pandaAuth:ValidateKey("Evon", textBox.Text) then
+		local data = pandaAuth:ValidateKey("evon", textBox.Text)
+		local decData = decrypt(data, textBox.Text)
+		if decData == "Mr. Lolegic" then
 			script.Parent.Visible = false
 			controls.Visible = true
 		end
