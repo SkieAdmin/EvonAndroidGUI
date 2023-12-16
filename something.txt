@@ -308,6 +308,7 @@ write_code.Text = ""
 write_code.TextColor3 = Color3.new(1, 1, 1)
 write_code.TextSize = 10
 write_code.TextTransparency = 1
+write_code.ClearTextOnFocus = false
 write_code.TextXAlignment = Enum.TextXAlignment.Left
 write_code.TextYAlignment = Enum.TextYAlignment.Top
 write_code.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -721,7 +722,9 @@ task.spawn(function()
 		clearOldScripts()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
-		local data = request(httpService:JSONDecode(apiUrl), "GET")
+		local req = request(apiUrl, "GET")
+		local data = httpService:JSONDecode(req)
+		print(data)
 
 		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
