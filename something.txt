@@ -1,7 +1,4 @@
--- Perm Dev Key : 6d98d2ced894b1ee9b1d1fa53151b1837f886ea3673930a352ccea164bf492ad
-
---// Instances
-local evon = Instance.new("ScreenGui")
+--// Instanceslocal evon = Instance.new("ScreenGui")
 evon.ResetOnSpawn = false
 evon.Name = "Evon"
 evon.Parent = cloneref(game:GetService("CoreGui"))
