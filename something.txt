@@ -723,15 +723,14 @@ task.spawn(function()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free"
 		local data = httpService:JSONDecode(game:HttpGet(apiUrl))
-		--local req = request(apiUrl, "GET")
-		--local data = httpService:JSONDecode(req)
-		print(data)
-		for i,v in next, data do
+
+		print(data.result)
+		for i,v in next, data.result do
 			print(i, v)
 		end
-		print(table.unpack(data))
+		print(table.unpack(data.result))
 
-		for i, v in ipairs(data.scripts) do
+		for i, v in ipairs(data.result.scripts) do
 			local newScript = oldScript:Clone()
 			newScript.Name = "Script" .. i
 			newScript.ScriptName = v.slug
