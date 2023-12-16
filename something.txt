@@ -18,7 +18,7 @@ evon.IgnoreGuiInset = false
 evon.ResetOnSpawn = false
 evon.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 evon.Name = "Evon"
-evon.Parent = workspace
+evon.Parent = game:GetService("CoreGui")
 
 local background = Instance.new("Frame")
 background.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -643,15 +643,15 @@ task.spawn(function()
 	local editorBtn = background.EditorBTN
 	local editor = background.Editor
 	local scripts = background.Scripts
-	
+
 	editorBtn.MouseButton1Click:Connect(function()
 		if scriptsBtn.UIStroke.Enabled and not editorBtn.UIStroke.Enabled then
 			scriptsBtn.UIStroke.Enabled = false
 			scriptsBtn.BackgroundTransparency = 1
-			
+
 			editorBtn.UIStroke.Enabled = true
 			editorBtn.BackgroundTransparency = 0
-			
+
 			scripts.Visible = false
 			editor.Visible = true
 		end
@@ -675,15 +675,15 @@ task.spawn(function()
 	local editorBtn = background.EditorBTN
 	local editor = background.Editor
 	local scripts = background.Scripts
-	
+
 	scriptsBtn.MouseButton1Click:Connect(function()
 		if not scriptsBtn.UIStroke.Enabled and editorBtn.UIStroke.Enabled then
 			scriptsBtn.UIStroke.Enabled = true
 			scriptsBtn.BackgroundTransparency = 0
-	
+
 			editorBtn.UIStroke.Enabled = false
 			editorBtn.BackgroundTransparency = 1
-	
+
 			scripts.Visible = true
 			editor.Visible = false
 		end
@@ -708,21 +708,21 @@ task.spawn(function()
 	oldScript.Parent = nil
 	local oldScripts = {}
 	local searchBox = script.Parent.SearchBox
-	
+
 	local function clearOldScripts()
 		for _, scriptInstance in ipairs(oldScripts) do
 			scriptInstance:Destroy()
 		end
 		oldScripts = {}
 	end
-	
+
 	local function getScripts(query)
 		clearOldScripts()
-	
+
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
 		local req = game:HttpGet(apiUrl, true)
 		local data = httpService:JSONDecode(req).result
-	
+
 		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
 			newScript.Name = "Script" .. i
@@ -733,11 +733,11 @@ task.spawn(function()
 			newScript.Execute.MouseButton1Click:Connect(function() 
 				runcode(v.script)    
 			end)
-	
+
 			table.insert(oldScripts, newScript)
 		end
 	end
-	
+
 	searchBox.FocusLost:Connect(function()
 		local query = searchBox.Text
 		getScripts(query)
@@ -763,37 +763,37 @@ task.spawn(function()
 	local writeCode = container.WriteCode
 	local displayCode = container.DisplayCode
 	local clearBtn = script.Parent.Parent.Parent.Controls.BtnContainer.Clear
-	
+
 	local function updateLineNumbers()
 		local lines = string.split(writeCode.Text, "\n")
 		lineNumbers.Text = ""
-	
+
 		for i, _ in ipairs(lines) do
 			lineNumbers.Text = lineNumbers.Text .. i .. "\n"
 		end
 	end
-	
+
 	local function updateDisplayCode()
 		-- I gave up on strings because gsub and roblox just hates them or me in general :pensive:
 		local code = writeCode.Text
 		displayCode.Text = ""
-	
+
 		local keywords = {"function", "if", "else", "end", "local", "for", "while", "do", "repeat", "until", "then"}
 		local others = {"and", "or", "not", "true", "false"}
-	
+
 		code = string.gsub(code, "([%a_][%w_]*)%s*%(", '<font color="rgb(90, 189, 247)">%1</font>(')
-	
+
 		for _, keyword in ipairs(keywords) do
 			code = string.gsub(code, "%f[%a]" .. keyword .. "%f[%A]", '<font color="rgb(248, 109, 124)"><b>' .. keyword .. '</b></font>')
 		end
-	
+
 		for _, other in ipairs(others) do
 			code = string.gsub(code, "%f[%a]" .. other .. "%f[%A]", '<font color="rgb(255, 198, 0)">' .. other .. '</font>')
 		end
-	
+
 		displayCode.Text = code
 	end
-	
+
 	writeCode.InputBegan:Connect(function(input, gameProcessedEvent)
 		if input.KeyCode == Enum.KeyCode.Return and not gameProcessedEvent then
 			writeCode.Text = writeCode.Text .. "\n"
@@ -801,20 +801,20 @@ task.spawn(function()
 			updateDisplayCode()
 		end
 	end)
-	
+
 	writeCode:GetPropertyChangedSignal("Text"):Connect(function()
 		updateLineNumbers()
 		updateDisplayCode()
 	end)
-	
+
 	clearBtn.MouseButton1Click:Connect(function()
 		writeCode.Text = ""
 		displayCode.Text = ""
 	end)
-	
+
 	updateLineNumbers()
 	updateDisplayCode()
-	
+
 end)
 
 -- Dragging
@@ -830,19 +830,19 @@ task.spawn(function()
 	end
 
 	local draggableFrame = script.Parent
-	
+
 	local initialTouchPosition
 	local initialFramePosition
-	
+
 	local function onTouchStart(input)
 		initialTouchPosition = input.Position
 		initialFramePosition = draggableFrame.Position
 	end
-	
+
 	local function onTouchMove(input)
 		if initialTouchPosition and initialFramePosition then
 			local delta = input.Position - initialTouchPosition
-	
+
 			draggableFrame.Position = UDim2.new(
 				initialFramePosition.X.Scale,
 				initialFramePosition.X.Offset + delta.X,
@@ -851,30 +851,30 @@ task.spawn(function()
 			)
 		end
 	end
-	
+
 	local function onTouchEnd()
 		initialTouchPosition = nil
 		initialFramePosition = nil
 	end
-	
+
 	draggableFrame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchStart(input)
 		end
 	end)
-	
+
 	draggableFrame.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchMove(input)
 		end
 	end)
-	
+
 	draggableFrame.InputEnded:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchEnd()
 		end
 	end)
-	
+
 end)
 
 -- Execute
@@ -891,8 +891,8 @@ task.spawn(function()
 
 	local editor = script.Parent.Parent.Parent.Parent.Background.Editor
 	local writeCode = editor.container.WriteCode
-	
-	
+
+
 	script.Parent.MouseButton1Click:Connect(function()
 		runcode(writeCode.Text)
 	end)
@@ -911,7 +911,7 @@ task.spawn(function()
 	end
 
 	local editor = script.Parent.Parent.Parent.Parent.Background
-	
+
 	script.Parent.MouseButton1Click:Connect(function()
 		if editor.Visible then
 			editor.Visible = false
@@ -919,7 +919,7 @@ task.spawn(function()
 			editor.Visible = true
 		end
 	end)
-	
+
 end)
 
 -- Minimize
@@ -936,14 +936,14 @@ task.spawn(function()
 
 	local controls = script.Parent.Parent
 	local logoBtn = controls.EvonLogo
-	
+
 	local cSizeYScale = controls.Size.Y.Scale
 	local cSizeTOffset = controls.Size.Y.Offset
-	
+
 	local miniSize = UDim2.new(0, 44, cSizeYScale, cSizeTOffset)
 	local expSize = UDim2.new(0, 148, cSizeYScale, cSizeTOffset)
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	
+
 	local function setVisible(isVisible)
 		for _, ctrl in next, controls:GetChildren() do
 			if ctrl:IsA("Frame") or ctrl:IsA("TextButton") then
@@ -951,24 +951,24 @@ task.spawn(function()
 			end
 		end
 	end
-	
+
 	local function isClicked()
 		if controls.Size == expSize then
 			local tweenGoal = {Size = miniSize}
 			local tween = game:GetService("TweenService"):Create(controls, tweenInfo, tweenGoal)
-			
+
 			tween:Play()
 			setVisible(false)
 		else
 			local tweenGoal = {Size = expSize}
 			local tween = game:GetService("TweenService"):Create(controls, tweenInfo, tweenGoal)
-	
+
 			tween:Play()
 			task.wait(0.5)
 			setVisible(true)
 		end
 	end
-	
+
 	logoBtn.MouseButton1Click:Connect(isClicked)
 end)
 
@@ -985,19 +985,19 @@ task.spawn(function()
 	end
 
 	local draggableFrame = script.Parent
-	
+
 	local initialTouchPosition
 	local initialFramePosition
-	
+
 	local function onTouchStart(input)
 		initialTouchPosition = input.Position
 		initialFramePosition = draggableFrame.Position
 	end
-	
+
 	local function onTouchMove(input)
 		if initialTouchPosition and initialFramePosition then
 			local delta = input.Position - initialTouchPosition
-	
+
 			draggableFrame.Position = UDim2.new(
 				initialFramePosition.X.Scale,
 				initialFramePosition.X.Offset + delta.X,
@@ -1006,30 +1006,30 @@ task.spawn(function()
 			)
 		end
 	end
-	
+
 	local function onTouchEnd()
 		initialTouchPosition = nil
 		initialFramePosition = nil
 	end
-	
+
 	draggableFrame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchStart(input)
 		end
 	end)
-	
+
 	draggableFrame.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchMove(input)
 		end
 	end)
-	
+
 	draggableFrame.InputEnded:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchEnd()
 		end
 	end)
-	
+
 end)
 
 -- PandaAuth
@@ -1049,14 +1049,14 @@ task.spawn(function()
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
 	local controls = script.Parent.Parent.Controls
-	
+
 	verifyKey.MouseButton1Click:Connect(function() 
 		if pandaAuth:ValidateKey("Evon", textBox.Text) then
 			script.Parent.Visible = false
 			controls.Visible = true
 		end
 	end)
-	
+
 	getKey.MouseButton1Click:Connect(function()
 		setclipboard(pandaAuth:GetLink("Evon"))
 		textBox.PlaceholderText = "Link Copied to Clipboard"
@@ -1076,19 +1076,19 @@ task.spawn(function()
 	end
 
 	local draggableFrame = script.Parent
-	
+
 	local initialTouchPosition
 	local initialFramePosition
-	
+
 	local function onTouchStart(input)
 		initialTouchPosition = input.Position
 		initialFramePosition = draggableFrame.Position
 	end
-	
+
 	local function onTouchMove(input)
 		if initialTouchPosition and initialFramePosition then
 			local delta = input.Position - initialTouchPosition
-	
+
 			draggableFrame.Position = UDim2.new(
 				initialFramePosition.X.Scale,
 				initialFramePosition.X.Offset + delta.X,
@@ -1097,28 +1097,28 @@ task.spawn(function()
 			)
 		end
 	end
-	
+
 	local function onTouchEnd()
 		initialTouchPosition = nil
 		initialFramePosition = nil
 	end
-	
+
 	draggableFrame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchStart(input)
 		end
 	end)
-	
+
 	draggableFrame.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchMove(input)
 		end
 	end)
-	
+
 	draggableFrame.InputEnded:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			onTouchEnd()
 		end
 	end)
-	
+
 end)
