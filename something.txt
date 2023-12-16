@@ -721,7 +721,7 @@ task.spawn(function()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
 		local req = game:HttpGet(apiUrl, true)
-		local data = httpService:JSONDecode(req).result
+		local data = request(httpService:JSONDecode(req), "GET")
 
 		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
@@ -774,7 +774,6 @@ task.spawn(function()
 	end
 
 	local function updateDisplayCode()
-		-- I gave up on strings because gsub and roblox just hates them or me in general :pensive:
 		local code = writeCode.Text
 		displayCode.Text = ""
 
