@@ -170,10 +170,10 @@ uicorner_5.CornerRadius = UDim.new(0, 4)
 uicorner_5.Parent = script
 
 local script_name = Instance.new("TextLabel")
-script_name.Font = Enum.Font.Unknown
+script_name.Font = Enum.Font.Code
 script_name.Text = "Logi Hub"
 script_name.TextColor3 = Color3.new(1, 1, 1)
-script_name.TextSize = 14
+script_name.TextSize = 10
 script_name.TextTruncate = Enum.TextTruncate.AtEnd
 script_name.BackgroundColor3 = Color3.new(1, 1, 1)
 script_name.BackgroundTransparency = 1
@@ -213,13 +213,14 @@ script_2.Name = "Script"
 script_2.Parent = script
 
 local search_box = Instance.new("TextBox")
-search_box.Font = Enum.Font.Unknown
+search_box.Font = Enum.Font.Code
 search_box.PlaceholderColor3 = Color3.new(1, 1, 1)
 search_box.PlaceholderText = "Search"
 search_box.Text = ""
-search_box.TextColor3 = Color3.new(0, 0, 0)
-search_box.TextSize = 14
+search_box.TextColor3 = Color3.new(1, 1, 1)
+search_box.TextSize = 10
 search_box.TextWrapped = true
+search_box.TextTruncate = Enum.TextTruncate.AtEnd
 search_box.BackgroundColor3 = Color3.new(1, 1, 1)
 search_box.BackgroundTransparency = 1
 search_box.BorderColor3 = Color3.new(0, 0, 0)
@@ -282,7 +283,7 @@ uipadding_2.PaddingTop = UDim.new(0, 5)
 uipadding_2.Parent = container
 
 local display_code = Instance.new("TextLabel")
-display_code.Font = Enum.Font.Unknown
+display_code.Font = Enum.Font.Code
 display_code.RichText = true
 display_code.Text = ""
 display_code.TextColor3 = Color3.new(1, 1, 1)
@@ -301,7 +302,7 @@ display_code.Name = "DisplayCode"
 display_code.Parent = container
 
 local write_code = Instance.new("TextBox")
-write_code.Font = Enum.Font.Unknown
+write_code.Font = Enum.Font.Code
 write_code.MultiLine = true
 write_code.Text = ""
 write_code.TextColor3 = Color3.new(1, 1, 1)
@@ -320,7 +321,7 @@ write_code.Name = "WriteCode"
 write_code.Parent = container
 
 local line_numbers = Instance.new("TextBox")
-line_numbers.Font = Enum.Font.Unknown
+line_numbers.Font = Enum.Font.Code
 line_numbers.MultiLine = true
 line_numbers.RichText = true
 line_numbers.Text = "1"
@@ -720,8 +721,7 @@ task.spawn(function()
 		clearOldScripts()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
-		local req = game:HttpGet(apiUrl, true)
-		local data = request(httpService:JSONDecode(req), "GET")
+		local data = request(httpService:JSONDecode(apiUrl), "GET")
 
 		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
