@@ -1,4 +1,5 @@
---// Instanceslocal evon = Instance.new("ScreenGui")
+--// Instances
+local evon = Instance.new("ScreenGui")
 evon.ResetOnSpawn = false
 evon.Name = "Evon"
 evon.Parent = cloneref(game:GetService("CoreGui"))
