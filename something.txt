@@ -563,7 +563,7 @@ uiaspect_ratio_constraint_2.Parent = key_s
 
 -- PandaAuth
 local httpService = cloneref(game:GetService("HttpService"))
-local pandaAuth = loadstring(httpService:GetAsync("https://pandadevelopment.net/service_api/PandaBetaLib.lua"))()
+local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaBetaLib.lua", true))()
 local keySys = key_s
 local getKey = get_key
 local verifyKey = verify_key
@@ -659,7 +659,7 @@ local function getScripts(query)
 	clearOldScripts()
 
 	local apiUrl = "https://scriptblox.com/api/script/search?q=" .. query .. "&max=20&mode=free"
-	local req = httpService:GetAsync(apiUrl)
+	local req = game:HttpGet(apiUrl, true)
 	local data = httpService:JSONDecode(req).result
 
 	for i, v in ipairs(data.scripts) do
