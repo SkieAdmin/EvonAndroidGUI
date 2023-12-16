@@ -1045,6 +1045,7 @@ task.spawn(function()
 	end
 
 	local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaLibV3/Main.lua", true))()
+	getgenv().Debugging = false
 	local getKey = script.Parent.GetKey
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
