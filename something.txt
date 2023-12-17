@@ -662,7 +662,7 @@ task.spawn(function()
 		scriptTemp.Name = "Script" .. index
 		scriptTemp.Parent = scrolling_frame
 
-		thumbnail.Image = imageUrl
+		thumbnail.Image = "https://scriptblox.com/" .. imageUrl
 		thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
 		thumbnail.BorderColor3 = Color3.new(0, 0, 0)
 		thumbnail.BorderSizePixel = 0
@@ -1053,16 +1053,22 @@ task.spawn(function()
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
 	local controls = script.Parent.Parent.Controls
+	
+	if pandaAuth:ValidateKey("evon", readfile("pandaAuthKey.txt")) then
+		script.Parent.Visible = false
+		controls.Visible = true
+	end
 
-	verifyKey.MouseButton1Click:Connect(function() 
+	verifyKey.MouseButton1Click:Connect(function()
 		if pandaAuth:ValidateKey("evon", textBox.Text) then
+			writefile(textBox.Text, "pandaAuthKey.txt")
 			script.Parent.Visible = false
 			controls.Visible = true
 		end
 	end)
 
 	getKey.MouseButton1Click:Connect(function()
-		setclipboard(pandaAuth:GetLink("Evon"))
+		setclipboard(pandaAuth:GetLink("evon"))
 		textBox.PlaceholderText = "Link Copied to Clipboard"
 	end)
 end)
