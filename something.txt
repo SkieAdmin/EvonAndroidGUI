@@ -1060,7 +1060,7 @@ task.spawn(function()
 			writefile("pandaAuthKey.txt", textBox.Text)
 			script.Parent.Visible = false
 			controls.Visible = true
-		elseif pandaAuth:ValidateKey("evon", saveFile) then
+		elseif pandaAuth:ValidateKey("evon", tostring(saveFile)) then
 			script.Parent.Visible = false
 			controls.Visible = true
 		else
