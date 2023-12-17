@@ -141,14 +141,14 @@ uigrid_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 uigrid_layout.SortOrder = Enum.SortOrder.LayoutOrder
 uigrid_layout.Parent = scrolling_frame
 
-local script = Instance.new("Frame")
-script.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
-script.BorderColor3 = Color3.new(0, 0, 0)
-script.BorderSizePixel = 0
-script.Size = UDim2.new(0, 136, 0, 150)
-script.Visible = true
-script.Name = "Script"
-script.Parent = scrolling_frame
+local scriptTemp = Instance.new("Frame")
+scriptTemp.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+scriptTemp.BorderColor3 = Color3.new(0, 0, 0)
+scriptTemp.BorderSizePixel = 0
+scriptTemp.Size = UDim2.new(0, 136, 0, 150)
+scriptTemp.Visible = true
+scriptTemp.Name = "scriptTemp"
+scriptTemp.Parent = scrolling_frame
 
 local thumbnail = Instance.new("ImageLabel")
 thumbnail.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
@@ -159,7 +159,7 @@ thumbnail.Position = UDim2.new(0, 0, 0.00125895184, 0)
 thumbnail.Size = UDim2.new(0, 136, 0, 81)
 thumbnail.Visible = true
 thumbnail.Name = "Thumbnail"
-thumbnail.Parent = script
+thumbnail.Parent = scriptTemp
 
 local uicorner_4 = Instance.new("UICorner")
 uicorner_4.CornerRadius = UDim.new(0, 4)
@@ -167,7 +167,7 @@ uicorner_4.Parent = thumbnail
 
 local uicorner_5 = Instance.new("UICorner")
 uicorner_5.CornerRadius = UDim.new(0, 4)
-uicorner_5.Parent = script
+uicorner_5.Parent = scriptTemp
 
 local script_name = Instance.new("TextLabel")
 script_name.Font = Enum.Font.Code
@@ -183,7 +183,7 @@ script_name.Position = UDim2.new(0.237037033, 0, 0.593333304, 0)
 script_name.Size = UDim2.new(0, 71, 0, 20)
 script_name.Visible = true
 script_name.Name = "ScriptName"
-script_name.Parent = script
+script_name.Parent = scriptTemp
 
 local execute = Instance.new("ImageButton")
 execute.Image = "rbxassetid://3926307971"
@@ -197,7 +197,7 @@ execute.Size = UDim2.new(0, 20, 0, 20)
 execute.Visible = true
 execute.ZIndex = 2
 execute.Name = "Execute"
-execute.Parent = script
+execute.Parent = scriptTemp
 
 local script_2 = Instance.new("TextBox")
 script_2.Font = Enum.Font.SourceSans
@@ -210,7 +210,7 @@ script_2.BorderSizePixel = 0
 script_2.Size = UDim2.new(0, 10, 0, 50)
 script_2.Visible = false
 script_2.Name = "Script"
-script_2.Parent = script
+script_2.Parent = scriptTemp
 
 local search_box = Instance.new("TextBox")
 search_box.Font = Enum.Font.Code
@@ -706,7 +706,7 @@ task.spawn(function()
 
 	local httpService = game:GetService("HttpService")
 	local scrollFrame = script.Parent.ScrollingFrame
-	local oldScript = scrollFrame.Script
+	local oldScript = scriptTemp
 	oldScript.Parent = nil
 	local oldScripts = {}
 	local searchBox = script.Parent.SearchBox
@@ -722,15 +722,15 @@ task.spawn(function()
 		clearOldScripts()
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
-		local data = httpService:JSONDecode(game:HttpGet(apiUrl))
+		local data = httpService:JSONDecode(game:HttpGet(apiUrl)).result
 
-		print(data.result)
-		for i,v in next, data.result do
+		print(data.scripts)
+		for i,v in next, data.scripts do
 			print(i, v)
 		end
-		print(table.unpack(data.result))
+		print(table.unpack(data.scripts))
 
-		for i, v in ipairs(data.result.scripts) do
+		for i, v in ipairs(data.scripts) do
 			local newScript = oldScript:Clone()
 			newScript.Name = "Script" .. i
 			newScript.ScriptName = v.slug
