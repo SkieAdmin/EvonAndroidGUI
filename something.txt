@@ -1053,10 +1053,15 @@ task.spawn(function()
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
 	local controls = script.Parent.Parent.Controls
+	local saveFile = readfile("pandaAuthKey.txt")
 	
-	if pandaAuth:ValidateKey("evon", readfile("pandaAuthKey.txt")) then
-		script.Parent.Visible = false
-		controls.Visible = true
+	if saveFile then
+		if pandaAuth:ValidateKey("evon", saveFile) then
+			script.Parent.Visible = false
+			controls.Visible = true
+		end
+	else
+		print("No saved key found.")
 	end
 
 	verifyKey.MouseButton1Click:Connect(function()
