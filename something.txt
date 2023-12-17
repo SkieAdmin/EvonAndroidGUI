@@ -141,77 +141,6 @@ uigrid_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 uigrid_layout.SortOrder = Enum.SortOrder.LayoutOrder
 uigrid_layout.Parent = scrolling_frame
 
-local scriptTemp = Instance.new("Frame")
-scriptTemp.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
-scriptTemp.BorderColor3 = Color3.new(0, 0, 0)
-scriptTemp.BorderSizePixel = 0
-scriptTemp.Size = UDim2.new(0, 136, 0, 150)
-scriptTemp.Visible = true
-scriptTemp.Name = "scriptTemp"
-scriptTemp.Parent = scrolling_frame
-
-local thumbnail = Instance.new("ImageLabel")
-thumbnail.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
-thumbnail.BorderColor3 = Color3.new(0, 0, 0)
-thumbnail.BorderSizePixel = 0
-thumbnail.Position = UDim2.new(0, 0, 0.00125895184, 0)
-thumbnail.Size = UDim2.new(0, 136, 0, 81)
-thumbnail.Visible = true
-thumbnail.Name = "Thumbnail"
-thumbnail.Parent = scriptTemp
-
-local uicorner_4 = Instance.new("UICorner")
-uicorner_4.CornerRadius = UDim.new(0, 4)
-uicorner_4.Parent = thumbnail
-
-local uicorner_5 = Instance.new("UICorner")
-uicorner_5.CornerRadius = UDim.new(0, 4)
-uicorner_5.Parent = scriptTemp
-
-local script_name = Instance.new("TextLabel")
-script_name.Font = Enum.Font.Code
-script_name.Text = "Logi Hub"
-script_name.TextColor3 = Color3.new(1, 1, 1)
-script_name.TextSize = 10
-script_name.TextTruncate = Enum.TextTruncate.AtEnd
-script_name.BackgroundColor3 = Color3.new(1, 1, 1)
-script_name.BackgroundTransparency = 1
-script_name.BorderColor3 = Color3.new(0, 0, 0)
-script_name.BorderSizePixel = 0
-script_name.Position = UDim2.new(0.237037033, 0, 0.593333304, 0)
-script_name.Size = UDim2.new(0, 71, 0, 20)
-script_name.Visible = true
-script_name.Name = "ScriptName"
-script_name.Parent = scriptTemp
-
-local execute = Instance.new("ImageButton")
-execute.Image = "rbxassetid://3926307971"
-execute.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-execute.ImageRectOffset = Vector2.new(44, 284)
-execute.ImageRectSize = Vector2.new(36, 36)
-execute.BackgroundTransparency = 1
-execute.LayoutOrder = 1
-execute.Position = UDim2.new(0.792853892, 0, 0.824085891, 0)
-execute.Size = UDim2.new(0, 20, 0, 20)
-execute.Visible = true
-execute.ZIndex = 2
-execute.Name = "Execute"
-execute.Parent = scriptTemp
-
-local script_2 = Instance.new("TextBox")
-script_2.Font = Enum.Font.SourceSans
-script_2.TextColor3 = Color3.new(0, 0, 0)
-script_2.TextSize = 14
-script_2.BackgroundColor3 = Color3.new(1, 1, 1)
-script_2.BackgroundTransparency = 1
-script_2.BorderColor3 = Color3.new(0, 0, 0)
-script_2.BorderSizePixel = 0
-script_2.Size = UDim2.new(0, 10, 0, 50)
-script_2.Visible = false
-script_2.Name = "Script"
-script_2.Parent = scriptTemp
-
 local search_box = Instance.new("TextBox")
 search_box.Font = Enum.Font.Code
 search_box.PlaceholderColor3 = Color3.new(1, 1, 1)
@@ -706,8 +635,6 @@ task.spawn(function()
 
 	local httpService = game:GetService("HttpService")
 	local scrollFrame = script.Parent.ScrollingFrame
-	local oldScript = scriptTemp
-	oldScript.Parent = nil
 	local oldScripts = {}
 	local searchBox = script.Parent.SearchBox
 
@@ -717,6 +644,87 @@ task.spawn(function()
 		end
 		oldScripts = {}
 	end
+	
+	local function newScript(index, name, thumbnail, code)
+		local scriptTemp = Instance.new("Frame")
+		local thumbnail = Instance.new("ImageLabel")
+		local uicorner_4 = Instance.new("UICorner")
+		local uicorner_5 = Instance.new("UICorner")
+		local script_name = Instance.new("TextLabel")
+		local execute = Instance.new("ImageButton")
+		local script_2 = Instance.new("TextBox")
+		
+		scriptTemp.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+		scriptTemp.BorderColor3 = Color3.new(0, 0, 0)
+		scriptTemp.BorderSizePixel = 0
+		scriptTemp.Size = UDim2.new(0, 136, 0, 150)
+		scriptTemp.Visible = true
+		scriptTemp.Name = "Script" .. index
+		scriptTemp.Parent = scrolling_frame
+
+		thumbnail.Image = thumbnail
+		thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
+		thumbnail.BorderColor3 = Color3.new(0, 0, 0)
+		thumbnail.BorderSizePixel = 0
+		thumbnail.Position = UDim2.new(0, 0, 0.00125895184, 0)
+		thumbnail.Size = UDim2.new(0, 136, 0, 81)
+		thumbnail.Visible = true
+		thumbnail.Name = "Thumbnail"
+		thumbnail.Parent = scriptTemp
+
+		uicorner_4.CornerRadius = UDim.new(0, 4)
+		uicorner_4.Parent = thumbnail
+
+		uicorner_5.CornerRadius = UDim.new(0, 4)
+		uicorner_5.Parent = scriptTemp
+
+		script_name.Font = Enum.Font.Code
+		script_name.Text = name
+		script_name.TextColor3 = Color3.new(1, 1, 1)
+		script_name.TextSize = 10
+		script_name.TextTruncate = Enum.TextTruncate.AtEnd
+		script_name.BackgroundColor3 = Color3.new(1, 1, 1)
+		script_name.BackgroundTransparency = 1
+		script_name.BorderColor3 = Color3.new(0, 0, 0)
+		script_name.BorderSizePixel = 0
+		script_name.Position = UDim2.new(0.237037033, 0, 0.593333304, 0)
+		script_name.Size = UDim2.new(0, 71, 0, 20)
+		script_name.Visible = true
+		script_name.Name = "ScriptName"
+		script_name.Parent = scriptTemp
+
+		execute.Image = "rbxassetid://3926307971"
+		execute.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
+		execute.ImageRectOffset = Vector2.new(44, 284)
+		execute.ImageRectSize = Vector2.new(36, 36)
+		execute.BackgroundTransparency = 1
+		execute.LayoutOrder = 1
+		execute.Position = UDim2.new(0.792853892, 0, 0.824085891, 0)
+		execute.Size = UDim2.new(0, 20, 0, 20)
+		execute.Visible = true
+		execute.ZIndex = 2
+		execute.Name = "Execute"
+		execute.Parent = scriptTemp
+
+		script_2.Font = Enum.Font.SourceSans
+		script_2.TextColor3 = Color3.new(0, 0, 0)
+		script_2.TextSize = 14
+		script_2.Text = code
+		script_2.BackgroundColor3 = Color3.new(1, 1, 1)
+		script_2.BackgroundTransparency = 1
+		script_2.BorderColor3 = Color3.new(0, 0, 0)
+		script_2.BorderSizePixel = 0
+		script_2.Size = UDim2.new(0, 10, 0, 50)
+		script_2.Visible = false
+		script_2.Name = "Script"
+		script_2.Parent = scriptTemp
+		
+		execute.MouseButton1Click:Connect(function()
+			runcode(script_2.Text)
+		end)
+		
+		return scriptTemp
+	end
 
 	local function getScripts(query)
 		clearOldScripts()
@@ -724,22 +732,12 @@ task.spawn(function()
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
 		local data = httpService:JSONDecode(game:HttpGet(apiUrl)).result
 
-		print(data.scripts)
-		for i,v in next, data.scripts do
-			print(i, v)
-		end
-		print(table.unpack(data.scripts))
+		--for i,v in next, data.scripts do
+		--	print(i, v)
+		--end
 
-		for i, v in ipairs(data.scripts) do
-			local newScript = oldScript:Clone()
-			newScript.Name = "Script" .. i
-			newScript.ScriptName = v.slug
-			newScript.Parent = scrollFrame
-			newScript.Thumbnail =  v.game.imageUrl
-			newScript.Script.Text = v.script
-			newScript.Execute.MouseButton1Click:Connect(function() 
-				runcode(v.script)    
-			end)
+		for i, v in next, data.scripts do
+			local newScript = newScript(i, v.slud, v.game.imageUrl, v.script)
 
 			table.insert(oldScripts, newScript)
 		end
