@@ -1055,7 +1055,7 @@ task.spawn(function()
 	local controls = script.Parent.Parent.Controls
 	local saveFile = readfile("pandaAuthKey.txt")
 	
-	if isfile(saveFile) then
+	if isfile("pandaAuthKey.txt") then
 		textBox.Text = saveFile
 	end
 	
