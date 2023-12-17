@@ -645,7 +645,7 @@ task.spawn(function()
 		oldScripts = {}
 	end
 	
-	local function newScript(index, name, thumbnail, code)
+	local function newScript(index, name, imageUrl, code)
 		local scriptTemp = Instance.new("Frame")
 		local thumbnail = Instance.new("ImageLabel")
 		local uicorner_4 = Instance.new("UICorner")
@@ -662,7 +662,7 @@ task.spawn(function()
 		scriptTemp.Name = "Script" .. index
 		scriptTemp.Parent = scrolling_frame
 
-		thumbnail.Image = thumbnail
+		thumbnail.Image = imageUrl
 		thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
 		thumbnail.BorderColor3 = Color3.new(0, 0, 0)
 		thumbnail.BorderSizePixel = 0
@@ -737,7 +737,7 @@ task.spawn(function()
 		--end
 
 		for i, v in next, data.scripts do
-			local newScript = newScript(i, v.slud, v.game.imageUrl, v.script)
+			local newScript = newScript(i, v.slug, v.game.imageUrl, v.script)
 
 			table.insert(oldScripts, newScript)
 		end
