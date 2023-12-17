@@ -1056,13 +1056,7 @@ task.spawn(function()
 	local saveFile = readfile("pandaAuthKey.txt")
 	
 	if isfile(saveFile) then
-		if pandaAuth:ValidateKey("evon", saveFile) then
-			script.Parent.Visible = false
-			controls.Visible = true
-		else
-			delfile("pandaAuthKey.txt")
-			print("Your saved key is expired. Press GetKey for a new one.")
-		end
+		textBox.Text = saveFile
 	end
 	
 	verifyKey.MouseButton1Click:Connect(function()
@@ -1070,6 +1064,10 @@ task.spawn(function()
 			writefile("pandaAuthKey.txt", textBox.Text)
 			script.Parent.Visible = false
 			controls.Visible = true
+		else
+			if isfile(saveFile) then
+				delfile(saveFile)
+			end
 		end
 	end)
 
