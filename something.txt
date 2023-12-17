@@ -721,7 +721,7 @@ task.spawn(function()
 	local function getScripts(query)
 		clearOldScripts()
 
-		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free"
+		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
 		local data = httpService:JSONDecode(game:HttpGet(apiUrl))
 
 		print(data.result)
