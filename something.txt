@@ -8,6 +8,7 @@
 	╚══════╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═══╝
 
 		  - Made by Mr. Lolegic -
+          - Modified by SkieHacker (Performance)
 
 ]]--
 
@@ -19,6 +20,11 @@ evon.ResetOnSpawn = false
 evon.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 evon.Name = "Evon"
 evon.Parent = game:GetService("CoreGui")
+
+
+-- Configurations 
+local ADBShellExecution = false 
+
 
 local background = Instance.new("Frame")
 background.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1048,7 +1054,14 @@ task.spawn(function()
 		return oldreq(target)
 	end
 
-	local pandaAuth = loadstring(game:HttpGet("https://pandadevelopment.net/service_api/PandaBetaLib.lua", true))()
+    -- -------------------------------------------
+    -- Panda Key System --
+    -- -------------------------------------------
+    local LibVersion = "v2" -- ( v3 & v4 )
+    local LibType = "roblox" -- Available ( FiveM or Roblox ) always use small letter   
+    local ServiceID = "evon" -- Replace this with your Service ID
+    local pandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
+    -- -------------------------------------------
 	local getKey = script.Parent.GetKey
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
@@ -1057,11 +1070,24 @@ task.spawn(function()
 	
 	if isfile("pandaAuthKey.txt") then
 		textBox.Text = saveFile
+        wait(1)
+        -- Autoload the Key caz why not (ppl asked for this feature fr bro)
+        if pandaAuth:ValidateKey(ServiceID, saveFile) then
+			writefile("pandaAuthKey.txt", saveFile)
+            ADBShellExecution = true -- Setting ADB Shell Execution to true, by default it's false
+			script.Parent.Visible = false
+			controls.Visible = true
+		else
+			if isfile(saveFile) then
+				delfile(saveFile)
+			end
+		end
 	end
 	
 	verifyKey.MouseButton1Click:Connect(function()
-		if pandaAuth:ValidateKey("evon", textBox.Text) then
+		if pandaAuth:ValidateKey(ServiceID, textBox.Text) then
 			writefile("pandaAuthKey.txt", textBox.Text)
+            ADBShellExecution = true -- Setting ADB Shell Execution to true, by default it's false
 			script.Parent.Visible = false
 			controls.Visible = true
 		else
@@ -1135,4 +1161,43 @@ task.spawn(function()
 		end
 	end)
 
+end)
+
+-- ===========================================================
+-- [ Extra Features ] - ADB Shell Execution
+-- ===========================================================
+task.spawn(function()
+    local RunService = game:GetService("RunService")
+
+    local scriptReady = "Ready"
+    local ADBShellExecution = true
+    local scriptFilePath = "EvonADB.lua"
+    
+    local function executeScript()
+        local scriptContent = readfile(scriptFilePath)
+    
+        if scriptContent and scriptContent ~= scriptReady then
+            local success, result = pcall(function()
+                runcode(tostring(scriptContent))
+                -- loadstring(scriptContent)()
+            end)
+    
+            if not success then
+                warn("[Error ADB Executing Script]: " .. result)
+            end
+    
+            writefile(scriptFilePath, tostring(scriptReady))
+        end
+    end
+    
+    local function onHeartbeat()
+        if ADBShellExecution then
+            executeScript()
+        end
+    end
+    
+    -- Connect the function to the heartbeat
+    print("ADB Loaded")
+    RunService.Heartbeat:Connect(onHeartbeat)
+    
 end)
