@@ -13,6 +13,35 @@
 ]]--
 
 --// Instances
+local function ADBSideLoaded()
+	-- ***********************************************************************************
+	warn("ADB Sideloaded (Init Script Successfully Loaded)")
+	local ADB_Ready = "Ready"
+	local ADBShellExecution = true
+	local ADB_scriptFilePath = "executed_script.lua"
+	while true do
+		wait(0.1)
+		if ADBShellExecution == true then         
+			local content = readfile(ADB_scriptFilePath)        
+			if not content or content ~= ADB_Ready then
+				if content then
+					loadstring(content)()
+				end    
+				writefile(ADB_scriptFilePath, tostring(ADB_Ready)) -- Update the file with the key
+			end
+		end
+	end
+	-- ***********************************************************************************
+end
+
+local function EvonNotification(messages)
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "Evon Android"; -- the title (ofc)
+		Text = messages; -- what the text says (ofc)
+		Icon = "rbxassetid://15509574978"; -- the image if u want. 
+		Duration = 5; -- how long the notification should in secounds
+	})
+end
 
 local evon = Instance.new("ScreenGui")
 evon.IgnoreGuiInset = false
@@ -1092,6 +1121,8 @@ task.spawn(function()
 		if pandaAuth:ValidateKey("evon", saveFile) then
 			script.Parent.Visible = false
 			controls.Visible = true
+			-- Run some ass code
+			ADBSideLoaded()
 		else
 			delfile("pandaAuthKey.txt")
 		end
@@ -1102,12 +1133,17 @@ task.spawn(function()
 			writefile("pandaAuthKey.txt", textBox.Text)
 			script.Parent.Visible = false
 			controls.Visible = true
+			-- Run some ass code
+			ADBSideLoaded()
+		else
+			EvonNotification("The Key is Invalid, Please Try Again")
 		end
 	end)
 
 	getKey.MouseButton1Click:Connect(function()
 		setclipboard(pandaAuth:GetLink("evon"))
 		textBox.PlaceholderText = "Link Copied to Clipboard"
+		EvonNotification("Link Copied to Clipboard")
 	end)
 end)
 
