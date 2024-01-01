@@ -8,7 +8,7 @@
 	╚══════╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═══╝
 
 		  - Made by Mr. Lolegic -
-          - Modified by SkieHacker (Performance)
+		  - Maintained by SkieHacker (As of January 1st, 2024)
 
 ]]--
 
@@ -20,11 +20,6 @@ evon.ResetOnSpawn = false
 evon.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 evon.Name = "Evon"
 evon.Parent = game:GetService("CoreGui")
-
-
--- Configurations 
-local ADBShellExecution = false 
-
 
 local background = Instance.new("Frame")
 background.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -133,6 +128,7 @@ scrolling_frame.BorderColor3 = Color3.new(0, 0, 0)
 scrolling_frame.BorderSizePixel = 0
 scrolling_frame.Position = UDim2.new(-6.16516758e-08, 0, 0.150951892, 0)
 scrolling_frame.Size = UDim2.new(0, 495, 0, 188)
+scrolling_frame.CanvasSize = UDim2.new(0, 0, 0, 5)
 scrolling_frame.Visible = true
 scrolling_frame.Parent = scripts
 
@@ -650,8 +646,33 @@ task.spawn(function()
 		end
 		oldScripts = {}
 	end
+
+	local function clearOldImages(imgPath)
+		local files = listfiles(imgPath)
+
+		if #files > 0 then
+			if isfolder(imgPath) then
+				delfolder(imgPath)
+				makefolder(imgPath)
+			end
+		end
+	end
+	
 	
 	local function newScript(index, name, imageUrl, code)
+		local fileName = string.gsub(name, " ", "") .. ".png"
+		local filePath = "EvonHub/Images" .. fileName
+		
+		if not isfile(filePath) then
+			local imageUrlFull = imageUrl
+			if not imageUrl:match("^https?://") then
+				imageUrlFull = "https://scriptblox.com/" .. imageUrl
+			end
+	
+			local imgData = game:HttpGetAsync(imageUrlFull)
+			writefile(filePath, imgData)
+		end
+
 		local scriptTemp = Instance.new("Frame")
 		local thumbnail = Instance.new("ImageLabel")
 		local uicorner_4 = Instance.new("UICorner")
@@ -668,7 +689,7 @@ task.spawn(function()
 		scriptTemp.Name = "Script" .. index
 		scriptTemp.Parent = scrolling_frame
 
-		thumbnail.Image = "https://scriptblox.com/" .. imageUrl
+		thumbnail.Image = getcustomasset(filePath)
 		thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
 		thumbnail.BorderColor3 = Color3.new(0, 0, 0)
 		thumbnail.BorderSizePixel = 0
@@ -733,14 +754,15 @@ task.spawn(function()
 	end
 
 	local function getScripts(query)
+		if not isfolder("EvonHub") then
+			makefolder("EvonHub/Images/")
+		end
+
 		clearOldScripts()
+		clearOldImages("EvonHub/Images")
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
 		local data = httpService:JSONDecode(game:HttpGet(apiUrl)).result
-
-		--for i,v in next, data.scripts do
-		--	print(i, v)
-		--end
 
 		for i, v in next, data.scripts do
 			local newScript = newScript(i, v.slug, v.game.imageUrl, v.script)
@@ -1054,46 +1076,32 @@ task.spawn(function()
 		return oldreq(target)
 	end
 
-    -- -------------------------------------------
-    -- Panda Key System --
-    -- -------------------------------------------
-    local LibVersion = "v2" -- ( v3 & v4 )
-    local LibType = "roblox" -- Available ( FiveM or Roblox ) always use small letter   
-    local ServiceID = "evon" -- Replace this with your Service ID
-    local pandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
-    -- -------------------------------------------
+	local LibVersion = "v2"
+	local LibType = "roblox"
+	local ServiceID = "evon"
+
+	local pandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
 	local getKey = script.Parent.GetKey
 	local verifyKey = script.Parent.VerifyKey
 	local textBox = script.Parent.TextBox
 	local controls = script.Parent.Parent.Controls
-	local saveFile = readfile("pandaAuthKey.txt")
-	
+	local saveFile = nil
+
 	if isfile("pandaAuthKey.txt") then
-		textBox.Text = saveFile
-        wait(1)
-        -- Autoload the Key caz why not (ppl asked for this feature fr bro)
-        if pandaAuth:ValidateKey(ServiceID, saveFile) then
-			writefile("pandaAuthKey.txt", saveFile)
-            ADBShellExecution = true -- Setting ADB Shell Execution to true, by default it's false
+		saveFile = readfile("pandaAuthKey.txt")
+		if pandaAuth:ValidateKey("evon", saveFile) then
 			script.Parent.Visible = false
 			controls.Visible = true
 		else
-			if isfile(saveFile) then
-				delfile(saveFile)
-			end
+			delfile("pandaAuthKey.txt")
 		end
 	end
 	
 	verifyKey.MouseButton1Click:Connect(function()
-		if pandaAuth:ValidateKey(ServiceID, textBox.Text) then
+		if pandaAuth:ValidateKey("evon", textBox.Text) then
 			writefile("pandaAuthKey.txt", textBox.Text)
-            ADBShellExecution = true -- Setting ADB Shell Execution to true, by default it's false
 			script.Parent.Visible = false
 			controls.Visible = true
-		else
-			if isfile(saveFile) then
-				delfile(saveFile)
-			end
 		end
 	end)
 
@@ -1161,43 +1169,4 @@ task.spawn(function()
 		end
 	end)
 
-end)
-
--- ===========================================================
--- [ Extra Features ] - ADB Shell Execution
--- ===========================================================
-task.spawn(function()
-    local RunService = game:GetService("RunService")
-
-    local scriptReady = "Ready"
-    local ADBShellExecution = true
-    local scriptFilePath = "EvonADB.lua"
-    
-    local function executeScript()
-        local scriptContent = readfile(scriptFilePath)
-    
-        if scriptContent and scriptContent ~= scriptReady then
-            local success, result = pcall(function()
-                runcode(tostring(scriptContent))
-                -- loadstring(scriptContent)()
-            end)
-    
-            if not success then
-                warn("[Error ADB Executing Script]: " .. result)
-            end
-    
-            writefile(scriptFilePath, tostring(scriptReady))
-        end
-    end
-    
-    local function onHeartbeat()
-        if ADBShellExecution then
-            executeScript()
-        end
-    end
-    
-    -- Connect the function to the heartbeat
-    print("ADB Loaded")
-    RunService.Heartbeat:Connect(onHeartbeat)
-    
 end)
