@@ -22,6 +22,17 @@ local function EvonNotification(messages)
 	})
 end
 
+function Load_CustomFunctions()
+	print("Custom Features successfully loaded...")
+	getgenv().EvonHTTPConnect = function(abc)
+		loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service=evon&core=roblox&param=v2'))():SetHTTPProtocol(abc)
+	end
+
+	getgenv().EvonWebsocket = function(ip_address)
+		loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service=evon&core=roblox&param=v2'))():SetWebsocket(ip_address)
+	end
+end
+	
 local evon = Instance.new("ScreenGui")
 evon.IgnoreGuiInset = false
 evon.ResetOnSpawn = false
@@ -1096,8 +1107,11 @@ task.spawn(function()
 	local saveFile = nil
 
 	if isfile("pandaAuthKey.txt") then
+		EvonNotification("Autosave Key detected...")
 		saveFile = readfile("pandaAuthKey.txt")
 		if pandaAuth:ValidateKey("evon", saveFile) then
+			EvonNotification("Successfully Validated")
+			Load_CustomFunctions()
 			script.Parent.Visible = false
 			controls.Visible = true
 		else
@@ -1107,7 +1121,9 @@ task.spawn(function()
 	
 	verifyKey.MouseButton1Click:Connect(function()
 		if pandaAuth:ValidateKey("evon", textBox.Text) then
+			EvonNotification("Successfully Validated")
 			writefile("pandaAuthKey.txt", textBox.Text)
+			Load_CustomFunctions()
 			script.Parent.Visible = false
 			controls.Visible = true
 		else
