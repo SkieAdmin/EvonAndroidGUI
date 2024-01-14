@@ -668,9 +668,6 @@ task.spawn(function()
 
 	local function clearOldImages(imgPath)
 		-- Fixed ScriptBlox (No Path) 
-		if not isfolder(imgPath) then
-			makefolder(imgPath);
-		end
 
 		local files = listfiles(imgPath)
 
@@ -783,6 +780,12 @@ task.spawn(function()
 		end
 
 		clearOldScripts()
+		if not isfolder("EvonHub") then
+			makefolder("EvonHub");
+		end
+		if not isfolder("EvonHub//Images") then
+			makefolder("EvonHub//Images");
+		end
 		clearOldImages("EvonHub/Images")
 
 		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
