@@ -667,6 +667,11 @@ task.spawn(function()
 	end
 
 	local function clearOldImages(imgPath)
+		-- Fixed ScriptBlox (No Path) 
+		if not isfolder(imgPath) then
+			makefolder(imgPath);
+		end
+
 		local files = listfiles(imgPath)
 
 		if #files > 0 then
