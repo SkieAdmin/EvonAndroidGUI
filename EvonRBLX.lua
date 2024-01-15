@@ -1,17 +1,3 @@
---[[
-
-	███████╗██╗   ██╗ ██████╗ ███╗   ██╗
-	██╔════╝██║   ██║██╔═══██╗████╗  ██║
-	█████╗  ██║   ██║██║   ██║██╔██╗ ██║
-	██╔══╝  ╚██╗ ██╔╝██║   ██║██║╚██╗██║
-	███████╗ ╚████╔╝ ╚██████╔╝██║ ╚████║
-	╚══════╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═══╝
-
-		  - Made by Mr. Lolegic -
-		  - Maintained by SkieHacker (As of January 1st, 2024)
-
-]]--
-
 --// Instances
 local function EvonNotification(messages)
 	game.StarterGui:SetCore("SendNotification", {
@@ -32,1176 +18,4011 @@ function Load_CustomFunctions()
 		loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service=evon&core=roblox&param=v2'))():SetWebsocket(ip_address)
 	end
 end
-	
-local evon = Instance.new("ScreenGui")
-evon.IgnoreGuiInset = false
-evon.ResetOnSpawn = false
-evon.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-evon.Name = "Evon"
-evon.Parent = game:GetService("CoreGui")
-
-local background = Instance.new("Frame")
-background.AnchorPoint = Vector2.new(0.5, 0.5)
-background.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-background.BorderColor3 = Color3.new(0, 0, 0)
-background.BorderSizePixel = 0
-background.Position = UDim2.new(0.5, 0, 0.5, 0)
-background.Size = UDim2.new(0, 518, 0, 289)
-background.Visible = false
-background.ZIndex = 0
-background.Name = "Background"
-background.Parent = evon
-
-local uicorner = Instance.new("UICorner")
-uicorner.Parent = background
-
-local editor_btn = Instance.new("TextButton")
-editor_btn.Font = Enum.Font.SourceSans
-editor_btn.Text = "Editor"
-editor_btn.TextColor3 = Color3.new(1, 1, 1)
-editor_btn.TextSize = 14
-editor_btn.BackgroundColor3 = Color3.new(0.0941176, 0.0941176, 0.0941176)
-editor_btn.BorderColor3 = Color3.new(1, 1, 1)
-editor_btn.BorderSizePixel = 0
-editor_btn.Position = UDim2.new(0.306889355, 0, 0.0528301895, 0)
-editor_btn.Size = UDim2.new(0, 83, 0, 18)
-editor_btn.Visible = true
-editor_btn.Name = "EditorBTN"
-editor_btn.Parent = background
-
-local uicorner_2 = Instance.new("UICorner")
-uicorner_2.CornerRadius = UDim.new(0, 4)
-uicorner_2.Parent = editor_btn
-
-local uistroke = Instance.new("UIStroke")
-uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke.Thickness = 1.5
-uistroke.Enabled = true
-uistroke.Parent = editor_btn
-
-local clicked = Instance.new("LocalScript")
-clicked.Name = "Clicked"
-clicked.Parent = editor_btn
-
-local scripts_btn = Instance.new("TextButton")
-scripts_btn.Font = Enum.Font.SourceSans
-scripts_btn.Text = "Scripts"
-scripts_btn.TextColor3 = Color3.new(1, 1, 1)
-scripts_btn.TextSize = 14
-scripts_btn.BackgroundColor3 = Color3.new(0.0941176, 0.0941176, 0.0941176)
-scripts_btn.BackgroundTransparency = 1
-scripts_btn.BorderColor3 = Color3.new(0, 0, 0)
-scripts_btn.BorderSizePixel = 0
-scripts_btn.Position = UDim2.new(0.519832969, 0, 0.0528301895, 0)
-scripts_btn.Size = UDim2.new(0, 83, 0, 18)
-scripts_btn.Visible = true
-scripts_btn.Name = "ScriptsBTN"
-scripts_btn.Parent = background
-
-local uicorner_3 = Instance.new("UICorner")
-uicorner_3.CornerRadius = UDim.new(0, 4)
-uicorner_3.Parent = scripts_btn
-
-local uistroke_2 = Instance.new("UIStroke")
-uistroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_2.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_2.Thickness = 1.5
-uistroke_2.Enabled = false
-uistroke_2.Parent = scripts_btn
-
-local clicked_2 = Instance.new("LocalScript")
-clicked_2.Name = "Clicked"
-clicked_2.Parent = scripts_btn
-
-local uistroke_3 = Instance.new("UIStroke")
-uistroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_3.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_3.Thickness = 1.5
-uistroke_3.Parent = background
-
-local scripts = Instance.new("Frame")
-scripts.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
-scripts.BackgroundTransparency = 0.5
-scripts.BorderColor3 = Color3.new(0, 0, 0)
-scripts.BorderSizePixel = 0
-scripts.Position = UDim2.new(0.0229645371, 0, 0.178530529, 0)
-scripts.Size = UDim2.new(0, 495, 0, 226)
-scripts.Visible = false
-scripts.Name = "Scripts"
-scripts.Parent = background
-
-local uistroke_4 = Instance.new("UIStroke")
-uistroke_4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_4.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_4.Thickness = 1.5
-uistroke_4.Parent = scripts
-
-local scrolling_frame = Instance.new("ScrollingFrame")
-scrolling_frame.ScrollBarImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-scrolling_frame.VerticalScrollBarInset = Enum.ScrollBarInset.Always
-scrolling_frame.Active = true
-scrolling_frame.BackgroundColor3 = Color3.new(1, 1, 1)
-scrolling_frame.BackgroundTransparency = 1
-scrolling_frame.BorderColor3 = Color3.new(0, 0, 0)
-scrolling_frame.BorderSizePixel = 0
-scrolling_frame.Position = UDim2.new(-6.16516758e-08, 0, 0.150951892, 0)
-scrolling_frame.Size = UDim2.new(0, 495, 0, 188)
-scrolling_frame.CanvasSize = UDim2.new(0, 0, 0, 5)
-scrolling_frame.Visible = true
-scrolling_frame.Parent = scripts
-
-local uipadding = Instance.new("UIPadding")
-uipadding.PaddingLeft = UDim.new(0, 15)
-uipadding.PaddingTop = UDim.new(0, 12)
-uipadding.Parent = scrolling_frame
-
-local uigrid_layout = Instance.new("UIGridLayout")
-uigrid_layout.CellSize = UDim2.new(0, 135, 0, 150)
-uigrid_layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-uigrid_layout.SortOrder = Enum.SortOrder.LayoutOrder
-uigrid_layout.Parent = scrolling_frame
-
-local search_box = Instance.new("TextBox")
-search_box.Font = Enum.Font.Code
-search_box.PlaceholderColor3 = Color3.new(1, 1, 1)
-search_box.PlaceholderText = "Search"
-search_box.Text = ""
-search_box.TextColor3 = Color3.new(1, 1, 1)
-search_box.TextSize = 10
-search_box.TextWrapped = true
-search_box.TextTruncate = Enum.TextTruncate.AtEnd
-search_box.BackgroundColor3 = Color3.new(1, 1, 1)
-search_box.BackgroundTransparency = 1
-search_box.BorderColor3 = Color3.new(0, 0, 0)
-search_box.BorderSizePixel = 0
-search_box.Position = UDim2.new(0.381818205, 0, 0.0398230106, 0)
-search_box.Size = UDim2.new(0, 120, 0, 22)
-search_box.Visible = true
-search_box.Name = "SearchBox"
-search_box.Parent = scripts
-
-local uistroke_5 = Instance.new("UIStroke")
-uistroke_5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_5.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_5.Thickness = 1.5
-uistroke_5.Parent = search_box
-
-local uicorner_6 = Instance.new("UICorner")
-uicorner_6.CornerRadius = UDim.new(0, 4)
-uicorner_6.Parent = search_box
-
-local uicorner_7 = Instance.new("UICorner")
-uicorner_7.CornerRadius = UDim.new(0, 4)
-uicorner_7.Parent = scripts
-
-local searcher = Instance.new("LocalScript")
-searcher.Name = "Searcher"
-searcher.Parent = scripts
-
-local editor = Instance.new("Frame")
-editor.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
-editor.BackgroundTransparency = 0.5
-editor.BorderColor3 = Color3.new(0, 0, 0)
-editor.BorderSizePixel = 0
-editor.Position = UDim2.new(0.026457062, 0, 0.185613245, 0)
-editor.Size = UDim2.new(0, 492, 0, 225)
-editor.Visible = true
-editor.Name = "Editor"
-editor.Parent = background
-
-local container = Instance.new("ScrollingFrame")
-container.CanvasSize = UDim2.new(0, 0, 1, 0)
-container.ElasticBehavior = Enum.ElasticBehavior.Never
-container.ScrollBarImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-container.Active = true
-container.BackgroundColor3 = Color3.new(0.145098, 0.145098, 0.145098)
-container.BackgroundTransparency = 1
-container.BorderColor3 = Color3.new(0, 0, 0)
-container.BorderSizePixel = 0
-container.Position = UDim2.new(0, 0, -3.3908421e-08, 0)
-container.Size = UDim2.new(0, 447, 0, 225)
-container.Visible = true
-container.Name = "container"
-container.Parent = editor
-
-local uipadding_2 = Instance.new("UIPadding")
-uipadding_2.PaddingBottom = UDim.new(0, 5)
-uipadding_2.PaddingLeft = UDim.new(0, 5)
-uipadding_2.PaddingRight = UDim.new(0, 5)
-uipadding_2.PaddingTop = UDim.new(0, 5)
-uipadding_2.Parent = container
-
-local display_code = Instance.new("TextLabel")
-display_code.Font = Enum.Font.Code
-display_code.RichText = true
-display_code.Text = ""
-display_code.TextColor3 = Color3.new(1, 1, 1)
-display_code.TextSize = 10
-display_code.TextWrapped = true
-display_code.TextXAlignment = Enum.TextXAlignment.Left
-display_code.TextYAlignment = Enum.TextYAlignment.Top
-display_code.BackgroundColor3 = Color3.new(1, 1, 1)
-display_code.BackgroundTransparency = 1
-display_code.BorderColor3 = Color3.new(0, 0, 0)
-display_code.BorderSizePixel = 0
-display_code.Position = UDim2.new(0.038901601, 0, 0.0139534883, 0)
-display_code.Size = UDim2.new(0, 425, 0, 217)
-display_code.Visible = true
-display_code.Name = "DisplayCode"
-display_code.Parent = container
-
-local write_code = Instance.new("TextBox")
-write_code.Font = Enum.Font.Code
-write_code.MultiLine = true
-write_code.Text = ""
-write_code.TextColor3 = Color3.new(1, 1, 1)
-write_code.TextSize = 10
-write_code.TextTransparency = 1
-write_code.ClearTextOnFocus = false
-write_code.TextXAlignment = Enum.TextXAlignment.Left
-write_code.TextYAlignment = Enum.TextYAlignment.Top
-write_code.BackgroundColor3 = Color3.new(1, 1, 1)
-write_code.BackgroundTransparency = 1
-write_code.BorderColor3 = Color3.new(0, 0, 0)
-write_code.BorderSizePixel = 0
-write_code.Position = UDim2.new(0.038901601, 0, 0.0139534883, 0)
-write_code.Size = UDim2.new(0, 425, 0, 217)
-write_code.Visible = true
-write_code.Name = "WriteCode"
-write_code.Parent = container
-
-local line_numbers = Instance.new("TextBox")
-line_numbers.Font = Enum.Font.Code
-line_numbers.MultiLine = true
-line_numbers.RichText = true
-line_numbers.Text = "1"
-line_numbers.TextColor3 = Color3.new(1, 1, 1)
-line_numbers.TextSize = 10
-line_numbers.TextYAlignment = Enum.TextYAlignment.Top
-line_numbers.BackgroundColor3 = Color3.new(1, 1, 1)
-line_numbers.BackgroundTransparency = 1
-line_numbers.BorderColor3 = Color3.new(0, 0, 0)
-line_numbers.BorderSizePixel = 0
-line_numbers.Position = UDim2.new(-0.0120000001, 0, 0.0140000004, 0)
-line_numbers.Size = UDim2.new(0, 23, 0, 215)
-line_numbers.Visible = true
-line_numbers.Name = "LineNumbers"
-line_numbers.Parent = container
-
-local uistroke_6 = Instance.new("UIStroke")
-uistroke_6.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_6.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_6.Thickness = 1.5
-uistroke_6.Parent = editor
-
-local uicorner_8 = Instance.new("UICorner")
-uicorner_8.CornerRadius = UDim.new(0, 4)
-uicorner_8.Parent = editor
-
-local editor_2 = Instance.new("LocalScript")
-editor_2.Name = "Editor"
-editor_2.Parent = editor
-
-local uiaspect_ratio_constraint = Instance.new("UIAspectRatioConstraint")
-uiaspect_ratio_constraint.AspectRatio = 1.7923874855041504
-uiaspect_ratio_constraint.Parent = background
-
-local dragging = Instance.new("LocalScript")
-dragging.Name = "Dragging"
-dragging.Parent = background
-
-local controls = Instance.new("Frame")
-controls.AnchorPoint = Vector2.new(0.5, 0)
-controls.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-controls.BorderColor3 = Color3.new(0, 0, 0)
-controls.BorderSizePixel = 0
-controls.Position = UDim2.new(0.5, 0, 0, 0)
-controls.Size = UDim2.new(0, 148, 0, 41)
-controls.Visible = false
-controls.Name = "Controls"
-controls.Parent = evon
-
-local btn_container = Instance.new("Frame")
-btn_container.BackgroundColor3 = Color3.new(1, 1, 1)
-btn_container.BackgroundTransparency = 1
-btn_container.BorderColor3 = Color3.new(0, 0, 0)
-btn_container.BorderSizePixel = 0
-btn_container.Position = UDim2.new(0.300260097, 0, -0.0111974897, 0)
-btn_container.Size = UDim2.new(0, 92, 0, 20)
-btn_container.Visible = true
-btn_container.Name = "BtnContainer"
-btn_container.Parent = controls
-
-local clear = Instance.new("ImageButton")
-clear.Image = "rbxassetid://3926307971"
-clear.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-clear.ImageRectOffset = Vector2.new(84, 84)
-clear.ImageRectSize = Vector2.new(36, 36)
-clear.BackgroundTransparency = 1
-clear.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
-clear.LayoutOrder = 4
-clear.Position = UDim2.new(0.5, 0, 0.5, 0)
-clear.Size = UDim2.new(0, 20, 0, 20)
-clear.Visible = true
-clear.ZIndex = 2
-clear.Name = "Clear"
-clear.Parent = btn_container
-
-local execute_2 = Instance.new("ImageButton")
-execute_2.Image = "rbxassetid://3926307971"
-execute_2.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-execute_2.ImageRectOffset = Vector2.new(44, 284)
-execute_2.ImageRectSize = Vector2.new(36, 36)
-execute_2.BackgroundTransparency = 1
-execute_2.LayoutOrder = 1
-execute_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-execute_2.Size = UDim2.new(0, 20, 0, 20)
-execute_2.Visible = true
-execute_2.ZIndex = 2
-execute_2.Name = "Execute"
-execute_2.Parent = btn_container
-
-local execute_3 = Instance.new("LocalScript")
-execute_3.Name = "Execute"
-execute_3.Parent = execute_2
-
-local uipadding_3 = Instance.new("UIPadding")
-uipadding_3.PaddingRight = UDim.new(0, 3)
-uipadding_3.Parent = btn_container
-
-local uilist_layout = Instance.new("UIListLayout")
-uilist_layout.Padding = UDim.new(0, 10)
-uilist_layout.FillDirection = Enum.FillDirection.Horizontal
-uilist_layout.SortOrder = Enum.SortOrder.LayoutOrder
-uilist_layout.Parent = btn_container
-
-local window_open = Instance.new("ImageButton")
-window_open.Image = "rbxassetid://3926305904"
-window_open.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-window_open.ImageRectOffset = Vector2.new(44, 644)
-window_open.ImageRectSize = Vector2.new(36, 36)
-window_open.BackgroundTransparency = 1
-window_open.Position = UDim2.new(0.18571429, 0, -0.0357142873, 0)
-window_open.Size = UDim2.new(0, 20, 0, 20)
-window_open.Visible = true
-window_open.ZIndex = 2
-window_open.Name = "WindowOpen"
-window_open.Parent = btn_container
-
-local open = Instance.new("LocalScript")
-open.Name = "Open"
-open.Parent = window_open
-
-local separator = Instance.new("Frame")
-separator.BackgroundColor3 = Color3.new(0.517647, 0.00392157, 1)
-separator.BorderColor3 = Color3.new(0, 0, 0)
-separator.BorderSizePixel = 0
-separator.Position = UDim2.new(0.150000006, 0, 0.299032271, 0)
-separator.Rotation = 90
-separator.Size = UDim2.new(0, 29, 0, 2)
-separator.Visible = true
-separator.Name = "Separator"
-separator.Parent = controls
-
-local uicorner_9 = Instance.new("UICorner")
-uicorner_9.CornerRadius = UDim.new(1, 0)
-uicorner_9.Parent = separator
-
-local uicorner_10 = Instance.new("UICorner")
-uicorner_10.Parent = controls
-
-local uipadding_4 = Instance.new("UIPadding")
-uipadding_4.PaddingLeft = UDim.new(0, 5)
-uipadding_4.PaddingTop = UDim.new(0, 10)
-uipadding_4.Parent = controls
-
-local uistroke_7 = Instance.new("UIStroke")
-uistroke_7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_7.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_7.Parent = controls
-
-local evon_logo = Instance.new("ImageButton")
-evon_logo.Image = "rbxassetid://15509574978"
-evon_logo.BackgroundColor3 = Color3.new(1, 1, 1)
-evon_logo.BackgroundTransparency = 1
-evon_logo.BorderColor3 = Color3.new(0, 0, 0)
-evon_logo.BorderSizePixel = 0
-evon_logo.Position = UDim2.new(0.0177359004, 0, -0.0967741907, 0)
-evon_logo.Size = UDim2.new(0, 29, 0, 27)
-evon_logo.Visible = true
-evon_logo.Name = "EvonLogo"
-evon_logo.Parent = controls
-
-local uicorner_11 = Instance.new("UICorner")
-uicorner_11.CornerRadius = UDim.new(1, 0)
-uicorner_11.Parent = evon_logo
-
-local minimize = Instance.new("LocalScript")
-minimize.Name = "Minimize"
-minimize.Parent = evon_logo
-
-local dragging_2 = Instance.new("LocalScript")
-dragging_2.Name = "Dragging"
-dragging_2.Parent = controls
-
-local key_s = Instance.new("Frame")
-key_s.AnchorPoint = Vector2.new(0.5, 0.5)
-key_s.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-key_s.BorderColor3 = Color3.new(0, 0, 0)
-key_s.BorderSizePixel = 0
-key_s.Position = UDim2.new(0.5, 0, 0.5, 0)
-key_s.Size = UDim2.new(0, 332, 0, 200)
-key_s.Visible = true
-key_s.Name = "KeyS"
-key_s.Parent = evon
-
-local uicorner_12 = Instance.new("UICorner")
-uicorner_12.Parent = key_s
-
-local uistroke_8 = Instance.new("UIStroke")
-uistroke_8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_8.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_8.Thickness = 1.5
-uistroke_8.Parent = key_s
-
-local evon_logo_2 = Instance.new("ImageButton")
-evon_logo_2.Image = "rbxassetid://15517910778"
-evon_logo_2.BackgroundColor3 = Color3.new(1, 1, 1)
-evon_logo_2.BackgroundTransparency = 1
-evon_logo_2.BorderColor3 = Color3.new(0, 0, 0)
-evon_logo_2.BorderSizePixel = 0
-evon_logo_2.Position = UDim2.new(0.409302115, 0, 0.0782257095, 0)
-evon_logo_2.Size = UDim2.new(0, 60, 0, 60)
-evon_logo_2.Visible = true
-evon_logo_2.Name = "EvonLogo"
-evon_logo_2.Parent = key_s
-
-local verify_key = Instance.new("TextButton")
-verify_key.Font = Enum.Font.Unknown
-verify_key.Text = "Verify Key"
-verify_key.TextColor3 = Color3.new(1, 1, 1)
-verify_key.TextSize = 12
-verify_key.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
-verify_key.BorderColor3 = Color3.new(0, 0, 0)
-verify_key.BorderSizePixel = 0
-verify_key.Position = UDim2.new(0.0813253, 0, 0.764999986, 0)
-verify_key.Size = UDim2.new(0, 108, 0, 28)
-verify_key.Visible = true
-verify_key.Name = "VerifyKey"
-verify_key.Parent = key_s
-
-local uicorner_13 = Instance.new("UICorner")
-uicorner_13.CornerRadius = UDim.new(0, 4)
-uicorner_13.Parent = verify_key
-
-local get_key = Instance.new("TextButton")
-get_key.Font = Enum.Font.Unknown
-get_key.Text = "Get Key"
-get_key.TextColor3 = Color3.new(1, 1, 1)
-get_key.TextSize = 12
-get_key.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
-get_key.BackgroundTransparency = 1
-get_key.BorderColor3 = Color3.new(0, 0, 0)
-get_key.BorderSizePixel = 0
-get_key.Position = UDim2.new(0.587349415, 0, 0.764999986, 0)
-get_key.Size = UDim2.new(0, 108, 0, 28)
-get_key.Visible = true
-get_key.Name = "GetKey"
-get_key.Parent = key_s
-
-local uicorner_14 = Instance.new("UICorner")
-uicorner_14.CornerRadius = UDim.new(0, 4)
-uicorner_14.Parent = get_key
-
-local uistroke_9 = Instance.new("UIStroke")
-uistroke_9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_9.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_9.Thickness = 1.5
-uistroke_9.Parent = get_key
-
-local text_box = Instance.new("TextBox")
-text_box.Font = Enum.Font.Roboto
-text_box.PlaceholderText = "Input Key Here"
-text_box.Text = ""
-text_box.TextColor3 = Color3.new(1, 1, 1)
-text_box.TextSize = 12
-text_box.TextTruncate = Enum.TextTruncate.AtEnd
-text_box.TextWrapped = true
-text_box.BackgroundColor3 = Color3.new(1, 1, 1)
-text_box.BackgroundTransparency = 1
-text_box.BorderColor3 = Color3.new(0, 0, 0)
-text_box.BorderSizePixel = 0
-text_box.Position = UDim2.new(0.198795184, 0, 0.50999999, 0)
-text_box.Size = UDim2.new(0, 200, 0, 31)
-text_box.Visible = true
-text_box.Parent = key_s
-
-local uicorner_15 = Instance.new("UICorner")
-uicorner_15.CornerRadius = UDim.new(0, 4)
-uicorner_15.Parent = text_box
-
-local uistroke_10 = Instance.new("UIStroke")
-uistroke_10.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uistroke_10.Color = Color3.new(0.501961, 0.00392157, 1)
-uistroke_10.Thickness = 1.5
-uistroke_10.Parent = text_box
-
-local separator_2 = Instance.new("Frame")
-separator_2.BackgroundColor3 = Color3.new(0.501961, 0.00392157, 1)
-separator_2.BorderColor3 = Color3.new(0, 0, 0)
-separator_2.BorderSizePixel = 0
-separator_2.Position = UDim2.new(0.4246988, 0, 0.430000007, 0)
-separator_2.Size = UDim2.new(0, 50, 0, -2)
-separator_2.Visible = true
-separator_2.Name = "Separator"
-separator_2.Parent = key_s
-
-local uicorner_16 = Instance.new("UICorner")
-uicorner_16.Parent = separator_2
-
-local panda_auth = Instance.new("LocalScript")
-panda_auth.Name = "PandaAuth"
-panda_auth.Parent = key_s
-
-local uiaspect_ratio_constraint_2 = Instance.new("UIAspectRatioConstraint")
-uiaspect_ratio_constraint_2.AspectRatio = 1.659999966621399
-uiaspect_ratio_constraint_2.Parent = key_s
-
-local dragging_3 = Instance.new("LocalScript")
-dragging_3.Name = "Dragging"
-dragging_3.Parent = key_s
-
---//Modules
-
-local modules = {}
-
---// Scripts
-
--- Clicked
-task.spawn(function()
-	local script = clicked
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local background = script.Parent.Parent
-	local scriptsBtn = background.ScriptsBTN
-	local editorBtn = background.EditorBTN
-	local editor = background.Editor
-	local scripts = background.Scripts
-
-	editorBtn.MouseButton1Click:Connect(function()
-		if scriptsBtn.UIStroke.Enabled and not editorBtn.UIStroke.Enabled then
-			scriptsBtn.UIStroke.Enabled = false
-			scriptsBtn.BackgroundTransparency = 1
-
-			editorBtn.UIStroke.Enabled = true
-			editorBtn.BackgroundTransparency = 0
-
-			scripts.Visible = false
-			editor.Visible = true
-		end
-	end)
-end)
-
--- Clicked
-task.spawn(function()
-	local script = clicked_2
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local background = script.Parent.Parent
-	local scriptsBtn = background.ScriptsBTN
-	local editorBtn = background.EditorBTN
-	local editor = background.Editor
-	local scripts = background.Scripts
-
-	scriptsBtn.MouseButton1Click:Connect(function()
-		if not scriptsBtn.UIStroke.Enabled and editorBtn.UIStroke.Enabled then
-			scriptsBtn.UIStroke.Enabled = true
-			scriptsBtn.BackgroundTransparency = 0
-
-			editorBtn.UIStroke.Enabled = false
-			editorBtn.BackgroundTransparency = 1
-
-			scripts.Visible = true
-			editor.Visible = false
-		end
-	end)
-end)
-
--- Searcher
-task.spawn(function()
-	local script = searcher
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local httpService = game:GetService("HttpService")
-	local scrollFrame = script.Parent.ScrollingFrame
-	local oldScripts = {}
-	local searchBox = script.Parent.SearchBox
-
-	local function clearOldScripts()
-		for _, scriptInstance in ipairs(oldScripts) do
-			scriptInstance:Destroy()
-		end
-		oldScripts = {}
-	end
-
-	local function clearOldImages(imgPath)
-		-- Fixed ScriptBlox (No Path) 
-
-		local files = listfiles(imgPath)
-
-		if #files > 0 then
-			if isfolder(imgPath) then
-				delfolder(imgPath)
-				makefolder(imgPath)
+--[[ Settings ]]--
+
+local maxLines = 250;
+
+--[[ Variables ]]--
+
+local httpService = game:GetService("HttpService");
+local teleportService = game:GetService("TeleportService");
+local textService = game:GetService("TextService");
+local tweenService = game:GetService("TweenService");
+local userInputService = game:GetService("UserInputService");
+
+local localPlayer = game:GetService("Players").LocalPlayer;
+
+local hugeVector2 = Vector2.new(math.huge, math.huge);
+
+local rScriptsApiKey = "0";
+
+local env = getgenv();
+local isFirstTimeExecution = true;
+
+local _newcclosure = clonefunction(newcclosure);
+
+local _setfpscap = clonefunction(setfpscap);
+local _getfpsmax = clonefunction(getfpsmax or _newcclosure(function()
+	return 60;
+end));
+
+local _getconnections = clonefunction(getconnections);
+local _getcustomasset = clonefunction(getcustomasset or getsynasset);
+
+local _isfile = clonefunction(isfile);
+local _readfile = clonefunction(readfile);
+local _writefile = clonefunction(writefile);
+local _delfile = clonefunction(delfile);
+local _listfiles = clonefunction(listfiles);
+
+local _isfolder = clonefunction(isfolder);
+local _makefolder = clonefunction(makefolder);
+
+local _getclipboard = clonefunction(getclipboard or _newcclosure(function()
+	return "";
+end));
+local _setclipboard = clonefunction(setclipboard);
+
+local _request = clonefunction(request);
+local _base64decode = clonefunction(crypt.base64.decode);
+
+local urlEncode = clonefunction(httpService.UrlEncode);
+local jsonEncode = clonefunction(httpService.JSONEncode);
+local jsonDecode = clonefunction(httpService.JSONDecode);
+
+local _gethui = clonefunction(gethui or _newcclosure(function()
+	return game:GetService("CoreGui");
+end));
+
+local validSearchFunctions = { 
+	ScriptBlox = "rbxassetid://13107640311",
+	RScripts = "rbxassetid://13107640500"
+};
+
+local serverHopModes = { "full", "empty", "bestPing", "random" };
+
+local resizeFunctions, languageItems, languageDatabase = {}, {}, {
+	English = {
+		flag = "rbxassetid://13084648602",
+		indicator = "English",
+		order = 1,
+		phrases = {
+			FreeLogin = "Free Login",
+			AdlessLogin = "Adless Login",
+			EnterKey = "Enter Key",
+			CopyKeyLink = "Copy Key Link",
+			["Key..."] = "Key...",
+			SubmitCredentials = "Submit Credentials",
+			["User..."] = "Username...",
+			["Password..."] = "Password...",
+			Editor = "Editor",
+			Execute = "Execute",
+			Clear = "Clear",
+			Clipboard = "Clipboard",
+			CopyScript = "Copy Script",
+			LoadScript = "Load Script",
+			["Search..."] = "Search...",
+			Search = "Search",
+			ClearConsole = "Clear Console",
+			CopyConsole = "Copy Console",
+			UnlockFPS = "Unlock FPS",
+			VSync = "V-Sync",
+			FPS = "FPS",
+			AntiAFK = "Anti AFK",
+			Full = "Full",
+			Empty = "Empty",
+			BestPing = "Best Ping",
+			Random = "Random",
+			ServerHop = "Server Hop",
+			RejoinServer = "Rejoin Server"
+		}
+	},
+	Turkish = {
+		flag = "rbxassetid://13084681224",
+		indicator = "Türkçe",
+		order = 2,
+		phrases = {
+			FreeLogin = "Ücretsiz Giriş",
+			AdlessLogin = "Reklamsız Giriş",
+			EnterKey = "Anahtarı Gir",
+			CopyKeyLink = "Anahtar Linkini Kopyala",
+			["Key..."] = "Anahtar...",
+			SubmitCredentials = "Giriş Yap",
+			["User..."] = "İsim...",
+			["Password..."] = "Şifre...",
+			Editor = "Düzenleyici",
+			Execute = "Yürüt",
+			Clear = "Temizle",
+			Clipboard = "Pano",
+			CopyScript = "Panoya Kopyala",
+			LoadScript = "Panodan Yükle",
+			["Search..."] = "Arat...",
+			Search = "Arama",
+			ClearConsole = "Konsolu Temizle",
+			CopyConsole = "Konsolu Kopyala",
+			UnlockFPS = "FPS Kilidini Aç",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Spanish = {
+		flag = "rbxassetid://13084681842",
+		indicator = "Español",
+		order = 4,
+		phrases = {
+			FreeLogin = "Iniciar sesion gratis",
+			AdlessLogin = "Iniciar sesion sin anuncios",
+			EnterKey = "Ingresar Key",
+			CopyKeyLink = "Copiar enlace de la Key",
+			["Key..."] = "Key...",
+			SubmitCredentials = "Enviar Credenciales",
+			["User..."] = "Usuario...",
+			["Password..."] = "Contraseña...",
+			Editor = "Editor",
+			Execute = "Executar",
+			Clear = "Limpiar",
+			Clipboard = "Portapapeles",
+			CopyScript = "Copiar Script",
+			LoadScript = "Cargar Script",
+			["Search..."] = "Buscar...",
+			Search = "Buscar",
+			ClearConsole = "Limpiar Consola",
+			CopyConsole = "Copiar Consola",
+			UnlockFPS = "Unlocar FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Latvian = {
+		flag = "rbxassetid://13084681629",
+		indicator = "Latviski",
+		order = 5,
+		phrases = {
+			FreeLogin = "Bezmaksas pieeja",
+			AdlessLogin = "Bez-reklāmu pieeja",
+			EnterKey = "Ievadi atslēgu",
+			CopyKeyLink = "Kopēt atslēgas saiti",
+			["Key..."] = "Atslēga...",
+			SubmitCredentials = "Apstiprināt akreditācijas datus",
+			["User..."] = "Lietotājs...",
+			["Password..."] = "Parole...",
+			Editor = "Redaktors",
+			Execute = "Izpildīt",
+			Clear = "Iztīrīt",
+			Clipboard = "Kopējumi",
+			CopyScript = "Kopēt skriptu",
+			LoadScript = "Ielādēt skriptu",
+			["Search..."] = "Meklēt...",
+			Search = "Meklēt",
+			ClearConsole = "Iztīrīt konsoli",
+			CopyConsole = "Kopēt konsoli",
+			UnlockFPS = "Atbloķējiet FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Dutch = {
+		flag = "rbxassetid://15984949262",
+		indicator = "Nederlands",
+		order = 6,
+		phrases = {
+			FreeLogin = "Gratis Login",
+			AdlessLogin = "ReclameVrij Login",
+			EnterKey = "Toegangs Sleutel",
+			CopyKeyLink = "Kopieer Sleutel Link",
+			["Key..."] = "Sleutel...",
+			SubmitCredentials = "Verzend Gegevens",
+			["User..."] = "Gebruiker...",
+			["Password..."] = "Wachtwoord...",
+			Editor = "Editor",
+			Execute = "Uitvoeren",
+			Clear = "Clear",
+			Clipboard = "Klembord",
+			CopyScript = "Kopieer Script ",
+			LoadScript = "Laad Script",
+			["Search..."] = "Zoeken...",
+			Search = "Zoeken",
+			ClearConsole = "Clear Console",
+			CopyConsole = "Kopieer Console",
+			UnlockFPS = "Ontgrendelen FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Filipino = {
+		flag = "rbxassetid://15984949030",
+		indicator = "Filipino",
+		order = 7,
+		phrases = {
+			FreeLogin = "Libreng Login",
+			AdlessLogin = "Ad-Free Login",
+			EnterKey = "Ilagay ang susi",
+			CopyKeyLink = "Kopyahin ang Susi Link",
+			["Key..."] = "Susi...",
+			SubmitCredentials = "Ipasa ang Kredensyals",
+			["User..."] = "User",
+			["Password..."] = "Password",
+			Editor = "Editor",
+			Execute = "Execute",
+			Clear = "Clear",
+			Clipboard = "Clipboard",
+			CopyScript = "Kopyahin ang script",
+			LoadScript = "I-Load ang script",
+			["Search..."] = "Maghanap...",
+			Search = "Maghanap",
+			ClearConsole = "ClearConsole",
+			CopyConsole = "CopyConsole",
+			UnlockFPS = "",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	German = {
+		flag = "rbxassetid://15984949736",
+		indicator = "Deustch",
+		order = 8,
+		phrases = {
+			FreeLogin = "Kostenloser Login",
+			AdlessLogin = "Adless Login",
+			EnterKey = "Key checken",
+			CopyKeyLink = "Link kopieren",
+			["Key..."] = "Schlüssel",
+			SubmitCredentials = "Einloggen",
+			["User..."] = "Nutzername",
+			["Password..."] = "Passwort",
+			Editor = "Editor",
+			Execute = "Ausführen",
+			Clear = "Löschen",
+			Clipboard = "",
+			CopyScript = "Skript Kopieren",
+			LoadScript = "Skript Laden",
+			["Search..."] = "Suchen...",
+			Search = "Suchen",
+			ClearConsole = "Konsole löschen",
+			CopyConsole = "Konsole kopieren",
+			UnlockFPS = "Freischalten FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Romanian = {
+		flag = "rbxassetid://15984948805",
+		indicator = "Română",
+		order = 9,
+		phrases = {
+			FreeLogin = "Logare Gratis",
+			AdlessLogin = "Logare fara reclame",
+			EnterKey = "Introduce cheie",
+			CopyKeyLink = "Copie adresa pentru cheie",
+			["Key..."] = "Cheie...",
+			SubmitCredentials = "Introduce-ti datele",
+			["User..."] = "Utilizator...",
+			["Password..."] = "Parola...",
+			Editor = "Editor",
+			Execute = "Executa",
+			Clear = "Goleste",
+			Clipboard = "Clipboard",
+			CopyScript = "Copiaza Script",
+			LoadScript = "Incarca Script",
+			["Search..."] = "Cauta...",
+			Search = "Cauta",
+			ClearConsole = "Goleste Consola",
+			CopyConsole = "Copiaza din Consola",
+			UnlockFPS = "Deblocați FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	Russian = {
+		flag = "rbxassetid://15984948564",
+		indicator = "Русский",
+		order = 10,
+		phrases = {
+			FreeLogin = "Бесплатный логин",
+			AdlessLogin = "Логин с рекламой ",
+			EnterKey = "Ввести ключ ",
+			CopyKeyLink = "Скопировать ссылку на ключ",
+			["Key..."] = "Ключ...",
+			SubmitCredentials = "Подтвердить реквизиты для входа",
+			["User..."] = "Юзер...",
+			["Password..."] = "Пароль...",
+			Editor = "Эдитор",
+			Execute = "Запустить",
+			Clear = "Очистить",
+			Clipboard = "Буфер Обмена",
+			CopyScript = "Скопировать скрипт",
+			LoadScript = "Загрузить скрипт",
+			["Search..."] = "Искать...",
+			Search = "Искать",
+			ClearConsole = "Очистить консоль",
+			CopyConsole = "Скопировать консоль",
+			UnlockFPS = "Разблокировать FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	},
+	French = {
+		flag = "rbxassetid://15984949489",
+		indicator = "Français",
+		order = 11,
+		phrases = {
+			FreeLogin = "Connexion gratuite",
+			AdlessLogin = "Connexion AdLess",
+			EnterKey = "Confirmer la clé",
+			CopyKeyLink = "Copier le lien de la clé",
+			["Key..."] = "Clé...",
+			SubmitCredentials = "Se connecter",
+			["User..."] = "Nom d'utilisateur...",
+			["Password..."] = "Mot de passe...",
+			Editor = "Éditeur",
+			Execute = "Exécuter",
+			Clear = "Effacer",
+			Clipboard = "Presse-papier",
+			CopyScript = "Copier le script",
+			LoadScript = "Charger le script",
+			["Search..."] = "Rechercher...",
+			Search = "Chercher",
+			ClearConsole = "Effacer la console",
+			CopyConsole = "Copier la console",
+			UnlockFPS = "Déverrouiller les FPS",
+			VSync = "Synchronisation verticale",
+			FPS = "FPS",
+			AntiAFK = "Anti-AFK",
+			Full = "Rempli",
+			Empty = "Vide",
+			BestPing = "Meilleur ping",
+			Random = "Au hasard",
+			ServerHop = "Changer de serveur",
+			RejoinServer = "Rejoindre le serveur"
+		}
+	},
+	Arabic = {
+		flag = "rbxassetid://15984948296",
+		indicator = "عربي",
+		order = 12,
+		phrases = {
+			FreeLogin = "المجاني الدخول تسجيل",
+			AdlessLogin = "إعلانات بلا دخول تسجيل",
+			EnterKey = "المفتاح أدخل",
+			CopyKeyLink = "المفتاح رابط نسخ",
+			["Key..."] = "المفتاح",
+			SubmitCredentials = "الاعتماد بيانات إرسال",
+			["User..."] = "المستخدم",
+			["Password..."] = "المرور كلمة",
+			Editor = "المحرر",
+			Execute = "تنفيذ",
+			Clear = "إخلاء",
+			Clipboard = "الحافظة",
+			CopyScript = "النصي البرنامج نسخ",
+			LoadScript = "النصي البرنامج حمل",
+			["Search..."] = "بحث",
+			Search = "بحث",
+			ClearConsole = "التحكم وحدة إخلاء",
+			CopyConsole = "التحكم وحدة نسخ",
+			UnlockFPS = "افتح FPS",
+			VSync = "",
+			FPS = "",
+			AntiAFK = "",
+			Full = "",
+			Empty = "",
+			BestPing = "",
+			Random = "",
+			ServerHop = "",
+			RejoinServer = ""
+		}
+	}
+};
+
+local sortedLanguageDatabase = {};
+for i, v in next, languageDatabase do
+	sortedLanguageDatabase[v.order] = {
+		key = i,
+		value = v
+	};
+end
+
+--[[ Settings ]]--
+
+local uiSettings = {
+	key = "",
+	userName = "",
+	editorInit = "print(\"Evon-Android >>>\");",
+	searchAPI = "ScriptBlox",
+	language = "English",
+	unlockFps = false,
+	vSync = false,
+	fps = 60,
+	antiAfk = false,
+	serverHopMode = "full"
+};
+
+if _isfolder("evonui") == false then
+	_makefolder("evonui");
+end
+if _isfile("evonui/settings.json") then
+	isFirstTimeExecution = false;
+	local succ, res = pcall(jsonDecode, httpService, _readfile("evonui/settings.json"));
+	if succ then
+		for i, v in next, uiSettings do
+			if res[i] ~= nil and type(res[i]) == type(v) then
+				uiSettings[i] = res[i];
 			end
 		end
 	end
-	
-	
-	local function newScript(index, name, imageUrl, code)
-		local fileName = string.gsub(name, " ", "") .. ".png"
-		local filePath = "EvonHub/Images" .. fileName
-		
-		if not isfile(filePath) then
-			local imageUrlFull = imageUrl
-			if not imageUrl:match("^https?://") then
-				imageUrlFull = "https://scriptblox.com/" .. imageUrl
+	if languageDatabase[uiSettings.language] == nil then
+		uiSettings.language = "English";
+	end
+	if validSearchFunctions[uiSettings.searchAPI] == nil then
+		uiSettings.searchAPI = "ScriptBlox";
+	end
+	if table.find(serverHopModes, uiSettings.serverHopMode) == nil then
+		uiSettings.serverHopMode = serverHopModes[1];
+	end
+end
+
+--[[ Functions ]]--
+
+local function create(className, properties, children)
+	local inst = Instance.new(className);
+	for i, v in next, properties do
+		if i == "LanguageItem" then
+			languageItems[inst] = v;
+			print(v.identifier);
+			inst[v.property] = languageDatabase[uiSettings.language].phrases[v.identifier];
+		elseif i ~= "Parent" then
+			inst[i] = v;
+		end
+	end
+	if children then
+		for i, v in next, children do
+			v.Parent = inst;
+		end
+	end
+	inst.Parent = properties.Parent;
+	return inst;
+end
+
+local function tween(obj, dur, props, ...)
+	local t = tweenService:Create(obj, TweenInfo.new(dur, ...), props);
+	t:Play();
+	return t;
+end
+
+local function addTransparencyHighlights(btn)
+	btn.MouseButton1Down:Connect(function()
+		tween(btn, 0.18, {
+			BackgroundTransparency = 0
+		});
+	end);
+	btn.MouseButton1Up:Connect(function()
+		tween(btn, 0.18, {
+			BackgroundTransparency = 1
+		});
+	end);
+end
+
+local function addColourHighlights(btn, col)
+	local original = btn.BackgroundColor3;
+	btn.MouseButton1Down:Connect(function()
+		tween(btn, 0.18, {
+			BackgroundColor3 = col
+		});
+	end);
+	btn.MouseButton1Up:Connect(function()
+		tween(btn, 0.18, {
+			BackgroundColor3 = original
+		});
+	end);
+end
+
+local function removeTrace(str)
+	local x = env[str];
+	-- env[str] = nil;
+	return x;
+end
+
+local function changeLanguage(lang)
+	local language = languageDatabase[lang] or languageDatabase.English;
+	uiSettings.language = language == languageDatabase.English and "English" or lang;
+	for i, v in next, languageItems do
+		local phrase = language.phrases[v.identifier];
+		i[v.property] = phrase ~= "" and phrase or languageDatabase.English.phrases[v.identifier];
+	end
+	task.defer(function() -- To give the TextBounds property a chance to update, it's not as immediate as you might think
+		for i = 1, #resizeFunctions do
+			resizeFunctions[i]();
+		end
+	end);
+end
+
+local function updateSettings(key, value)
+	uiSettings[key] = value;
+	if key == "language" then
+		changeLanguage(value);
+	end
+	pcall(_writefile, "evonui/settings.json", jsonEncode(httpService, uiSettings));
+end
+
+--[[ Create UI ]]--
+
+local gui = create("ScreenGui", { 
+	DisplayOrder = 11, 
+	IgnoreGuiInset = true, 
+	Name = "androidCheat", 
+	Parent = _gethui(), 
+	ResetOnSpawn = false
+});
+
+local function loadKeyUI(callback)
+	local libVersion = "v2"
+	local libType = "roblox"
+	local serviceID = "evon"
+
+	local pandaAuth = loadstring(game:HttpGet(string.format("https://pandadevelopment.net/servicelib?service=%s&core=%s&param=%s", serviceID, libType, libVersion)))()
+
+	local keyFrame = create("Frame", { 
+		AnchorPoint = Vector2.new(0.5, 0), 
+		BackgroundColor3 = Color3.fromHex("ffffff"), 
+		BorderSizePixel = 0, 
+		Name = "keyFrame", 
+		Parent = gui, 
+		Position = UDim2.new(0.5, 0, 0, 25), 
+		Size = UDim2.new(1, -110, 0, 94)
+	}, {
+		create("UIGradient", { 
+			Color = ColorSequence.new({ 
+				ColorSequenceKeypoint.new(0, Color3.fromHex("1c1c1c")), 
+				ColorSequenceKeypoint.new(1, Color3.fromHex("242424"))
+			}), 
+			Name = "gradient", 
+			Rotation = 78
+		}),
+		create("UICorner", { 
+			CornerRadius = UDim.new(0, 4), 
+			Name = "corner"
+		}),
+		create("TextButton", { 
+			AutoButtonColor = false, 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+			FontSize = Enum.FontSize.Size14, 
+			Name = "clickThroughBlocker", 
+			Size = UDim2.new(1, 0, 1, 0), 
+			Text = "", 
+			TextColor3 = Color3.fromHex("000000"), 
+			TextSize = 14, 
+			ZIndex = 0
+		}),
+		create("ImageLabel", { 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			Image = "rbxassetid://12874061329", 
+			ImageColor3 = Color3.fromHex("000000"), 
+			Name = "blur", 
+			Position = UDim2.new(0.5, 0, 0.5, 0), 
+			ScaleType = Enum.ScaleType.Slice, 
+			Size = UDim2.new(1, 10, 1, 10), 
+			SliceCenter = Rect.new(10, 10, 118, 118), 
+			ZIndex = 0
+		}),
+		create("UIStroke", { 
+			ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+			Color = Color3.fromHex("141414"), 
+			Name = "stroke", 
+			Thickness = 0.8
+		}),
+		create("UISizeConstraint", { 
+			MaxSize = Vector2.new(800, 94), 
+			Name = "constraint"
+		}),
+		create("Frame", { 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			Name = "content", 
+			Position = UDim2.new(0.5, 0, 0.5, 0), 
+			Size = UDim2.new(1, 0, 1, 0)
+		}, {
+			create("UIListLayout", { 
+				FillDirection = Enum.FillDirection.Horizontal, 
+				Name = "list", 
+				Padding = UDim.new(0, 8), 
+				SortOrder = Enum.SortOrder.LayoutOrder
+			}),
+			create("UIPadding", { 
+				Name = "padding", 
+				PaddingBottom = UDim.new(0, 8), 
+				PaddingLeft = UDim.new(0, 8), 
+				PaddingRight = UDim.new(0, 8), 
+				PaddingTop = UDim.new(0, 8)
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(0, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "buttons", 
+				Position = UDim2.new(0, 8, 0.5, 0), 
+				Size = UDim2.new(0, 124, 1, 0)
+			}, {
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 0), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "freemium", 
+					Position = UDim2.new(0.5, 0, 0, 0), 
+					Size = UDim2.new(1, 0, 0, 34), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					}),
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(1, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://13048298432", 
+						Name = "icon", 
+						Position = UDim2.new(1, -7, 0.5, 0), 
+						Size = UDim2.new(0, 20, 0, 20)
+					}),
+					create("TextLabel", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "FreeLogin"
+						},
+						AnchorPoint = Vector2.new(0, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "title", 
+						Position = UDim2.new(0, 8, 0.5, 0), 
+						Size = UDim2.new(1, -43, 1, 0), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 13, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					})
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 1), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "premium", 
+					Position = UDim2.new(0.5, 0, 1, 0), 
+					Size = UDim2.new(1, 0, 0, 34), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11,
+					Visible = false
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					}),
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(1, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://13048298207", 
+						Name = "icon", 
+						Position = UDim2.new(1, -7, 0.5, 0), 
+						Size = UDim2.new(0, 20, 0, 20)
+					}),
+					create("TextLabel", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "AdlessLogin"
+						},
+						AnchorPoint = Vector2.new(0, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "title", 
+						Position = UDim2.new(0, 8, 0.5, 0), 
+						Size = UDim2.new(1, -43, 1, 0), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 13, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					})
+				})
+			}),
+			create("Frame", { 
+				BackgroundColor3 = Color3.fromHex("141414"), 
+				BorderSizePixel = 0, 
+				Name = "separator", 
+				Position = UDim2.new(0, 140, 0, 0), 
+				Size = UDim2.new(0, 1, 1, 0)
+			}),
+			create("Frame", { 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "tabs", 
+				Size = UDim2.new(1, -140, 1, 0)
+			}, {
+				create("Frame", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					Name = "freemium", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(1, 0, 1, 0)
+				}, {
+					create("TextButton", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "EnterKey"
+						},
+						AnchorPoint = Vector2.new(1, 1), 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "enterKey", 
+						Position = UDim2.new(1, 0, 1, 0), 
+						Size = UDim2.new(0, 90, 0, 34), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 11
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						})
+					}),
+					create("TextButton", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "CopyKeyLink"
+						},
+						AnchorPoint = Vector2.new(0, 1), 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "getKeyLink", 
+						Position = UDim2.new(0, 0, 1, 0), 
+						Size = UDim2.new(0, 105, 0, 34), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 11
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						})
+					}),
+					create("TextBox", { 
+						LanguageItem = {
+							property = "PlaceholderText",
+							identifier = "Key..."
+						},
+						AnchorPoint = Vector2.new(0.5, 0), 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "keyInput", 
+						Position = UDim2.new(0.5, 0, 0, 0), 
+						Size = UDim2.new(1, 0, 0, 34), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 11, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIPadding", { 
+							Name = "padding", 
+							PaddingLeft = UDim.new(0, 8), 
+							PaddingRight = UDim.new(0, 8)
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						})
+					})
+				}),
+				create("Frame", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					Name = "premium", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(1, 0, 1, 0), 
+					Visible = false
+				}, {
+					create("TextButton", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "SubmitCredentials"
+						},
+						AnchorPoint = Vector2.new(1, 1), 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "enterDetails", 
+						Position = UDim2.new(1, 0, 1, 0), 
+						Size = UDim2.new(0, 130, 0, 34), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 11
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						})
+					}),
+					create("TextBox", { 
+						LanguageItem = {
+							property = "PlaceholderText",
+							identifier = "User..."
+						},
+						AnchorPoint = Vector2.new(0.5, 0), 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "userInput", 
+						Position = UDim2.new(0.5, 0, 0, 0), 
+						Size = UDim2.new(1, 0, 0, 34), 
+						Text = uiSettings.userName, 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 11, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIPadding", { 
+							Name = "padding", 
+							PaddingLeft = UDim.new(0, 8), 
+							PaddingRight = UDim.new(0, 8)
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						})
+					}),
+					create("TextBox", { 
+						LanguageItem = {
+							property = "PlaceholderText",
+							identifier = "Password..."
+						},
+						AnchorPoint = Vector2.new(0, 1), 
+						BackgroundColor3 = Color3.fromHex("181818"), 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size11, 
+						Name = "passInput", 
+						Position = UDim2.new(0, 0, 1, 0), 
+						Size = UDim2.new(1, -140, 0, 34), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 11, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					}, {
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("UIPadding", { 
+							Name = "padding", 
+							PaddingLeft = UDim.new(0, 8), 
+							PaddingRight = UDim.new(0, 8)
+						}),
+						create("UIStroke", { 
+							ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+							Color = Color3.fromHex("141414"), 
+							Name = "stroke", 
+							Thickness = 1.2
+						}),
+						create("TextLabel", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "dots", 
+							Size = UDim2.new(1, 0, 1, 0), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					})
+				})
+			})
+		}),
+		create("Frame", { 
+			AnchorPoint = Vector2.new(1, 0), 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			Name = "languages", 
+			Position = UDim2.new(1, 0, 1, 10), 
+			Size = UDim2.new(0, 200, 0, 156), 
+			Visible = isFirstTimeExecution
+		}, {
+			create("UIGradient", { 
+				Color = ColorSequence.new({ 
+					ColorSequenceKeypoint.new(0, Color3.fromHex("1c1c1c")), 
+					ColorSequenceKeypoint.new(1, Color3.fromHex("242424"))
+				}), 
+				Name = "gradient", 
+				Rotation = 78
+			}),
+			create("UICorner", { 
+				CornerRadius = UDim.new(0, 4), 
+				Name = "corner"
+			}),
+			create("ImageLabel", { 
+				AnchorPoint = Vector2.new(0.5, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Image = "rbxassetid://12874061329", 
+				ImageColor3 = Color3.fromHex("000000"), 
+				Name = "blur", 
+				Position = UDim2.new(0.5, 0, 0.5, 0), 
+				ScaleType = Enum.ScaleType.Slice, 
+				Size = UDim2.new(1, 10, 1, 10), 
+				SliceCenter = Rect.new(10, 10, 118, 118), 
+				ZIndex = 0
+			}),
+			create("ScrollingFrame", { 
+				Active = true, 
+				AnchorPoint = Vector2.new(0.5, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				BorderSizePixel = 0, 
+				BottomImage = "rbxassetid://12651249430", 
+				CanvasSize = UDim2.new(),
+				MidImage = "rbxassetid://12651249103", 
+				Name = "container", 
+				Position = UDim2.new(0.5, 0, 0.5, 0), 
+				ScrollBarImageColor3 = Color3.fromHex("141414"), 
+				ScrollBarThickness = 4, 
+				Size = UDim2.new(1, -16, 1, -16), 
+				TopImage = "rbxassetid://12651248921"
+			}, {
+				create("UIListLayout", { 
+					Name = "list", 
+					Padding = UDim.new(0, 6), 
+					SortOrder = Enum.SortOrder.LayoutOrder
+				}),
+				create("UIPadding", { 
+					Name = "padding", 
+					PaddingBottom = UDim.new(0, 1), 
+					PaddingLeft = UDim.new(0, 1), 
+					PaddingRight = UDim.new(0, 1), 
+					PaddingTop = UDim.new(0, 1)
+				})
+			})
+		}),
+		create("TextButton", { 
+			AutoButtonColor = false, 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BorderColor3 = Color3.fromHex("1b2a35"), 
+			FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+			FontSize = Enum.FontSize.Size14, 
+			Name = "toggleLanguages", 
+			Position = UDim2.new(1, 10, 0, 0), 
+			Size = UDim2.new(0, 34, 0, 34), 
+			Text = "", 
+			TextColor3 = Color3.fromHex("000000"), 
+			TextSize = 14
+		}, {
+			create("UICorner", { 
+				CornerRadius = UDim.new(0, 4), 
+				Name = "corner"
+			}),
+			create("UIGradient", { 
+				Color = ColorSequence.new({ 
+					ColorSequenceKeypoint.new(0, Color3.fromHex("1c1c1c")), 
+					ColorSequenceKeypoint.new(1, Color3.fromHex("242424"))
+				}), 
+				Name = "gradient", 
+				Rotation = 78
+			}),
+			create("ImageLabel", { 
+				AnchorPoint = Vector2.new(0.5, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Image = "rbxassetid://13084553682", 
+				Name = "icon", 
+				Position = UDim2.new(0.5, 0, 0.5, 0), 
+				Size = UDim2.new(1, -14, 1, -14)
+			}),
+			create("ImageLabel", { 
+				AnchorPoint = Vector2.new(0.5, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Image = "rbxassetid://12874061329", 
+				ImageColor3 = Color3.fromHex("000000"), 
+				Name = "blur", 
+				Position = UDim2.new(0.5, 0, 0.5, 0), 
+				ScaleType = Enum.ScaleType.Slice, 
+				Size = UDim2.new(1, 10, 1, 10), 
+				SliceCenter = Rect.new(10, 10, 118, 118), 
+				ZIndex = 0
+			})
+		})
+	});
+
+	--[[ Start ]]--
+
+	local content = keyFrame.content;
+	local tabs = content.tabs;
+
+	local function validLogin()
+		-- Custom Func
+		Load_CustomFunctions()
+		table.clear(resizeFunctions);
+		gui.keyFrame:Destroy();
+		callback();
+	end
+
+	--[[ Select Tabs ]]--
+
+	do
+		local selectedTab = tabs.freemium;
+		local buttons = content.buttons;
+
+		local function selectTab(name)
+			local btn, tab = buttons[name], tabs[name];
+			if selectedTab ~= tab then
+				selectedTab.Visible = false;
+				--[[tween(buttons[selectedTab.Name], 0.18, {
+					BackgroundTransparency = 1;
+				});]]
+				selectedTab = tab;
+				tab.Visible = true;
+				--[[tween(btn, 0.18, {
+					BackgroundTransparency = 0;
+				});]]
 			end
-	
-			local imgData = game:HttpGetAsync(imageUrlFull)
-			writefile(filePath, imgData)
 		end
 
-		local scriptTemp = Instance.new("Frame")
-		local thumbnail = Instance.new("ImageLabel")
-		local uicorner_4 = Instance.new("UICorner")
-		local uicorner_5 = Instance.new("UICorner")
-		local script_name = Instance.new("TextLabel")
-		local execute = Instance.new("ImageButton")
-		local script_2 = Instance.new("TextBox")
-		
-		scriptTemp.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
-		scriptTemp.BorderColor3 = Color3.new(0, 0, 0)
-		scriptTemp.BorderSizePixel = 0
-		scriptTemp.Size = UDim2.new(0, 136, 0, 150)
-		scriptTemp.Visible = true
-		scriptTemp.Name = "Script" .. index
-		scriptTemp.Parent = scrolling_frame
+		local buttonList = buttons:GetChildren();
+		for i = 1, #buttonList do
+			local v = buttonList[i];
+			local tab = tabs[v.Name];
+			v.MouseButton1Click:Connect(function()
+				selectTab(v.Name);
+			end);
+		end
 
-		thumbnail.Image = getcustomasset(filePath)
-		thumbnail.BackgroundColor3 = Color3.new(1, 1, 1)
-		thumbnail.BorderColor3 = Color3.new(0, 0, 0)
-		thumbnail.BorderSizePixel = 0
-		thumbnail.Position = UDim2.new(0, 0, 0.00125895184, 0)
-		thumbnail.Size = UDim2.new(0, 136, 0, 81)
-		thumbnail.Visible = true
-		thumbnail.Name = "Thumbnail"
-		thumbnail.Parent = scriptTemp
-
-		uicorner_4.CornerRadius = UDim.new(0, 4)
-		uicorner_4.Parent = thumbnail
-
-		uicorner_5.CornerRadius = UDim.new(0, 4)
-		uicorner_5.Parent = scriptTemp
-
-		script_name.Font = Enum.Font.Code
-		script_name.Text = name
-		script_name.TextColor3 = Color3.new(1, 1, 1)
-		script_name.TextSize = 10
-		script_name.TextTruncate = Enum.TextTruncate.AtEnd
-		script_name.BackgroundColor3 = Color3.new(1, 1, 1)
-		script_name.BackgroundTransparency = 1
-		script_name.BorderColor3 = Color3.new(0, 0, 0)
-		script_name.BorderSizePixel = 0
-		script_name.Position = UDim2.new(0.237037033, 0, 0.593333304, 0)
-		script_name.Size = UDim2.new(0, 71, 0, 20)
-		script_name.Visible = true
-		script_name.Name = "ScriptName"
-		script_name.Parent = scriptTemp
-
-		execute.Image = "rbxassetid://3926307971"
-		execute.ImageColor3 = Color3.new(0.517647, 0.00392157, 1)
-		execute.ImageRectOffset = Vector2.new(44, 284)
-		execute.ImageRectSize = Vector2.new(36, 36)
-		execute.BackgroundTransparency = 1
-		execute.LayoutOrder = 1
-		execute.Position = UDim2.new(0.792853892, 0, 0.824085891, 0)
-		execute.Size = UDim2.new(0, 20, 0, 20)
-		execute.Visible = true
-		execute.ZIndex = 2
-		execute.Name = "Execute"
-		execute.Parent = scriptTemp
-
-		script_2.Font = Enum.Font.SourceSans
-		script_2.TextColor3 = Color3.new(0, 0, 0)
-		script_2.TextSize = 14
-		script_2.Text = code
-		script_2.BackgroundColor3 = Color3.new(1, 1, 1)
-		script_2.BackgroundTransparency = 1
-		script_2.BorderColor3 = Color3.new(0, 0, 0)
-		script_2.BorderSizePixel = 0
-		script_2.Size = UDim2.new(0, 10, 0, 50)
-		script_2.Visible = false
-		script_2.Name = "Script"
-		script_2.Parent = scriptTemp
-		
-		execute.MouseButton1Click:Connect(function()
-			runcode(script_2.Text)
-		end)
-		
-		return scriptTemp
+		resizeFunctions[#resizeFunctions + 1] = function()
+			local size = math.max(buttons.freemium.title.TextBounds.X, buttons.premium.title.TextBounds.X) + 47;
+			buttons.Size = UDim2.new(0, size, 1, 0);
+			tabs.Size = UDim2.new(1, -(size + 16), 1, 0);
+		end;
 	end
 
-	local function getScripts(query)
-		if not isfolder("EvonHub") then
-			makefolder("EvonHub/Images/")
-		end
+	--[[ Freemium ]]--
 
-		clearOldScripts()
-		if not isfolder("EvonHub") then
-			makefolder("EvonHub");
-		end
-		if not isfolder("EvonHub//Images") then
-			makefolder("EvonHub//Images");
-		end
-		clearOldImages("EvonHub/Images")
+	do
+		local freeFrame = tabs.freemium;
 
-		local apiUrl = "https://scriptblox.com/api/script/search?q=" .. httpService:UrlEncode(query) .. "&max=20&mode=free&page=1"
-		local data = httpService:JSONDecode(game:HttpGet(apiUrl)).result
+		local getKeyLink = freeFrame.getKeyLink;
+		local enterKey = freeFrame.enterKey;
 
-		for i, v in next, data.scripts do
-			local newScript = newScript(i, v.slug, v.game.imageUrl, v.script)
+		getKeyLink.MouseButton1Click:Connect(function()
+			_setclipboard(pandaAuth:GetLink(serviceID));
+		end);
 
-			table.insert(oldScripts, newScript)
-		end
+		enterKey.MouseButton1Click:Connect(function()
+			if pandaAuth:ValidateKey(serviceID, freeFrame.keyInput.Text) then
+				updateSettings("key", freeFrame.keyInput.Text);
+				validLogin();
+			end
+		end);
+
+		resizeFunctions[#resizeFunctions + 1] = function()
+			getKeyLink.Size = UDim2.new(0, getKeyLink.TextBounds.X + 30, 0, 34);
+			enterKey.Size = UDim2.new(0, enterKey.TextBounds.X + 30, 0, 34);
+		end;
 	end
 
-	searchBox.FocusLost:Connect(function()
-		local query = searchBox.Text
-		getScripts(query)
-	end)
-end)
+	--[[ Adless ]]--
 
--- Editor
-task.spawn(function()
-	local script = editor_2
+	--[[do
+		local paidFrame = tabs.premium;
 
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
+		local userInput = paidFrame.userInput;
+		local passInput = paidFrame.passInput;
+		local enterDetails = paidFrame.enterDetails;
 
-	local UIS = game:GetService("UserInputService")
-	local editor = script.Parent
-	local container = editor.container
-	local lineNumbers = container.LineNumbers
-	local writeCode = container.WriteCode
-	local displayCode = container.DisplayCode
-	local clearBtn = script.Parent.Parent.Parent.Controls.BtnContainer.Clear
+		passInput:GetPropertyChangedSignal("Text"):Connect(function()
+			local inputLength = #passInput.Text
+			passInput.dots.Text = string.rep("•", inputLength);
+			passInput.TextTransparency = inputLength == 0 and 0 or 1;
+		end);
 
-	local function updateLineNumbers()
-		local lines = string.split(writeCode.Text, "\n")
-		lineNumbers.Text = ""
+		enterDetails.MouseButton1Click:Connect(function()
+			if CHECK_WHITELIST_FUNCTION_HERE(userInput.Text, passInput.Text) then
+				updateSettings("userName", userInput.Text);
+				validLogin();
+			end
+		end);
 
-		for i, _ in ipairs(lines) do
-			lineNumbers.Text = lineNumbers.Text .. i .. "\n"
-		end
-	end
+		resizeFunctions[#resizeFunctions + 1] = function()
+			enterDetails.Size = UDim2.new(0, enterDetails.TextBounds.X + 30, 0, 34);
+			passInput.Size = UDim2.new(1, -(enterDetails.TextBounds.X + 40), 0, 34);
+		end;
+	end]]
 
-	local function updateDisplayCode()
-		local code = writeCode.Text
-		displayCode.Text = ""
+	--[[ Languages ]]--
 
-		local keywords = {"function", "if", "else", "end", "local", "for", "while", "do", "repeat", "until", "then"}
-		local others = {"and", "or", "not", "true", "false"}
+	do
+		do
+			local isOpen = isFirstTimeExecution;
 
-		code = string.gsub(code, "([%a_][%w_]*)%s*%(", '<font color="rgb(90, 189, 247)">%1</font>(')
-
-		for _, keyword in ipairs(keywords) do
-			code = string.gsub(code, "%f[%a]" .. keyword .. "%f[%A]", '<font color="rgb(248, 109, 124)"><b>' .. keyword .. '</b></font>')
+			keyFrame.toggleLanguages.MouseButton1Click:Connect(function()
+				isOpen = not isOpen;
+				keyFrame.languages.Visible = isOpen;
+			end);
 		end
 
-		for _, other in ipairs(others) do
-			code = string.gsub(code, "%f[%a]" .. other .. "%f[%A]", '<font color="rgb(255, 198, 0)">' .. other .. '</font>')
-		end
+		local template = create("TextButton", { 
+			AutoButtonColor = false,
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			Text = "",
+			Name = "languageExample", 
+			Size = UDim2.new(1, 0, 0, 30)
+		}, {
+			create("Frame", { 
+				BackgroundColor3 = Color3.fromHex("181818"), 
+				Name = "flagContainer", 
+				Size = UDim2.new(0, 40, 0, 30)
+			}, {
+				create("UIStroke", { 
+					ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+					Color = Color3.fromHex("141414"), 
+					Name = "stroke", 
+					Thickness = 1.2
+				}),
+				create("UICorner", { 
+					CornerRadius = UDim.new(0, 4), 
+					Name = "corner"
+				}),
+				create("ImageLabel", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					Image = "", 
+					Name = "icon", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(1, -8, 1, -6)
+				})
+			}),
+			create("TextLabel", { 
+				AnchorPoint = Vector2.new(1, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+				FontSize = Enum.FontSize.Size11, 
+				Name = "title", 
+				Position = UDim2.new(1, 0, 0.5, 0), 
+				Size = UDim2.new(1, -50, 1, 0), 
+				Text = "", 
+				TextColor3 = Color3.fromHex("ebebeb"), 
+				TextSize = 11, 
+				TextXAlignment = Enum.TextXAlignment.Left
+			})
+		});
 
-		displayCode.Text = code
-	end
+		local languages = keyFrame.languages;
 
-	writeCode.InputBegan:Connect(function(input, gameProcessedEvent)
-		if input.KeyCode == Enum.KeyCode.Return and not gameProcessedEvent then
-			writeCode.Text = writeCode.Text .. "\n"
-			updateLineNumbers()
-			updateDisplayCode()
-		end
-	end)
+		local container = languages.container;
 
-	writeCode:GetPropertyChangedSignal("Text"):Connect(function()
-		updateLineNumbers()
-		updateDisplayCode()
-	end)
+		container.list:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+			container.CanvasSize = UDim2.new(0, 0, 0, container.list.AbsoluteContentSize.Y + 2);			
+		end);
 
-	clearBtn.MouseButton1Click:Connect(function()
-		writeCode.Text = ""
-		displayCode.Text = ""
-	end)
+		for i, v in next, sortedLanguageDatabase do
+			local clone = template:Clone();
+			clone.Name = v.key;
+			clone.title.Text = v.value.indicator;
+			clone.flagContainer.icon.Image = v.value.flag;
 
-	updateLineNumbers()
-	updateDisplayCode()
+			clone.MouseButton1Click:Connect(function()
+				updateSettings("language", v.key);
+			end);
 
-end)
-
--- Dragging
-task.spawn(function()
-	local script = dragging
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local draggableFrame = script.Parent
-
-	local initialTouchPosition
-	local initialFramePosition
-
-	local function onTouchStart(input)
-		initialTouchPosition = input.Position
-		initialFramePosition = draggableFrame.Position
-	end
-
-	local function onTouchMove(input)
-		if initialTouchPosition and initialFramePosition then
-			local delta = input.Position - initialTouchPosition
-
-			draggableFrame.Position = UDim2.new(
-				initialFramePosition.X.Scale,
-				initialFramePosition.X.Offset + delta.X,
-				initialFramePosition.Y.Scale,
-				initialFramePosition.Y.Offset + delta.Y
-			)
+			clone.Parent = container;
 		end
 	end
 
-	local function onTouchEnd()
-		initialTouchPosition = nil
-		initialFramePosition = nil
+	changeLanguage(uiSettings.language);
+
+	if pandaAuth:ValidateKey(serviceID, uiSettings.key) then
+		validLogin();
+	end
+end
+
+local function loadMainUI()
+	local toggleMain = create("TextButton", { 
+		AnchorPoint = Vector2.new(0.5, 0.5), 
+		AutoButtonColor = false, 
+		BackgroundColor3 = Color3.fromHex("ffffff"), 
+		FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+		FontSize = Enum.FontSize.Size14, 
+		Name = "toggleMain", 
+		Parent = gui, 
+		Position = UDim2.new(1, -25, 0.5, 0), 
+		Size = UDim2.new(0, 40, 0, 40), 
+		Text = "", 
+		TextColor3 = Color3.fromHex("000000"), 
+		TextSize = 14, 
+		ZIndex = 99
+	}, {
+		create("UICorner", { 
+			CornerRadius = UDim.new(0, 4), 
+			Name = "corner"
+		}),
+		create("UIGradient", { 
+			Color = ColorSequence.new({ 
+				ColorSequenceKeypoint.new(0, Color3.fromHex("1c1c1c")), 
+				ColorSequenceKeypoint.new(1, Color3.fromHex("242424"))
+			}), 
+			Name = "gradient", 
+			Rotation = 78
+		}),
+		create("ImageLabel", { 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			Image = "rbxassetid://15984664361", 
+			ImageColor3 = Color3.fromRGB(151, 0, 255),
+			Name = "icon", 
+			Position = UDim2.new(0.5, 0, 0.5, 0), 
+			Size = UDim2.new(1, -6, 1, -6), 
+			ZIndex = 99
+		})
+	});
+
+	local main = create("Frame", { 
+		AnchorPoint = Vector2.new(0.5, 0.5), 
+		BackgroundColor3 = Color3.fromHex("ffffff"), 
+		BorderSizePixel = 0, 
+		Name = "main", 
+		Parent = gui, 
+		Position = UDim2.new(0.5, 0, 0.5, 0), 
+		Size = UDim2.new(1, -110, 1, -80),
+		Visible = false
+	}, {
+		create("UIGradient", { 
+			Color = ColorSequence.new({ 
+				ColorSequenceKeypoint.new(0, Color3.fromHex("1c1c1c")), 
+				ColorSequenceKeypoint.new(1, Color3.fromHex("242424"))
+			}), 
+			Name = "gradient", 
+			Rotation = 78
+		}),
+		create("Frame", { 
+			BackgroundColor3 = Color3.fromHex("181818"), 
+			BorderSizePixel = 0, 
+			Name = "left", 
+			Size = UDim2.new(0, 38, 1, 0)
+		}, {
+			create("UICorner", { 
+				CornerRadius = UDim.new(0, 4), 
+				Name = "corner"
+			}),
+			create("ImageLabel", { 
+				AnchorPoint = Vector2.new(0.5, 0), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Image = "rbxassetid://15984664361", 
+				ImageColor3 = Color3.fromRGB(151, 0, 255),
+				Name = "icon", 
+				Position = UDim2.new(0.5, 0, 0, 8), 
+				Size = UDim2.new(0, 28, 0, 28)
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(0.5, 1), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "buttons", 
+				Position = UDim2.new(0.5, 0, 1, 0), 
+				Size = UDim2.new(1, -8, 1, -44)
+			}, {
+				create("UIListLayout", { 
+					Name = "list", 
+					Padding = UDim.new(0, 4), 
+					SortOrder = Enum.SortOrder.LayoutOrder
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("303030"), 
+					FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size14, 
+					Name = "editor", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(0, 30, 0, 30), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("000000"), 
+					TextSize = 14
+				}, {
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://12874034829", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -10, 1, -10)
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					})
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("303030"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size14, 
+					Name = "games", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(0, 30, 0, 30), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("000000"), 
+					TextSize = 14
+				}, {
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://12874034639", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -10, 1, -10)
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					})
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("303030"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size14, 
+					Name = "console", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(0, 30, 0, 30), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("000000"), 
+					TextSize = 14
+				}, {
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://12874035024", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -10, 1, -10)
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					})
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 0.5), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("303030"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size14, 
+					Name = "settings", 
+					Position = UDim2.new(0.5, 0, 0.5, 0), 
+					Size = UDim2.new(0, 30, 0, 30), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("000000"), 
+					TextSize = 14
+				}, {
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://12874034503", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -10, 1, -10)
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					})
+				})
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 0), 
+				BackgroundColor3 = Color3.fromHex("181818"), 
+				BorderSizePixel = 0, 
+				Name = "topRightCover", 
+				Position = UDim2.new(1, 0, 0, 0), 
+				Size = UDim2.new(0, 4, 0, 4)
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 1), 
+				BackgroundColor3 = Color3.fromHex("181818"), 
+				BorderSizePixel = 0, 
+				Name = "bottomRightCover", 
+				Position = UDim2.new(1, 0, 1, 0), 
+				Size = UDim2.new(0, 4, 0, 4)
+			})
+		}),
+		create("UICorner", { 
+			CornerRadius = UDim.new(0, 4), 
+			Name = "corner"
+		}),
+		create("TextButton", { 
+			AutoButtonColor = false, 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+			FontSize = Enum.FontSize.Size14, 
+			Name = "clickThroughBlocker", 
+			Size = UDim2.new(1, 0, 1, 0), 
+			Text = "", 
+			TextColor3 = Color3.fromHex("000000"), 
+			TextSize = 14, 
+			ZIndex = 0
+		}),
+		create("Folder", { 
+			Name = "tabs"
+		}, {
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "editor", 
+				Position = UDim2.new(1, 0, 0.5, 0), 
+				Size = UDim2.new(1, -38, 1, 0)
+			}, {
+				create("UIListLayout", {
+					Name = "list", 
+					FillDirection = Enum.FillDirection.Horizontal, 
+					Padding = UDim.new(0, 8), 
+					SortOrder = Enum.SortOrder.LayoutOrder
+				}),
+				create("UIPadding", {
+					Name = "padding",
+					PaddingBottom = UDim.new(0, 8), 
+					PaddingLeft = UDim.new(0, 8), 
+					PaddingRight = UDim.new(0, 8), 
+					PaddingTop = UDim.new(0, 8)
+				}),
+				create("Frame", { 
+					AnchorPoint = Vector2.new(0, 0.5), 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					Name = "main", 
+					Position = UDim2.new(0, 8, 0.5, 0), 
+					Size = UDim2.new(1, -118, 1, 0)
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIListLayout", { 
+						FillDirection = Enum.FillDirection.Horizontal, 
+						Name = "list", 
+						Padding = UDim.new(0, 4), 
+						SortOrder = Enum.SortOrder.LayoutOrder
+					}),
+					create("ScrollingFrame", { 
+						Active = true, 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						BottomImage = "rbxassetid://12651249430", 
+						CanvasSize = UDim2.new(0, 6, 1, 0), 
+						MidImage = "rbxassetid://12651249103", 
+						Name = "lineNumbers", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						ScrollBarImageColor3 = Color3.fromHex("484848"), 
+						ScrollBarThickness = 0, 
+						ScrollingDirection = Enum.ScrollingDirection.Y, 
+						ScrollingEnabled = false, 
+						Size = UDim2.new(0, 6, 1, 0), 
+						TopImage = "rbxassetid://12651248921"
+					}, {
+						create("TextLabel", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "label", 
+							Size = UDim2.new(1, 0, 1, 0), 
+							Text = "1", 
+							TextColor3 = Color3.fromHex("d2d2d2"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Right, 
+							TextYAlignment = Enum.TextYAlignment.Top
+						})
+					}),
+					create("UIPadding", { 
+						Name = "padding", 
+						PaddingBottom = UDim.new(0, 8), 
+						PaddingLeft = UDim.new(0, 8), 
+						PaddingRight = UDim.new(0, 8), 
+						PaddingTop = UDim.new(0, 8)
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("b2b2b2"), 
+						BorderSizePixel = 0, 
+						Name = "separator", 
+						Size = UDim2.new(0, 1, 1, 0)
+					}),
+					create("ScrollingFrame", { 
+						Active = true, 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						BottomImage = "rbxassetid://12651249430", 
+						CanvasSize = UDim2.new(1, -15, 1, 0), 
+						MidImage = "rbxassetid://12651249103", 
+						Name = "container", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						ScrollBarImageColor3 = Color3.fromHex("484848"), 
+						ScrollBarThickness = 4, 
+						Size = UDim2.new(1, -15, 1, 0), 
+						TopImage = "rbxassetid://12651248921"
+					}, {
+						create("TextBox", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							ClearTextOnFocus = false, 
+							FontFace = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							MultiLine = true, 
+							Name = "content", 
+							Size = UDim2.new(1, 0, 1, 0), 
+							Text = uiSettings.editorInit, 
+							TextColor3 = Color3.fromHex("b2b2b2"), 
+							TextSize = 11, 
+							TextTruncate = Enum.TextTruncate.AtEnd, 
+							TextWrap = true, 
+							TextWrapped = true, 
+							TextXAlignment = Enum.TextXAlignment.Left, 
+							TextYAlignment = Enum.TextYAlignment.Top
+						})
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				}),
+				create("Frame", { 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					BorderSizePixel = 0, 
+					Name = "right", 
+					Size = UDim2.new(0, 110, 1, 0)
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("Frame", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "buttons", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -8, 1, -8)
+					}, {
+						create("UIListLayout", { 
+							Name = "list", 
+							Padding = UDim.new(0, 4), 
+							SortOrder = Enum.SortOrder.LayoutOrder
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "Editor"
+							},
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size12, 
+							Name = "boxLabel", 
+							Size = UDim2.new(1, 0, 0, 16), 
+							TextColor3 = Color3.fromHex("bebebe"), 
+							TextSize = 12, 
+							TextXAlignment = Enum.TextXAlignment.Left, 
+							TextYAlignment = Enum.TextYAlignment.Bottom
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("303030"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "executeBox", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 22), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(1, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12778482262", 
+								Name = "icon", 
+								Position = UDim2.new(1, -6, 0.5, 0), 
+								Size = UDim2.new(0, 14, 0, 14)
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("TextLabel", { 
+								LanguageItem = {
+									property = "Text",
+									identifier = "Execute"
+								},
+								AnchorPoint = Vector2.new(0, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+								FontSize = Enum.FontSize.Size11, 
+								Name = "title", 
+								Position = UDim2.new(0, 6, 0.5, 0), 
+								Size = UDim2.new(1, -30, 1, 0), 
+								TextColor3 = Color3.fromHex("ebebeb"), 
+								TextSize = 11, 
+								TextXAlignment = Enum.TextXAlignment.Left
+							})
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("303030"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "clearBox", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 22), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(1, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12778483354", 
+								Name = "icon", 
+								Position = UDim2.new(1, -6, 0.5, 0), 
+								Size = UDim2.new(0, 14, 0, 14)
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("TextLabel", { 
+								LanguageItem = {
+									property = "Text",
+									identifier = "Clear"
+								},
+								AnchorPoint = Vector2.new(0, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+								FontSize = Enum.FontSize.Size11, 
+								Name = "title", 
+								Position = UDim2.new(0, 6, 0.5, 0), 
+								Size = UDim2.new(1, -30, 1, 0), 
+								TextColor3 = Color3.fromHex("ebebeb"), 
+								TextSize = 11, 
+								TextXAlignment = Enum.TextXAlignment.Left
+							})
+						}),
+						create("Frame", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							Name = "separator", 
+							Size = UDim2.new(1, 0, 0, 1)
+						}, {
+							create("Frame", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("363636"), 
+								BorderSizePixel = 0, 
+								Name = "bar", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, 0)
+							}, {
+								create("UIGradient", { 
+									Name = "gradient", 
+									Transparency = NumberSequence.new({ 
+										NumberSequenceKeypoint.new(0, 1), 
+										NumberSequenceKeypoint.new(0.1, 0.28), 
+										NumberSequenceKeypoint.new(0.28, 0), 
+										NumberSequenceKeypoint.new(0.72, 0), 
+										NumberSequenceKeypoint.new(0.9, 0.28), 
+										NumberSequenceKeypoint.new(1, 1)
+									})
+								})
+							})
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "Clipboard"
+							},
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size12, 
+							Name = "clipboardLabel", 
+							Size = UDim2.new(1, 0, 0, 16), 
+							TextColor3 = Color3.fromHex("bebebe"), 
+							TextSize = 12, 
+							TextXAlignment = Enum.TextXAlignment.Left, 
+							TextYAlignment = Enum.TextYAlignment.Bottom
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("303030"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "executeClip", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 22), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(1, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12778483177", 
+								Name = "icon", 
+								Position = UDim2.new(1, -6, 0.5, 0), 
+								Size = UDim2.new(0, 14, 0, 14)
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("TextLabel", { 
+								LanguageItem = {
+									property = "Text",
+									identifier = "Execute"
+								},
+								AnchorPoint = Vector2.new(0, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+								FontSize = Enum.FontSize.Size11, 
+								Name = "title", 
+								Position = UDim2.new(0, 6, 0.5, 0), 
+								Size = UDim2.new(1, -30, 1, 0), 
+								TextColor3 = Color3.fromHex("ebebeb"), 
+								TextSize = 11, 
+								TextXAlignment = Enum.TextXAlignment.Left
+							})
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("303030"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "copyClip", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 22), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(1, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12778483077", 
+								Name = "icon", 
+								Position = UDim2.new(1, -6, 0.5, 0), 
+								Size = UDim2.new(0, 14, 0, 14)
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("TextLabel", { 
+								LanguageItem = {
+									property = "Text",
+									identifier = "CopyScript"
+								},
+								AnchorPoint = Vector2.new(0, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+								FontSize = Enum.FontSize.Size11, 
+								Name = "title", 
+								Position = UDim2.new(0, 6, 0.5, 0), 
+								Size = UDim2.new(1, -30, 1, 0), 
+								TextColor3 = Color3.fromHex("ebebeb"), 
+								TextSize = 11, 
+								TextXAlignment = Enum.TextXAlignment.Left
+							})
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("303030"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "loadClip", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 22), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(1, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12778482928", 
+								Name = "icon", 
+								Position = UDim2.new(1, -6, 0.5, 0), 
+								Size = UDim2.new(0, 14, 0, 14)
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("TextLabel", { 
+								LanguageItem = {
+									property = "Text",
+									identifier = "LoadScript"
+								},
+								AnchorPoint = Vector2.new(0, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+								FontSize = Enum.FontSize.Size11, 
+								Name = "title", 
+								Position = UDim2.new(0, 6, 0.5, 0), 
+								Size = UDim2.new(1, -30, 1, 0), 
+								TextColor3 = Color3.fromHex("ebebeb"), 
+								TextSize = 11, 
+								TextXAlignment = Enum.TextXAlignment.Left
+							})
+						})
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				})
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "games", 
+				Position = UDim2.new(1, 0, 0.5, 0), 
+				Size = UDim2.new(1, -38, 1, 0), 
+				Visible = false
+			}, {
+				create("TextBox", { 
+					LanguageItem = {
+						property = "PlaceholderText",
+						identifier = "Search..."
+					},
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "searchInput", 
+					Position = UDim2.new(0, 8, 0, 8), 
+					Size = UDim2.new(1, -90, 0, 30), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11, 
+					TextXAlignment = Enum.TextXAlignment.Left
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIPadding", { 
+						Name = "padding", 
+						PaddingLeft = UDim.new(0, 8), 
+						PaddingRight = UDim.new(0, 8)
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				}),
+				create("ScrollingFrame", { 
+					Active = true, 
+					AnchorPoint = Vector2.new(0.5, 1), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					BorderSizePixel = 0, 
+					CanvasSize = UDim2.new(0, 0, 0, 0), 
+					Name = "container", 
+					Position = UDim2.new(0.5, 0, 1, -7), 
+					ScrollBarImageColor3 = Color3.fromHex("000000"), 
+					ScrollBarThickness = 0, 
+					Size = UDim2.new(1, -14, 1, -52)
+				}, {
+					create("UIGridLayout", { 
+						CellPadding = UDim2.new(0, 8, 0, 6), 
+						CellSize = UDim2.new(0, 0, 0, 0), 
+						Name = "grid", 
+						SortOrder = Enum.SortOrder.LayoutOrder
+					}),
+					create("UIPadding", { 
+						Name = "padding", 
+						PaddingBottom = UDim.new(0, 1), 
+						PaddingLeft = UDim.new(0, 1), 
+						PaddingRight = UDim.new(0, 1), 
+						PaddingTop = UDim.new(0, 1)
+					})
+				}),
+				create("TextButton", {
+					LanguageItem = {
+						property = "Text",
+						identifier = "Search"
+					}, 
+					AnchorPoint = Vector2.new(1, 0), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "search", 
+					Position = UDim2.new(1, -8, 0, 8), 
+					Size = UDim2.new(0, 66, 0, 30), 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				})
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "console", 
+				Position = UDim2.new(1, 0, 0.5, 0), 
+				Size = UDim2.new(1, -38, 1, 0), 
+				Visible = false
+			}, {
+				create("Frame", { 
+					AnchorPoint = Vector2.new(0.5, 0), 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					Name = "main", 
+					Position = UDim2.new(0.5, 0, 0, 8), 
+					Size = UDim2.new(1, -16, 1, -54)
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("ScrollingFrame", { 
+						Active = true, 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						BottomImage = "rbxassetid://12651249430", 
+						CanvasSize = UDim2.new(1, -16, 1, -16), 
+						MidImage = "rbxassetid://12651249103", 
+						Name = "container", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						ScrollBarImageColor3 = Color3.fromHex("484848"), 
+						ScrollBarThickness = 4, 
+						Size = UDim2.new(1, -16, 1, -16), 
+						TopImage = "rbxassetid://12651248921"
+					}, {
+						create("TextLabel", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "content", 
+							RichText = true, 
+							Size = UDim2.new(1, 0, 1, 0), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("b2b2b2"), 
+							TextSize = 11, 
+							TextTruncate = Enum.TextTruncate.AtEnd, 
+							TextWrap = true, 
+							TextWrapped = true, 
+							TextXAlignment = Enum.TextXAlignment.Left, 
+							TextYAlignment = Enum.TextYAlignment.Top
+						})
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				}),
+				create("Frame", { 
+					AnchorPoint = Vector2.new(0.5, 1), 
+					BackgroundColor3 = Color3.fromHex("181818"), 
+					Name = "bottom", 
+					Position = UDim2.new(0.5, 0, 1, -8), 
+					Size = UDim2.new(1, -16, 0, 30)
+				}, {
+					create("TextButton", { 
+						AnchorPoint = Vector2.new(0, 0.5), 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("303030"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "clearConsole", 
+						Position = UDim2.new(0, 4, 0.5, 0), 
+						Size = UDim2.new(0, 63, 0, 22), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 14
+					}, {
+						create("ImageLabel", { 
+							AnchorPoint = Vector2.new(1, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							Image = "rbxassetid://12778483354", 
+							Name = "icon", 
+							Position = UDim2.new(1, -6, 0.5, 0), 
+							Size = UDim2.new(0, 14, 0, 14)
+						}),
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "ClearConsole"
+							},
+							AnchorPoint = Vector2.new(0, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(0, 6, 0.5, 0), 
+							Size = UDim2.new(1, -30, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					}),
+					create("TextButton", { 
+						AnchorPoint = Vector2.new(1, 0.5), 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("303030"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "copyConsole", 
+						Position = UDim2.new(1, -4, 0.5, 0), 
+						Size = UDim2.new(0, 109, 0, 22), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 14
+					}, {
+						create("ImageLabel", { 
+							AnchorPoint = Vector2.new(1, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							Image = "rbxassetid://12778483077", 
+							Name = "icon", 
+							Position = UDim2.new(1, -6, 0.5, 0), 
+							Size = UDim2.new(0, 14, 0, 14)
+						}),
+						create("UICorner", { 
+							CornerRadius = UDim.new(0, 4), 
+							Name = "corner"
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "CopyConsole"
+							},
+							AnchorPoint = Vector2.new(0, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(0, 6, 0.5, 0), 
+							Size = UDim2.new(1, -30, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("141414"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					})
+				})
+			}),
+			create("Frame", { 
+				AnchorPoint = Vector2.new(1, 0.5), 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "settings", 
+				Position = UDim2.new(1, 0, 0.5, 0), 
+				Size = UDim2.new(1, -38, 1, 0), 
+				Visible = false
+			}, {
+				create("ScrollingFrame", { 
+					AnchorPoint = Vector2.new(0, 0.5), 
+					BackgroundTransparency = 1, 
+					BorderSizePixel = 0, 
+					CanvasSize = UDim2.new(), 
+					Name = "left", 
+					Position = UDim2.new(0, 8, 0.5, 0), 
+					ScrollBarThickness = 0, 
+					Size = UDim2.new(0.5, -12, 1, -16)
+				}, {
+					create("UIListLayout", { 
+						Name = "list", 
+						Padding = UDim.new(0, 8), 
+						SortOrder = Enum.SortOrder.LayoutOrder
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "languages", 
+						Size = UDim2.new(1, 0, 0, 28)
+					}, {
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							BorderColor3 = Color3.fromHex("1b2a35"), 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "indicator", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0, 28, 0, 28), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://13084553682", 
+								Name = "icon", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, -8)
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							})
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(1, -36, 1, 0), 
+							Text = "English", 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							})
+						}),
+						create("Frame", { 
+							AnchorPoint = Vector2.new(1, 0), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							Name = "drop", 
+							Position = UDim2.new(1, 0, 1, 8), 
+							Size = UDim2.new(1, -36, 0, 156), 
+							Visible = false, 
+							ZIndex = 2
+						}, {
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("ScrollingFrame", { 
+								Active = true, 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								BorderSizePixel = 0, 
+								BottomImage = "rbxassetid://12651249430", 
+								CanvasSize = UDim2.new(0, 0, 0, 0), 
+								MidImage = "rbxassetid://12651249103", 
+								Name = "container", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								ScrollBarImageColor3 = Color3.fromHex("141414"), 
+								ScrollBarThickness = 4, 
+								Size = UDim2.new(1, -16, 1, -16), 
+								TopImage = "rbxassetid://12651248921", 
+								ZIndex = 2
+							}, {
+								create("UIListLayout", { 
+									Name = "list", 
+									Padding = UDim.new(0, 6), 
+									SortOrder = Enum.SortOrder.LayoutOrder
+								}),
+								create("UIPadding", { 
+									Name = "padding", 
+									PaddingBottom = UDim.new(0, 1), 
+									PaddingLeft = UDim.new(0, 1), 
+									PaddingRight = UDim.new(0, 1), 
+									PaddingTop = UDim.new(0, 1)
+								})
+							})
+						})
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						Name = "separator", 
+						Size = UDim2.new(1, 0, 0, 11)
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BorderSizePixel = 0, 
+							Name = "bar", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 1)
+						}, {
+							create("UIGradient", { 
+								Color = ColorSequence.new({ 
+									ColorSequenceKeypoint.new(0, Color3.fromHex("3c3c3c")), 
+									ColorSequenceKeypoint.new(1, Color3.fromHex("3c3c3c"))
+								}), 
+								Transparency = NumberSequence.new({ 
+									NumberSequenceKeypoint.new(0, 1), 
+									NumberSequenceKeypoint.new(0.2, 0), 
+									NumberSequenceKeypoint.new(0.8, 0), 
+									NumberSequenceKeypoint.new(1, 1)
+								})
+							})
+						})
+					}),
+					create("TextButton", { 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "unlockFps", 
+						Size = UDim2.new(1, 0, 0, 28), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 14
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0, 0.5), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							Name = "indicator", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0, 28, 0, 28)
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://13107126808", 
+								ImageTransparency = uiSettings.unlockFps and 0 or 1, 
+								Name = "icon", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, -8)
+							})
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "UnlockFPS"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(1, -40, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					}),
+					create("TextButton", { 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "vSync", 
+						Size = UDim2.new(1, 0, 0, 28), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 14
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0, 0.5), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							Name = "indicator", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0, 28, 0, 28)
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://13107126808", 
+								ImageTransparency = uiSettings.vSync and 0 or 1, 
+								Name = "icon", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, -8)
+							})
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "VSync"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(1, -40, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "fpsValue", 
+						Size = UDim2.new(1, 0, 0, 38)
+					}, {
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "FPS"
+							},
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(0, 4, 0, 0), 
+							Size = UDim2.new(1, -8, 0, 24), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						}),
+						create("TextLabel", { 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "value", 
+							Position = UDim2.new(0, 4, 0, 0), 
+							Size = UDim2.new(1, -8, 0, 24), 
+							Text = "60", 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Right
+						}),
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0.5, 1), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							ClipsDescendants = true, 
+							Name = "container", 
+							Position = UDim2.new(0.5, 0, 1, 0), 
+							Size = UDim2.new(1, 0, 0, 12)
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(1, 0), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("Frame", { 
+								BackgroundColor3 = Color3.fromHex("303030"), 
+								Name = "indicator", 
+								Size = UDim2.new(59 / 998, 0, 1, 0)
+							}, {
+								create("UICorner", { 
+									CornerRadius = UDim.new(1, 0), 
+									Name = "corner"
+								}),
+								create("UIStroke", { 
+									ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+									Color = Color3.fromHex("141414"), 
+									Name = "stroke", 
+									Thickness = 1.2
+								})
+							})
+						})
+					})
+				}),
+				create("ScrollingFrame", { 
+					AnchorPoint = Vector2.new(1, 0.5), 
+					BackgroundTransparency = 1, 
+					BorderSizePixel = 0, 
+					CanvasSize = UDim2.new(), 
+					Name = "right", 
+					Position = UDim2.new(1, -8, 0.5, 0), 
+					ScrollBarThickness = 0, 
+					Size = UDim2.new(0.5, -12, 1, -16)
+				}, {
+					create("UIListLayout", { 
+						Name = "list", 
+						Padding = UDim.new(0, 8), 
+						SortOrder = Enum.SortOrder.LayoutOrder
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "scriptApi", 
+						Size = UDim2.new(1, 0, 0, 28)
+					}, {
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(0, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							BorderColor3 = Color3.fromHex("1b2a35"), 
+							FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size14, 
+							Name = "indicator", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0, 28, 0, 28), 
+							Text = "", 
+							TextColor3 = Color3.fromHex("000000"), 
+							TextSize = 14
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://12874034639", 
+								Name = "icon", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, -8)
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							})
+						}),
+						create("TextButton", { 
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(1, -36, 1, 0), 
+							Text = uiSettings.searchAPI, 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							})
+						}),
+						create("Frame", { 
+							AnchorPoint = Vector2.new(1, 0), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							Name = "drop", 
+							Position = UDim2.new(1, 0, 1, 8), 
+							Size = UDim2.new(1, -36, 0, 84), 
+							Visible = false, 
+							ZIndex = 2
+						}, {
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("ScrollingFrame", { 
+								Active = true, 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								BorderSizePixel = 0, 
+								BottomImage = "rbxassetid://12651249430", 
+								CanvasSize = UDim2.new(0, 0, 0, 0), 
+								MidImage = "rbxassetid://12651249103", 
+								Name = "container", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								ScrollBarImageColor3 = Color3.fromHex("141414"), 
+								ScrollBarThickness = 4, 
+								Size = UDim2.new(1, -16, 1, -16), 
+								TopImage = "rbxassetid://12651248921", 
+								ZIndex = 2
+							}, {
+								create("UIListLayout", { 
+									Name = "list", 
+									Padding = UDim.new(0, 6), 
+									SortOrder = Enum.SortOrder.LayoutOrder
+								}),
+								create("UIPadding", { 
+									Name = "padding", 
+									PaddingBottom = UDim.new(0, 1), 
+									PaddingLeft = UDim.new(0, 1), 
+									PaddingRight = UDim.new(0, 1), 
+									PaddingTop = UDim.new(0, 1)
+								})
+							})
+						})
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						Name = "separator", 
+						Size = UDim2.new(1, 0, 0, 13)
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BorderSizePixel = 0, 
+							Name = "bar", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 1)
+						}, {
+							create("UIGradient", { 
+								Color = ColorSequence.new({ 
+									ColorSequenceKeypoint.new(0, Color3.fromHex("3c3c3c")), 
+									ColorSequenceKeypoint.new(1, Color3.fromHex("3c3c3c"))
+								}), 
+								Transparency = NumberSequence.new({ 
+									NumberSequenceKeypoint.new(0, 1), 
+									NumberSequenceKeypoint.new(0.2, 0), 
+									NumberSequenceKeypoint.new(0.8, 0), 
+									NumberSequenceKeypoint.new(1, 1)
+								})
+							})
+						})
+					}),
+					create("TextButton", { 
+						AutoButtonColor = false, 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size14, 
+						Name = "antiAfk", 
+						Size = UDim2.new(1, 0, 0, 28), 
+						Text = "", 
+						TextColor3 = Color3.fromHex("000000"), 
+						TextSize = 14
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0, 0.5), 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							Name = "indicator", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0, 28, 0, 28)
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 1.2
+							}),
+							create("ImageLabel", { 
+								AnchorPoint = Vector2.new(0.5, 0.5), 
+								BackgroundColor3 = Color3.fromHex("ffffff"), 
+								BackgroundTransparency = 1, 
+								Image = "rbxassetid://13107126808", 
+								ImageTransparency = uiSettings.antiAfk and 0 or 1, 
+								Name = "icon", 
+								Position = UDim2.new(0.5, 0, 0.5, 0), 
+								Size = UDim2.new(1, -8, 1, -8)
+							})
+						}),
+						create("TextLabel", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "AntiAFK"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BackgroundTransparency = 1, 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "title", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(1, -40, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11, 
+							TextXAlignment = Enum.TextXAlignment.Left
+						})
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						BorderSizePixel = 0, 
+						Name = "separator", 
+						Size = UDim2.new(1, 0, 0, 11)
+					}, {
+						create("Frame", { 
+							AnchorPoint = Vector2.new(0.5, 0.5), 
+							BackgroundColor3 = Color3.fromHex("ffffff"), 
+							BorderSizePixel = 0, 
+							Name = "bar", 
+							Position = UDim2.new(0.5, 0, 0.5, 0), 
+							Size = UDim2.new(1, 0, 0, 1)
+						}, {
+							create("UIGradient", { 
+								Color = ColorSequence.new({ 
+									ColorSequenceKeypoint.new(0, Color3.fromHex("3c3c3c")), 
+									ColorSequenceKeypoint.new(1, Color3.fromHex("3c3c3c"))
+								}), 
+								Transparency = NumberSequence.new({ 
+									NumberSequenceKeypoint.new(0, 1), 
+									NumberSequenceKeypoint.new(0.2, 0), 
+									NumberSequenceKeypoint.new(0.8, 0), 
+									NumberSequenceKeypoint.new(1, 1)
+								})
+							})
+						})
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "serverHopMode", 
+						Size = UDim2.new(1, 0, 0, 28)
+					}, {
+						create("UIListLayout", { 
+							FillDirection = Enum.FillDirection.Horizontal, 
+							Name = "list", 
+							Padding = UDim.new(0, 8), 
+							SortOrder = Enum.SortOrder.LayoutOrder
+						}),
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "Full"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex(uiSettings.serverHopMode == "full" and "303030" or "181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "full", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(0, 35, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						}),
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "Empty"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex(uiSettings.serverHopMode == "empty" and "303030" or "181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "empty", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(0, 49, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						}),
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "BestPing"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex(uiSettings.serverHopMode == "bestPing" and "303030" or "181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "bestPing", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(0, 65, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						}),
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "Random"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex(uiSettings.serverHopMode == "random" and "303030" or "181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "random", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(0, 59, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						})
+					}),
+					create("UIPadding", { 
+						Name = "padding", 
+						PaddingBottom = UDim.new(0, 1), 
+						PaddingLeft = UDim.new(0, 1), 
+						PaddingRight = UDim.new(0, 1), 
+						PaddingTop = UDim.new(0, 1)
+					}),
+					create("Frame", { 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Name = "serverHop", 
+						Size = UDim2.new(1, 0, 0, 28)
+					}, {
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "RejoinServer"
+							},
+							AnchorPoint = Vector2.new(1, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "rejoin", 
+							Position = UDim2.new(1, 0, 0.5, 0), 
+							Size = UDim2.new(0.5, -4, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						}),
+						create("TextButton", { 
+							LanguageItem = {
+								property = "Text",
+								identifier = "ServerHop"
+							},
+							AnchorPoint = Vector2.new(0, 0.5), 
+							AutoButtonColor = false, 
+							BackgroundColor3 = Color3.fromHex("181818"), 
+							FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+							FontSize = Enum.FontSize.Size11, 
+							Name = "hop", 
+							Position = UDim2.new(0, 0, 0.5, 0), 
+							Size = UDim2.new(0.5, -4, 1, 0), 
+							TextColor3 = Color3.fromHex("ebebeb"), 
+							TextSize = 11
+						}, {
+							create("UICorner", { 
+								CornerRadius = UDim.new(0, 4), 
+								Name = "corner"
+							}),
+							create("UIStroke", { 
+								ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+								Color = Color3.fromHex("141414"), 
+								Name = "stroke", 
+								Thickness = 0.8
+							})
+						})
+					})
+				})
+			})
+		}),
+		create("UISizeConstraint", { 
+			MaxSize = Vector2.new(800, 500), 
+			Name = "constraint"
+		}),
+		create("ImageLabel", { 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			BackgroundColor3 = Color3.fromHex("ffffff"), 
+			BackgroundTransparency = 1, 
+			Image = "rbxassetid://12874061329", 
+			ImageColor3 = Color3.fromHex("000000"), 
+			Name = "blur", 
+			Position = UDim2.new(0.5, 0, 0.5, 0), 
+			ScaleType = Enum.ScaleType.Slice, 
+			Size = UDim2.new(1, 10, 1, 10), 
+			SliceCenter = Rect.new(10, 10, 118, 118), 
+			ZIndex = 0
+		}),
+		create("UIStroke", { 
+			ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+			Color = Color3.fromHex("141414"), 
+			Name = "stroke", 
+			Thickness = 0.8
+		})
+	});
+
+	--[[ Start ]]--
+
+	local runCode = removeTrace("runcode");
+
+	local tabs = main.tabs;
+	local tabButtons = main.left.buttons;
+
+	--[[ Toggle UI ]]--
+
+	do
+		local isOpen = false;
+
+		toggleMain.MouseButton1Click:Connect(function()
+			isOpen = not isOpen;
+			main.Visible = isOpen;
+		end);
 	end
 
-	draggableFrame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchStart(input)
-		end
-	end)
+	--[[ Toggle Drag ]]--
 
-	draggableFrame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchMove(input)
-		end
-	end)
+	do
+		local currentCamera = workspace.CurrentCamera;
 
-	draggableFrame.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchEnd()
-		end
-	end)
-
-end)
-
--- Execute
-task.spawn(function()
-	local script = execute_3
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
+		toggleMain.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				local inputConn = userInputService.InputChanged:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+						tween(toggleMain, 0.18, {
+							Position = UDim2.new(0, math.clamp(input.Position.X, 25, currentCamera.ViewportSize.X - 25), 0, math.clamp(input.Position.Y, 25, currentCamera.ViewportSize.Y - 25))
+						});
+					end
+				end);
+				local conn; conn = input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						inputConn:Disconnect();
+						conn:Disconnect();
+					end
+				end);
+			end
+		end);
 	end
 
-	local editor = script.Parent.Parent.Parent.Parent.Background.Editor
-	local writeCode = editor.container.WriteCode
+	--[[ Select Tabs ]]--
 
+	local selectedTab = tabs.editor;
 
-	script.Parent.MouseButton1Click:Connect(function()
-		runcode(writeCode.Text)
-	end)
-end)
-
--- Open
-task.spawn(function()
-	local script = open
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
+	local function selectTab(name)
+		local btn, tab = tabButtons[name], tabs[name];
+		if selectedTab ~= tab then
+			selectedTab.Visible = false;
+			tween(tabButtons[selectedTab.Name], 0.18, {
+				BackgroundTransparency = 1;
+			});
+			selectedTab = tab;
+			tab.Visible = true;
+			tween(btn, 0.18, {
+				BackgroundTransparency = 0;
+			});
 		end
-		return oldreq(target)
 	end
 
-	local editor = script.Parent.Parent.Parent.Parent.Background
-
-	script.Parent.MouseButton1Click:Connect(function()
-		if editor.Visible then
-			editor.Visible = false
-		else
-			editor.Visible = true
-		end
-	end)
-
-end)
-
--- Minimize
-task.spawn(function()
-	local script = minimize
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local controls = script.Parent.Parent
-	local logoBtn = controls.EvonLogo
-
-	local cSizeYScale = controls.Size.Y.Scale
-	local cSizeTOffset = controls.Size.Y.Offset
-
-	local miniSize = UDim2.new(0, 44, cSizeYScale, cSizeTOffset)
-	local expSize = UDim2.new(0, 148, cSizeYScale, cSizeTOffset)
-	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-	local function setVisible(isVisible)
-		for _, ctrl in next, controls:GetChildren() do
-			if ctrl:IsA("Frame") or ctrl:IsA("TextButton") then
-				ctrl.Visible = isVisible
+	do
+		local buttonList = tabButtons:GetChildren();
+		for i = 1, #buttonList do
+			local v = buttonList[i];
+			if v:IsA("TextButton") then
+				local tab = tabs[v.Name];
+				v.MouseButton1Click:Connect(function()
+					selectTab(v.Name);
+				end);
 			end
 		end
 	end
 
-	local function isClicked()
-		if controls.Size == expSize then
-			local tweenGoal = {Size = miniSize}
-			local tween = game:GetService("TweenService"):Create(controls, tweenInfo, tweenGoal)
+	--[[ Editor ]]--
 
-			tween:Play()
-			setVisible(false)
-		else
-			local tweenGoal = {Size = expSize}
-			local tween = game:GetService("TweenService"):Create(controls, tweenInfo, tweenGoal)
+	do
+		local editor = tabs.editor;
 
-			tween:Play()
-			task.wait(0.5)
-			setVisible(true)
+		local scroll = editor.main.container;
+		local content = scroll.content;
+
+		do
+			local lineNumbers = editor.main.lineNumbers;
+			local lineLabel = lineNumbers.label;
+
+			local function getTextBounds(input)
+				return textService:GetTextSize(input, content.TextSize, content.Font, hugeVector2);
+			end
+
+			content:GetPropertyChangedSignal("Text"):Connect(function()
+				local input = content.Text;
+				local lines = math.min(#string.split(input, "\n"), maxLines);
+				local digitLength = #tostring(lines) * 6;
+				local textBounds = getTextBounds(input);
+				local textHeight = math.min(textBounds.Y, maxLines * 11);
+				local str = "";
+				for i = 1, lines do
+					str ..= string.format("%d%s", i, i == lines and "" or "\n");
+				end
+				lineLabel.Text = str;
+				lineNumbers.Size = UDim2.new(0, digitLength, 1, 0);
+				lineNumbers.CanvasSize = UDim2.new(0, digitLength, 0, textHeight);
+				scroll.Size = UDim2.new(1, -(9 + digitLength), 1, 0);
+				scroll.CanvasSize = UDim2.new(0, textBounds.X + digitLength, 0, textHeight);
+			end);
+
+			scroll:GetPropertyChangedSignal("CanvasPosition"):Connect(function()
+				lineNumbers.CanvasPosition = Vector2.new(0, scroll.CanvasPosition.Y);
+			end);
+		end		
+
+		do
+			local right = editor.right.buttons;
+			local items = right:GetChildren();
+			for i = 1, #items do
+				local v = items[i];
+				if v:IsA("TextButton") then
+					addTransparencyHighlights(v);
+				end
+			end
+
+			right.executeBox.MouseButton1Click:Connect(function()
+				runCode(content.Text);
+			end);
+
+			right.clearBox.MouseButton1Click:Connect(function()
+				content.Text = "";
+			end);
+
+			right.executeClip.MouseButton1Click:Connect(function()
+				runCode(_getclipboard());
+			end);
+
+			right.copyClip.MouseButton1Click:Connect(function()
+				_setclipboard(content.Text);
+			end);
+
+			right.loadClip.MouseButton1Click:Connect(function()
+				local text = _getclipboard();
+				if #text > 16384 then
+					rconsolewarn("Clipboard Text is too large to be loaded to the editor. Execute directly using \"Execute Clipboard\".");
+				else
+					content.Text = text;
+				end
+			end);
+
+			resizeFunctions[#resizeFunctions + 1] = function()
+				local maxBound = 0;
+				for i = 1, #items do
+					local v = items[i];
+					if v:IsA("TextButton") then
+						local bound = v.title.TextBounds.X;
+						if bound > maxBound then
+							maxBound = bound;
+						end
+					end
+				end
+				editor.right.Size = UDim2.new(0, maxBound + 48, 1, 0);
+				editor.main.Size = UDim2.new(1, -(maxBound + 56), 1, 0);
+			end
 		end
 	end
 
-	logoBtn.MouseButton1Click:Connect(isClicked)
-end)
+	--[[ Games ]]--
 
--- Dragging
-task.spawn(function()
-	local script = dragging_2
+	do
+		local games = tabs.games;
 
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
+		local scroll = games.container;
+		local layout = scroll.grid;
+
+		layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+			scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 4);
+		end);
+
+		do
+			local search = games.search;
+			local searchInput = games.searchInput;
+
+			local template = create("Frame", { 
+				BackgroundColor3 = Color3.fromHex("181818"), 
+				Name = "template",
+				Size = UDim2.new(0, 100, 0, 100)
+			}, {
+				create("UICorner", { 
+					CornerRadius = UDim.new(0, 4), 
+					Name = "corner"
+				}),
+				create("UIStroke", { 
+					ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+					Color = Color3.fromHex("141414"), 
+					Name = "stroke", 
+					Thickness = 1.2
+				}),
+				create("ImageLabel", { 
+					AnchorPoint = Vector2.new(0.5, 0), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					Image = "", 
+					Name = "icon", 
+					Position = UDim2.new(0.5, 0, 0, 0), 
+					Size = UDim2.new(1, 0, 1, -30)
+				}, {
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 5), 
+						Name = "corner"
+					})
+				}),
+				create("TextLabel", { 
+					AnchorPoint = Vector2.new(0.5, 0), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size12, 
+					Name = "title", 
+					Position = UDim2.new(0.5, 0, 0, 0), 
+					Size = UDim2.new(1, -16, 0, 24), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 12, 
+					TextStrokeColor3 = Color3.fromHex("0c0c0c"), 
+					TextStrokeTransparency = 0.25, 
+					TextTruncate = Enum.TextTruncate.AtEnd, 
+					TextXAlignment = Enum.TextXAlignment.Right
+				}),
+				create("TextButton", { 
+					AnchorPoint = Vector2.new(0.5, 1), 
+					AutoButtonColor = false, 
+					BackgroundColor3 = Color3.fromHex("303030"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size14, 
+					Name = "execute", 
+					Position = UDim2.new(0.5, 0, 1, -4), 
+					Size = UDim2.new(1, -8, 0, 22), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("000000"), 
+					TextSize = 14
+				}, {
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(1, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "rbxassetid://12778482262", 
+						Name = "icon", 
+						Position = UDim2.new(1, -2, 0.5, 0), 
+						Size = UDim2.new(0, 16, 0, 16)
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("TextLabel", { 
+						LanguageItem = {
+							property = "Text",
+							identifier = "Execute"
+						},
+						AnchorPoint = Vector2.new(0, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+						FontSize = Enum.FontSize.Size12, 
+						Name = "title", 
+						Position = UDim2.new(0, 2, 0.5, 0), 
+						Size = UDim2.new(1, -30, 1, 0), 
+						TextColor3 = Color3.fromHex("ebebeb"), 
+						TextSize = 12, 
+						TextXAlignment = Enum.TextXAlignment.Left
+					})
+				})
+			});
+
+			local validExtensions = { "png", "jpg", "jpeg" };
+
+			local function sendRequest(query, method, headers, body)
+				local succ, res = pcall(_request, {
+					Url = query,
+					Method = method,
+					Headers = headers,
+					Body = body
+				});
+				if succ == false or res.Success == false then
+					return;
+				end
+				return res.Body;
+			end
+
+			local function setIcon(icon, path)
+				local fileName = urlEncode(httpService, path);
+				local ext = select(-1, unpack(string.split(fileName, "%2E")));
+				local res = sendRequest(path, "GET");
+				if res and icon.Parent.Parent == scroll then
+					local filePath = string.format("evonui/search/%s.%s", fileName, ext);
+					_writefile(filePath, res);
+					icon.Image = _getcustomasset(filePath);
+				end
+			end
+
+			local function addScript(title, icon, source)
+				local item = template:Clone();
+				item.title.Text = title;
+				item.Parent = scroll;
+
+				task.defer(setIcon, item.icon, icon);
+				addTransparencyHighlights(item.execute);
+
+				item.execute.MouseButton1Click:Connect(function()
+					runCode(source);
+				end);
+			end
+
+			local function calculateCellSize()
+				local absoluteSize = scroll.AbsoluteSize;
+				local sizeX = absoluteSize.X * 0.25 - 6;
+				local sizeY = 0;
+				for i = 5, 1, -1 do
+					local potentialValue = (absoluteSize.Y - (2 + 6 * (i - 1))) / i;
+					if sizeX and potentialValue > sizeX then
+						break;
+					end
+					sizeY = potentialValue;
+				end
+				layout.CellSize = UDim2.new(0.25, -6, 0, sizeY);
+			end
+
+			local isSearching = false;
+
+			local searchFunctions = {
+				ScriptBlox = function(query)
+					local res = sendRequest(string.format("https://scriptblox.com/api/script/search?q=%s&max=20&mode=free", query), "GET");
+					if res then
+						local scripts = jsonDecode(httpService, res).result.scripts;
+						for i = 1, #scripts do
+							local scriptResult = scripts[i];
+							if scriptResult.isPatched == false then
+								if string.sub(scriptResult.game.imageUrl, -4) == "webp" then
+									scriptResult.game.imageUrl = string.format("https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid=%d&fmt=png&wd=1920&ht=1080", scriptResult.isUniversal and 4483381587 or scriptResult.game.gameId);
+								elseif string.sub(scriptResult.game.imageUrl, 1, 1) == "/" then
+									scriptResult.game.imageUrl = "https://scriptblox.com" .. scriptResult.game.imageUrl;
+								end
+								addScript(scriptResult.title, scriptResult.game.imageUrl, scriptResult.script);
+							end
+						end
+					end
+				end,
+				RScripts = function(query)
+					if rScriptsApiKey == "0" then
+						warn("RScripts API Key Not Supplied");
+						return;
+					end
+				
+					local res = sendRequest(string.format("https://api.rscripts.net/search/basic/%s/views/desc/1/%s", query, rScriptsApiKey), "GET");
+					if res then
+						local scripts = jsonDecode(httpService, res).scripts;
+						if scripts then
+							for i = 1, #scripts do
+								local v = scripts[i];
+								if v.download then
+									addScript(v.title, v.image, string.format("loadstring(game:HttpGet(\"%s\", true))();", v.download));
+								end
+							end
+						end -- else they got no scripts lol
+					end
+				end
+			};
+
+			search.MouseButton1Click:Connect(function()
+				if isSearching == false then
+					isSearching = true;
+					local children = scroll:GetChildren();
+					for i = 1, #children do
+						local v = children[i];
+						if v:IsA("Frame") then
+							v:Destroy();
+						end
+					end
+					if _isfolder("evonui/search") == false then
+						_makefolder("evonui/search");
+					end
+					local files = _listfiles("evonui/search");
+					for i = 1, #files do
+						_delfile(files[i]);
+					end
+					calculateCellSize();
+					searchFunctions[uiSettings.searchAPI](urlEncode(httpService, searchInput.Text));
+					isSearching = false;
+				end
+			end);
+
+			resizeFunctions[#resizeFunctions + 1] = function()
+				search.Size = UDim2.new(0, search.TextBounds.X + 30, 0, 30);
+				searchInput.Size = UDim2.new(1, -(search.TextBounds.X + 54), 0, 30);
+			end
 		end
-		return oldreq(target)
 	end
 
-	local draggableFrame = script.Parent
+	--[[ Console ]]--
 
-	local initialTouchPosition
-	local initialFramePosition
+	do
+		local console = tabs.console;
 
-	local function onTouchStart(input)
-		initialTouchPosition = input.Position
-		initialFramePosition = draggableFrame.Position
-	end
+		local scroll = console.main.container;
+		local content = scroll.content;
 
-	local function onTouchMove(input)
-		if initialTouchPosition and initialFramePosition then
-			local delta = input.Position - initialTouchPosition
+		do
+			local function getTextBounds(input)
+				return textService:GetTextSize(input, content.TextSize, content.Font, hugeVector2);
+			end
 
-			draggableFrame.Position = UDim2.new(
-				initialFramePosition.X.Scale,
-				initialFramePosition.X.Offset + delta.X,
-				initialFramePosition.Y.Scale,
-				initialFramePosition.Y.Offset + delta.Y
-			)
+			content:GetPropertyChangedSignal("Text"):Connect(function()
+				local input = content.Text;
+				local textBounds = getTextBounds(input);
+				scroll.CanvasSize = UDim2.new(0, textBounds.X, 0, math.min(textBounds.Y, maxLines * 11));
+			end);
+		end
+
+		do
+			local bottom = console.bottom;
+			local items = bottom:GetChildren();
+			for i = 1, #items do
+				local v = items[i];
+				if v:IsA("TextButton") then
+					addTransparencyHighlights(v);
+				end
+			end
+
+			local clearConsole = bottom.clearConsole;
+			local copyConsole = bottom.copyConsole;
+
+			clearConsole.MouseButton1Click:Connect(function()
+				content.Text = "";
+			end);
+
+			copyConsole.MouseButton1Click:Connect(function()
+				_setclipboard(content.Text);
+			end);
+
+			resizeFunctions[#resizeFunctions + 1] = function()
+				clearConsole.Size = UDim2.new(0, clearConsole.title.TextBounds.X + 36, 0, 22);
+				copyConsole.Size = UDim2.new(0, copyConsole.title.TextBounds.X + 36, 0, 22);
+			end
+		end
+
+		do
+			local typeToInfo = {
+				MessageOutput = {
+					colour = "#45cc57",
+					prefix = "Output"
+				},
+				MessageInfo = {
+					colour = "#2f6cd6",
+					prefix = "Info"
+				},
+				MessageWarning = {
+					colour = "#d49d37",
+					prefix = "Warning"
+				},
+				MessageError = {
+					colour = "#d44437",
+					prefix = "Error"
+				}
+			};
+
+			local function appendConsole(msg, msgType)
+				local info = typeToInfo[msgType.Name];
+				if info == nil then
+					return;
+				end
+				content.Text ..= (content.Text == "" and "​ ​ " or "\n") .. string.format("<font color=\"%s\">[%d:%s]</font> %s", info.colour, os.time(), info.prefix, msg);
+			end
+
+			game:GetService("LogService").MessageOut:Connect(appendConsole);
+
+			do
+				local lprint, linfo, lwarn, lerror = removeTrace("logprint"), removeTrace("loginfo"), removeTrace("logwarn"), removeTrace("logerror");
+
+				env.rconsoleprint = _newcclosure(function(msg)
+					appendConsole(msg, Enum.MessageType.MessageOutput);
+					lprint(msg);
+				end);
+
+				env.rconsoleinfo = _newcclosure(function(msg)
+					appendConsole(msg, Enum.MessageType.MessageInfo);
+					linfo(msg);
+				end);
+
+				env.rconsolewarn = _newcclosure(function(msg)
+					appendConsole(msg, Enum.MessageType.MessageWarning);
+					lwarn(msg);
+				end);
+
+				env.rconsoleerror = _newcclosure(function(msg)
+					appendConsole(msg, Enum.MessageType.MessageError);
+					lerror(msg);
+				end);
+
+				env.rconsoleclear = _newcclosure(function()
+					content.Text = "";
+				end);
+
+				env.rconsoleshow = _newcclosure(function()
+					if selectedTab ~= console then
+						selectTab("console");
+					end
+				end);
+
+				env.rconsolehide = _newcclosure(function()
+					if selectedTab == console then
+						selectTab("editor");
+					end
+				end);
+
+				env.rconsoletoggle = _newcclosure(function()
+					selectTab(selectedTab == console and "editor" or "console");
+				end);
+
+				env.rconsolehidden = _newcclosure(function()
+					return selectedTab ~= console;
+				end);
+			end
 		end
 	end
 
-	local function onTouchEnd()
-		initialTouchPosition = nil
-		initialFramePosition = nil
+	--[[ Settings ]]--
+
+	do
+		local _settings = tabs.settings;
+
+		do
+			local template = create("TextButton", { 
+				AutoButtonColor = false,
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Text = "",
+				Name = "languageExample", 
+				Size = UDim2.new(1, 0, 0, 30), 
+				ZIndex = 2
+			}, {
+				create("Frame", { 
+					BackgroundColor3 = Color3.fromHex("141414"), 
+					Name = "flagContainer", 
+					Size = UDim2.new(0, 40, 0, 30), 
+					ZIndex = 2
+				}, {
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("101010"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -8, 1, -6), 
+						ZIndex = 2
+					})
+				}),
+				create("TextLabel", { 
+					AnchorPoint = Vector2.new(1, 0.5), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "title", 
+					Position = UDim2.new(1, 0, 0.5, 0), 
+					Size = UDim2.new(1, -50, 1, 0), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11, 
+					TextXAlignment = Enum.TextXAlignment.Left, 
+					ZIndex = 2
+				})
+			});
+
+			local languages = _settings.left.languages;
+			local title = languages.title;
+
+			local drop = languages.drop;
+			local container = drop.container;
+
+			container.list:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+				container.CanvasSize = UDim2.new(0, 0, 0, container.list.AbsoluteContentSize.Y + 2);			
+			end);
+
+			for i, v in next, sortedLanguageDatabase do
+				local clone = template:Clone();
+				clone.Name = v.key;
+				clone.title.Text = v.value.indicator;
+				clone.flagContainer.icon.Image = v.value.flag;
+
+				clone.MouseButton1Click:Connect(function()
+					title.Text = v.value.indicator;
+					updateSettings("language", v.key);
+				end);
+
+				clone.Parent = container;
+			end
+
+			do
+				local isOpen = false;
+
+				local function toggleDrop()
+					isOpen = not isOpen;
+					drop.Visible = isOpen;
+				end
+
+				title.MouseButton1Click:Connect(toggleDrop);
+				languages.indicator.MouseButton1Click:Connect(toggleDrop);
+			end
+		end
+
+		do
+			local template = create("TextButton", {
+				AutoButtonColor = false, 
+				BackgroundColor3 = Color3.fromHex("ffffff"), 
+				BackgroundTransparency = 1, 
+				Name = "apiExample", 
+				Size = UDim2.new(1, 0, 0, 30), 
+				Text = "", 
+				ZIndex = 2
+			}, {
+				create("Frame", { 
+					BackgroundColor3 = Color3.fromHex("141414"), 
+					Name = "iconContainer", 
+					Size = UDim2.new(0, 30, 0, 30), 
+					ZIndex = 2
+				}, {
+					create("UIStroke", { 
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border, 
+						Color = Color3.fromHex("101010"), 
+						Name = "stroke", 
+						Thickness = 1.2
+					}),
+					create("UICorner", { 
+						CornerRadius = UDim.new(0, 4), 
+						Name = "corner"
+					}),
+					create("ImageLabel", { 
+						AnchorPoint = Vector2.new(0.5, 0.5), 
+						BackgroundColor3 = Color3.fromHex("ffffff"), 
+						BackgroundTransparency = 1, 
+						Image = "", 
+						Name = "icon", 
+						Position = UDim2.new(0.5, 0, 0.5, 0), 
+						Size = UDim2.new(1, -6, 1, -6), 
+						ZIndex = 2
+					})
+				}),
+				create("TextLabel", { 
+					AnchorPoint = Vector2.new(1, 0.5), 
+					BackgroundColor3 = Color3.fromHex("ffffff"), 
+					BackgroundTransparency = 1, 
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal), 
+					FontSize = Enum.FontSize.Size11, 
+					Name = "title", 
+					Position = UDim2.new(1, 0, 0.5, 0), 
+					Size = UDim2.new(1, -40, 1, 0), 
+					Text = "", 
+					TextColor3 = Color3.fromHex("ebebeb"), 
+					TextSize = 11, 
+					TextXAlignment = Enum.TextXAlignment.Left, 
+					ZIndex = 2
+				})
+			});
+
+			local scriptApi = _settings.right.scriptApi;
+			local title = scriptApi.title;
+
+			local drop = scriptApi.drop;
+			local container = drop.container;
+
+			for i, v in next, validSearchFunctions do
+				local clone = template:Clone();
+				clone.Name = i;
+				clone.title.Text = i;
+				clone.iconContainer.icon.Image = v;
+
+				clone.MouseButton1Click:Connect(function()
+					title.Text = i;
+					updateSettings("searchAPI", i);
+				end);
+
+				clone.Parent = container;
+			end
+
+			do
+				local isOpen = false;
+
+				local function toggleDrop()
+					isOpen = not isOpen;
+					drop.Visible = isOpen;
+				end
+
+				title.MouseButton1Click:Connect(toggleDrop);
+				scriptApi.indicator.MouseButton1Click:Connect(toggleDrop);
+			end
+		end
+
+		local function updateToggle(toggle, key, value)
+			tween(toggle.indicator.icon, 0.18, {
+				ImageTransparency = value and 0 or 1;
+			});
+			updateSettings(key, value);
+		end
+
+		do
+			local unlockFps = _settings.left.unlockFps;
+
+			local function run(state)
+				_setfpscap(state and (uiSettings.vSync and _getfpsmax() or uiSettings.fps) or 60);
+			end
+
+			unlockFps.MouseButton1Click:Connect(function()
+				local state = not uiSettings.unlockFps;
+				updateToggle(unlockFps, "unlockFps", state);
+				run(state);
+			end);
+
+			if uiSettings.unlockFps then
+				run(true);
+			end
+		end
+
+		do
+			local vSync = _settings.left.vSync;
+
+			local function run(state)
+				if uiSettings.unlockFps then
+					_setfpscap(state and _getfpsmax() or uiSettings.fps);
+				end
+			end
+
+			vSync.MouseButton1Click:Connect(function()
+				local state = not uiSettings.vSync;
+				updateToggle(vSync, "vSync", state);
+				run(state);
+			end);
+
+			if uiSettings.vSync then
+				run(true);
+			end
+		end
+
+		do
+			local fpsValue = _settings.left.fpsValue;
+
+			local container = fpsValue.container;
+			local indicator = container.indicator;
+
+			local function run(value)
+				tween(indicator, 0.18, {
+					Size = UDim2.new((value - 1) / 998, 0, 1, 0)
+				});
+				fpsValue.value.Text = tostring(value);
+				if uiSettings.unlockFps then
+					_setfpscap(value);
+				end
+			end
+
+			container.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+					local inputConn = userInputService.InputChanged:Connect(function(input)
+						if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+							local value = math.clamp(math.round(1 + (998 * (input.Position.X - container.AbsolutePosition.X) / container.AbsoluteSize.X)), 1, 999);
+							uiSettings.fps = value;
+							run(value);
+						end
+					end);
+					local conn; conn = input.Changed:Connect(function()
+						if input.UserInputState == Enum.UserInputState.End then
+							inputConn:Disconnect();
+							conn:Disconnect();
+							updateSettings("fps", uiSettings.fps);
+						end
+					end);
+				end
+			end);
+
+			if uiSettings.fps ~= 60 then
+				run(uiSettings.fps);
+			end
+		end
+
+		do
+			local antiAfk = _settings.right.antiAfk;
+
+			local function run(state)
+				local conns = _getconnections(localPlayer.Idled);
+				for i = 1, #conns do
+					local v = conns[i];
+					if state then
+						v:Disable();
+					else
+						v:Enable();
+					end
+				end
+			end
+
+			antiAfk.MouseButton1Click:Connect(function()
+				local state = not uiSettings.antiAfk;
+				updateToggle(antiAfk, "antiAfk", state);
+				run(state);
+			end);
+
+			if uiSettings.antiAfk then
+				run(true);
+			end
+		end
+
+		do
+			local hopModeBtns = _settings.right.serverHopMode;
+			local selectedBtn = hopModeBtns[uiSettings.serverHopMode];
+
+			local function selectMode(btn)
+				if selectedBtn ~= btn then
+					tween(selectedBtn, 0.18, {
+						BackgroundColor3 = Color3.fromHex("181818");
+					});
+					selectedBtn = btn;
+					tween(btn, 0.18, {
+						BackgroundColor3 = Color3.fromHex("303030");
+					});
+					updateSettings("serverHopMode", btn.Name);
+				end
+			end
+
+			local buttonList = hopModeBtns:GetChildren();
+			for i = 1, #buttonList do
+				local v = buttonList[i];
+				if v:IsA("TextButton") then
+					v.MouseButton1Click:Connect(function()
+						selectMode(v);
+					end);
+				end
+			end
+			
+			task.defer(function()
+				local data, count, total = {}, 0, 2;
+				for i = 1, #buttonList do
+					local v = buttonList[i];
+					if v:IsA("TextButton") then
+						count, total, data[v] = count + 1, total + v.TextBounds.X, v.TextBounds.X;
+					end
+				end
+				local suffix = (hopModeBtns.AbsoluteSize.X - (total + 8 * (count - 1))) / count;
+				for i, v in next, data do
+					i.Size = UDim2.new(0, v + suffix, 0, 28);
+				end
+			end);
+		end
+
+		do
+			local function teleport(jobId)
+				teleportService:TeleportToPlaceInstance(game.PlaceId, jobId);
+			end
+
+			local function serverHop()
+				local mode, jobId = uiSettings.serverHopMode, nil;
+				if mode == "bestPing" or mode == "random" then
+					local servers = {};
+					local cursor, count = "", 0;
+					repeat
+						local res = jsonDecode(httpService, game:HttpGetAsync(string.format("https://games.roblox.com/v1/games/%d/servers/0?&excludeFullGames=true&cursor=%s", game.PlaceId, cursor), true));
+						for i = 1, #res.data do
+							local v = res.data[i];
+							if v.id ~= game.JobId then
+								servers[#servers + 1] = v;
+							end
+						end
+						cursor = res.nextPageCursor;
+						count = count + 1;
+					until cursor == nil or count >= 25;
+					if mode == "Ping" then
+						table.sort(servers, function(a, b)
+							return a.ping < b.ping;
+						end);
+						jobId = servers[1] and servers[1].id;
+					else
+						jobId = servers[1] and servers[math.random(1, #servers)].id;
+					end
+				else
+					local res = jsonDecode(httpService, game:HttpGetAsync(string.format("https://games.roblox.com/v1/games/%d/servers/0?sortOrder=%d&excludeFullGames=true&limit=10", game.PlaceId, mode == "full" and 2 or 1), true));
+					for i = 1, #res.data do
+						local v = res.data[i];
+						if v.id ~= game.JobId then
+							jobId = v.id;
+							break;
+						end
+					end
+				end
+				if jobId then
+					teleport(jobId);
+				end
+			end
+
+			_settings.right.serverHop.hop.MouseButton1Click:Connect(serverHop);
+			_settings.right.serverHop.rejoin.MouseButton1Click:Connect(function()
+				teleport(game.JobId);
+			end);
+		end
+
+		task.defer(function()
+			_settings.left.CanvasSize = UDim2.new(0, 0, 0, _settings.left.list.AbsoluteContentSize.Y + 2);
+			_settings.right.CanvasSize = UDim2.new(0, 0, 0, _settings.right.list.AbsoluteContentSize.Y + 2);
+		end);
 	end
 
-	draggableFrame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchStart(input)
-		end
-	end)
+	changeLanguage(uiSettings.language);
+	rconsoleprint("Evon-Android Successfully Loaded!");
+end;
 
-	draggableFrame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchMove(input)
-		end
-	end)
+--[[ Load ]]--
 
-	draggableFrame.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchEnd()
-		end
-	end)
-
-end)
-
--- PandaAuth
-task.spawn(function()
-	local script = panda_auth
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local LibVersion = "v2"
-	local LibType = "roblox"
-	local ServiceID = "evon"
-
-	local pandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
-	local getKey = script.Parent.GetKey
-	local verifyKey = script.Parent.VerifyKey
-	local textBox = script.Parent.TextBox
-	local controls = script.Parent.Parent.Controls
-	local saveFile = nil
-
-	if isfile("pandaAuthKey.txt") then
-		EvonNotification("Autosave Key detected...")
-		saveFile = readfile("pandaAuthKey.txt")
-		if pandaAuth:ValidateKey("evon", saveFile) then
-			EvonNotification("Successfully Validated")
-			Load_CustomFunctions()
-			script.Parent.Visible = false
-			controls.Visible = true
-		else
-			delfile("pandaAuthKey.txt")
-		end
-	end
-	
-	verifyKey.MouseButton1Click:Connect(function()
-		if pandaAuth:ValidateKey("evon", textBox.Text) then
-			EvonNotification("Successfully Validated")
-			writefile("pandaAuthKey.txt", textBox.Text)
-			Load_CustomFunctions()
-			script.Parent.Visible = false
-			controls.Visible = true
-		else
-			EvonNotification("The Key is Invalid, Please Try Again")
-		end
-	end)
-
-	getKey.MouseButton1Click:Connect(function()
-		setclipboard(pandaAuth:GetLink("evon"))
-		textBox.PlaceholderText = "Link Copied to Clipboard"
-		EvonNotification("Link Copied to Clipboard")
-	end)
-end)
-
--- Dragging
-task.spawn(function()
-	local script = dragging_3
-
-	local oldreq = require
-	local function require(target)
-		if modules[target] then
-			return modules[target]()
-		end
-		return oldreq(target)
-	end
-
-	local draggableFrame = script.Parent
-
-	local initialTouchPosition
-	local initialFramePosition
-
-	local function onTouchStart(input)
-		initialTouchPosition = input.Position
-		initialFramePosition = draggableFrame.Position
-	end
-
-	local function onTouchMove(input)
-		if initialTouchPosition and initialFramePosition then
-			local delta = input.Position - initialTouchPosition
-
-			draggableFrame.Position = UDim2.new(
-				initialFramePosition.X.Scale,
-				initialFramePosition.X.Offset + delta.X,
-				initialFramePosition.Y.Scale,
-				initialFramePosition.Y.Offset + delta.Y
-			)
-		end
-	end
-
-	local function onTouchEnd()
-		initialTouchPosition = nil
-		initialFramePosition = nil
-	end
-
-	draggableFrame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchStart(input)
-		end
-	end)
-
-	draggableFrame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchMove(input)
-		end
-	end)
-
-	draggableFrame.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			onTouchEnd()
-		end
-	end)
-
-end)
+loadKeyUI(loadMainUI);
