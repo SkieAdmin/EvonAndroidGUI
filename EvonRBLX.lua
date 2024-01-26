@@ -8,6 +8,54 @@ local function EvonNotification(messages)
 	})
 end
 
+
+local function GetHardwareID(id)
+	if id == 1 then
+		return game:GetService("RbxAnalyticsService"):GetClientId()
+	else
+		return tostring(game:GetService("Players").LocalPlayer.UserId)
+	end
+end
+
+local function ValidateKey(serviceID, ClientKey, HardwareNo)
+    local Service_ID = string.lower(serviceID)
+    local response = request({
+        Url = "https://pandadevelopment.net/failsafeValidation?service=" .. Service_ID .. "&hwid=" ..GetHardwareID(HardwareNo) .. "&key="..ClientKey,
+        Method = "GET"
+    })
+    if response.StatusCode == 200 then
+        -- Instead of fucking finding a string true... why do this
+        local success, data = pcall(function()
+            return game:GetService("HttpService"):JSONDecode(response.Body)
+        end)
+        if success and data["status"] == "success" then
+            return true
+        end
+        return false
+    else
+        warn("[Failed] - Server Returned as "..response.StatusCode)
+        return false
+    end
+end
+
+local function EvonCheckKey(ClientKey)
+	------------------------------ Check Key -----------------------------------------
+	local evonID = "evon"
+	local PDKit = "pandadevkit"
+	if ValidateKey(evonID, ClientKey, 1) then
+		return true
+	elseif ValidateKey(evonID, ClientKey, 2) then
+		return true
+	elseif ValidateKey(PDKit, ClientKey, 1) then
+		warn("***********************************************")
+		warn("WARNING: You're utilizing Panda Developer Kit (Developer Key)")
+		warn("***********************************************")
+		return true
+	else
+		return false
+	end
+		------------------------------ Check Key -----------------------------------------
+end
 function Load_CustomFunctions()
 	print("Custom Features successfully loaded...")
 	getgenv().EvonHTTPConnect = function(abc)
@@ -610,11 +658,11 @@ local gui = create("ScreenGui", {
 });
 
 local function loadKeyUI(callback)
-	local libVersion = "v2"
-	local libType = "roblox"
-	local serviceID = "evon"
+	--local libVersion = "v2"
+	--local libType = "roblox"
+	--nlocal serviceID = "evon"
 
-	local pandaAuth = loadstring(game:HttpGet(string.format("https://pandadevelopment.net/servicelib?service=%s&core=%s&param=%s", serviceID, libType, libVersion)))()
+	-- local pandaAuth = loadstring(game:HttpGet(string.format("https://pandadevelopment.net/servicelib?service=%s&core=%s&param=%s", serviceID, libType, libVersion)))()
 
 	local keyFrame = create("Frame", { 
 		AnchorPoint = Vector2.new(0.5, 0), 
@@ -1202,13 +1250,17 @@ local function loadKeyUI(callback)
 		local enterKey = freeFrame.enterKey;
 
 		getKeyLink.MouseButton1Click:Connect(function()
-			_setclipboard(pandaAuth:GetLink(serviceID));
+			local url = "https://auth.pandadevelopment.net/getkey?service=evon&hwid="..game:GetService("Players").LocalPlayer.UserId;
+			_setclipboard(url);
+			EvonNotification("Successfully Copied Key")
 		end);
 
 		enterKey.MouseButton1Click:Connect(function()
-			if pandaAuth:ValidateKey(serviceID, freeFrame.keyInput.Text) then
+			if EvonCheckKey(freeFrame.keyInput.Text) then
 				updateSettings("key", freeFrame.keyInput.Text);
 				validLogin();
+			else
+				EvonNotification("Invalid Key")
 			end
 		end);
 
@@ -1331,8 +1383,10 @@ local function loadKeyUI(callback)
 
 	changeLanguage(uiSettings.language);
 
-	if pandaAuth:ValidateKey(serviceID, uiSettings.key) then
+	if EvonCheckKey(uiSettings.key) then
 		validLogin();
+	else
+		EvonNotification("Saved Key is no longer valid")
 	end
 end
 
