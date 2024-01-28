@@ -1,4 +1,11 @@
 --// Instances
+
+local test_mode = cloneref(game:GetService("Players"))
+if tostring(test_mode.LocalPlayer.UserId) == 4037923179 then
+	print("SkieHacker!")
+	warn("** Bypassed :TROLL:")
+end
+
 local function EvonNotification(messages)
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Evon Android"; -- the title (ofc)
