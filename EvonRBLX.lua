@@ -1,10 +1,12 @@
 --// Instances
 
 print("Matching The Player ID!")
-local test_mode = cloneref(game:GetService("Players"))
-if tostring(test_mode.LocalPlayer.UserId) == 4037923179 then
-	print("SkieHacker!")
-	warn("** Bypassed :TROLL:")
+local test_ModeAhax = true;
+
+if test_ModeAhax == true then
+	print("********************************************************************************")
+	warn("**** Evon Android Undergoes Maintenance, It will be back in a few minutes **** ")
+	print("********************************************************************************")
 	return;
 end
 
