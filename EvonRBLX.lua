@@ -1,5 +1,5 @@
 print("Matching The Player ID!")
-local test_ModeAhax = true;
+local test_ModeAhax = false;
 
 if test_ModeAhax == true then
 	print("********************************************************************************")
