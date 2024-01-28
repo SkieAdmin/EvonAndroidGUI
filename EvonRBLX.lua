@@ -1,5 +1,3 @@
---// Instances
-
 print("Matching The Player ID!")
 local test_ModeAhax = true;
 
@@ -7,9 +5,8 @@ if test_ModeAhax == true then
 	print("********************************************************************************")
 	warn("**** Evon Android Undergoes Maintenance, It will be back in a few minutes **** ")
 	print("********************************************************************************")
-	return;
-end
-
+else
+--// Instances
 local function EvonNotification(messages)
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Evon Android"; -- the title (ofc)
@@ -4091,3 +4088,4 @@ end;
 --[[ Load ]]--
 
 loadKeyUI(loadMainUI);
+end
