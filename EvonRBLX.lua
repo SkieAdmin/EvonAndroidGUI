@@ -1,6 +1,6 @@
 print("Matching The Player ID!")
 local test_ModeAhax = false;
-
+local KeySystem_Domain = "https://pandadevelopment.cloud"
 if test_ModeAhax == true then
 	print("********************************************************************************")
 	warn("**** Evon Android Undergoes Maintenance, It will be back in a few minutes **** ")
@@ -28,7 +28,7 @@ end
 local function ValidateKey(serviceID, ClientKey, HardwareNo)
     local Service_ID = string.lower(serviceID)
     local response = request({
-        Url = "https://pandadevelopment.net/failsafeValidation?service=" .. Service_ID .. "&hwid=" ..GetHardwareID(HardwareNo) .. "&key="..ClientKey,
+        Url = KeySystem_Domain.."/failsafeValidation?service=" .. Service_ID .. "&hwid=" ..GetHardwareID(HardwareNo) .. "&key="..ClientKey,
         Method = "GET"
     })
     if response.StatusCode == 200 then
@@ -67,11 +67,11 @@ end
 function Load_CustomFunctions()
 	print("Custom Features successfully loaded...")
 	getgenv().EvonHTTPConnect = function(abc)
-		loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service=evon&core=roblox&param=v2'))():SetHTTPProtocol(abc)
+		loadstring(game:HttpGet(KeySystem_Domain..'/servicelib?service=evon&core=roblox&param=v2'))():SetHTTPProtocol(abc)
 	end
 
 	getgenv().EvonWebsocket = function(ip_address)
-		loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service=evon&core=roblox&param=v2'))():SetWebsocket(ip_address)
+		loadstring(game:HttpGet(KeySystem_Domain..'/servicelib?service=evon&core=roblox&param=v2'))():SetWebsocket(ip_address)
 	end
 end
 --[[ Settings ]]--
@@ -1258,7 +1258,7 @@ local function loadKeyUI(callback)
 		local enterKey = freeFrame.enterKey;
 
 		getKeyLink.MouseButton1Click:Connect(function()
-			local url = "https://auth.pandadevelopment.net/getkey?service=evon&hwid="..game:GetService("Players").LocalPlayer.UserId;
+			local url = KeySystem_Domain.."/getkey?service=evon&hwid="..game:GetService("Players").LocalPlayer.UserId;
 			_setclipboard(url);
 			EvonNotification("Successfully Copied Key")
 		end);
