@@ -1,9 +1,10 @@
 print("Matching The Player ID!")
 local test_ModeAhax = false;
 
-local Key_Disabled = true;
+-- Set to (True) to Disable Key System)
+local Key_Disabled = false;
+local KeySystem_Domain = "https://pandadevelopment.net"
 
-local KeySystem_Domain = "https://pandadevelopment.cloud"
 if test_ModeAhax == true then
 	print("********************************************************************************")
 	warn("**** Evon Android Undergoes Maintenance, It will be back in a few minutes **** ")
