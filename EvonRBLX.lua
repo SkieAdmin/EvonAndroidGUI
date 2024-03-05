@@ -1,5 +1,8 @@
 print("Matching The Player ID!")
 local test_ModeAhax = false;
+
+local Key_Disabled = true;
+
 local KeySystem_Domain = "https://pandadevelopment.cloud"
 if test_ModeAhax == true then
 	print("********************************************************************************")
@@ -50,7 +53,10 @@ local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
 	local evonID = "evon"
 	local PDKit = "pandadevkit"
-	if ValidateKey(evonID, ClientKey, 1) then
+	if Key_Disabled then
+		EvonNotification("Key System Disabled...")
+		return true
+	elseif ValidateKey(evonID, ClientKey, 1) then
 		return true
 	elseif ValidateKey(evonID, ClientKey, 2) then
 		return true
