@@ -1,9 +1,13 @@
-print("Matching The Player ID!")
+print("********************************************************************************")
+print("               [ Evon Loaded from Panda-Pelican Development LLC ]               ")
+print("********************************************************************************")
+
 local test_ModeAhax = false;
 
 -- Set to (True) to Disable Key System)
-local Key_Disabled = true;
+local Key_Disabled = false;
 local KeySystem_Domain = "https://pandadevelopment.net"
+
 
 if test_ModeAhax == true then
 	print("********************************************************************************")
