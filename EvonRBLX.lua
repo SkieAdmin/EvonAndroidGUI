@@ -37,7 +37,7 @@ local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
     local Service_ID = string.lower(serviceID)
 	local URL = "https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua"
 	local PandaAuth = loadstring(game:HttpGet(URL))()
-	if PandaAuth:ValidateKey(ServiceID, ClientKey) then
+	if PandaAuth:ValidateKey(Service_ID, ClientKey) then
 		print('Successfully Authorized')
 		return true
 	else
