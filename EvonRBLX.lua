@@ -33,25 +33,17 @@ local function GetHardwareID(id)
 	end
 end
 
-local function ValidateKey(serviceID, ClientKey, HardwareNo)
+local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
     local Service_ID = string.lower(serviceID)
-    local response = request({
-        Url = KeySystem_Domain.."/failsafeValidation?service=" .. Service_ID .. "&hwid=" ..GetHardwareID(HardwareNo) .. "&key="..ClientKey,
-        Method = "GET"
-    })
-    if response.StatusCode == 200 then
-        -- Instead of fucking finding a string true... why do this
-        local success, data = pcall(function()
-            return game:GetService("HttpService"):JSONDecode(response.Body)
-        end)
-        if success and data["status"] == "success" then
-            return true
-        end
-        return false
-    else
-        warn("[Failed] - Server Returned as "..response.StatusCode)
-        return false
-    end
+	local URL = "https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua"
+	local PandaAuth = loadstring(game:HttpGet(URL))()
+	if PandaAuth:ValidateKey(ServiceID, ClientKey) then
+		print('Successfully Authorized')
+		return true
+	else
+		print('Failed to Authorized')
+		return false
+	end 
 end
 
 local function EvonCheckKey(ClientKey)
@@ -61,11 +53,11 @@ local function EvonCheckKey(ClientKey)
 	if Key_Disabled then
 		EvonNotification("Key System Disabled...")
 		return true
-	elseif ValidateKey(evonID, ClientKey, 1) then
+	elseif AuthenticateKey(evonID, ClientKey, 1) then
 		return true
-	elseif ValidateKey(evonID, ClientKey, 2) then
+	elseif AuthenticateKey(evonID, ClientKey, 2) then
 		return true
-	elseif ValidateKey(PDKit, ClientKey, 1) then
+	elseif AuthenticateKey(PDKit, ClientKey, 1) then
 		warn("***********************************************")
 		warn("WARNING: You're utilizing Panda Developer Kit (Developer Key)")
 		warn("***********************************************")
