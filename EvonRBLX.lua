@@ -1,11 +1,9 @@
-print("********************************************************************************")
-print("               [ Evon Loaded from Panda-Pelican Development LLC ]               ")
-print("********************************************************************************")
 
+local Developer_Player = "271635429"
 local test_ModeAhax = false;
 
 -- Set to (True) to Disable Key System)
-local Key_Disabled = true;
+local Key_Disabled = false;
 local KeySystem_Domain = "https://pandadevelopment.net"
 
 
@@ -25,6 +23,12 @@ local function EvonNotification(messages)
 end
 
 
+local function EvonDebug(text)
+	if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
+		print("[ Developer ] - ".. text)
+	end
+end
+
 local function GetHardwareID(id)
 	if id == 1 then
 		return game:GetService("RbxAnalyticsService"):GetClientId()
@@ -33,24 +37,39 @@ local function GetHardwareID(id)
 	end
 end
 
+local http_service = cloneref(game:GetService("HttpService"))
+
 local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
-	local URL = "https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua"
-	local PandaAuth = loadstring(game:HttpGet(URL))()
-	if PandaAuth:ValidateKey("evon", ClientKey) then
-		print('Successfully Authorized')
+	local URLs = "https://pandadevelopment.net/failsafeValidation?service="..serviceID.."&hwid="..GetHardwareID(HardwareNo).."&key="..ClientKey
+	local PandaAuth = game:HttpGet(URLs)
+	EvonDebug("____________________________________________")
+	EvonDebug(tostring(PandaAuth))
+	EvonDebug("____________________________________________")
+	local response = request({
+		Url = URLs,
+		Method = "GET"
+	})
+	EvonDebug("____________________________________________")
+	EvonDebug("Response Code: "..response.StatusCode)
+	EvonDebug("Response Data: "..response.Body)
+	EvonDebug("____________________________________________")
+	-- Here is the Validation
+			-- Instead of fucking finding a string true... why do this
+	local success, data = pcall(function()
+		return http_service:JSONDecode(response.Body)
+	end)
+	if success and data["status"] == "success" then
 		return true
-	else
-		print('Failed to Authorized')
-		return false
-	end 
+	end
+	warn("Not Authenticated - Error ( ".. response.StatusCode .. " )")
+	return false
 end
 
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
 	local evonID = "evon"
-
 	if ClientKey == "skie" then
-		if tostring(game:GetService("Players").LocalPlayer.UserId) == "" then
+		if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
 			return true
 		end
 		return false
