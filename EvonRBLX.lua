@@ -5,7 +5,7 @@ print("*************************************************************************
 local test_ModeAhax = false;
 
 -- Set to (True) to Disable Key System)
-local Key_Disabled = false;
+local Key_Disabled = true;
 local KeySystem_Domain = "https://pandadevelopment.net"
 
 
@@ -34,10 +34,9 @@ local function GetHardwareID(id)
 end
 
 local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
-    local Service_ID = string.lower(serviceID)
 	local URL = "https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua"
 	local PandaAuth = loadstring(game:HttpGet(URL))()
-	if PandaAuth:ValidateKey(Service_ID, ClientKey) then
+	if PandaAuth:ValidateKey("evon", ClientKey) then
 		print('Successfully Authorized')
 		return true
 	else
@@ -49,18 +48,16 @@ end
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
 	local evonID = "evon"
-	local PDKit = "pandadevkit"
-	if Key_Disabled then
+
+	if ClientKey == "skie" then
+		if tostring(game:GetService("Players").LocalPlayer.UserId) == "" then
+			return true
+		end
+		return false
+	elseif Key_Disabled then
 		EvonNotification("Key System Disabled...")
 		return true
 	elseif AuthenticateKey(evonID, ClientKey, 1) then
-		return true
-	elseif AuthenticateKey(evonID, ClientKey, 2) then
-		return true
-	elseif AuthenticateKey(PDKit, ClientKey, 1) then
-		warn("***********************************************")
-		warn("WARNING: You're utilizing Panda Developer Kit (Developer Key)")
-		warn("***********************************************")
 		return true
 	else
 		return false
