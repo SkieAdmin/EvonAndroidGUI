@@ -29,18 +29,10 @@ local function EvonDebug(text)
 	end
 end
 
-local function GetHardwareID(id)
-	if id == 1 then
-		return game:GetService("RbxAnalyticsService"):GetClientId()
-	else
-		return tostring(game:GetService("Players").LocalPlayer.UserId)
-	end
-end
-
 local http_service = cloneref(game:GetService("HttpService"))
 
 local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
-	local URLs = "https://pandadevelopment.net/failsafeValidation?service="..serviceID.."&hwid="..GetHardwareID(HardwareNo).."&key="..ClientKey
+	local URLs = "https://pandadevelopment.net/failsafeValidation?service="..serviceID.."&hwid="..game:GetService("Players").LocalPlayer.UserId.."&key="..ClientKey
 	local PandaAuth = game:HttpGet(URLs)
 	EvonDebug("____________________________________________")
 	EvonDebug(tostring(PandaAuth))
