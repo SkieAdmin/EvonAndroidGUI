@@ -43,6 +43,10 @@ local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
 	})
 	EvonDebug("____________________________________________")
 	EvonDebug("Response Code: "..response.StatusCode)
+	if response.StatusCode == 500 then
+		warn("Server Response Error... Access Evon Keyless")
+		return true
+	end
 	EvonDebug("Response Data: "..response.Body)
 	EvonDebug("____________________________________________")
 	-- Here is the Validation
