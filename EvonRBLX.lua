@@ -33,32 +33,16 @@ local http_service = cloneref(game:GetService("HttpService"))
 
 local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
 	local URLs = "https://pandadevelopment.net/failsafeValidation?service="..serviceID.."&hwid="..game:GetService("Players").LocalPlayer.UserId.."&key="..ClientKey
-	local PandaAuth = game:HttpGet(URLs)
-	EvonDebug("____________________________________________")
-	EvonDebug(tostring(PandaAuth))
-	EvonDebug("____________________________________________")
-	local response = request({
-		Url = URLs,
-		Method = "GET"
-	})
-	EvonDebug("____________________________________________")
-	EvonDebug("Response Code: "..response.StatusCode)
-	if response.StatusCode == 500 then
-		warn("Server Response Error... Access Evon Keyless")
-		return true
-	end
-	EvonDebug("Response Data: "..response.Body)
-	EvonDebug("____________________________________________")
-	-- Here is the Validation
-			-- Instead of fucking finding a string true... why do this
-	local success, data = pcall(function()
-		return http_service:JSONDecode(response.Body)
-	end)
-	if success and data["status"] == "success" then
-		return true
-	end
-	warn("Not Authenticated - Error ( ".. response.StatusCode .. " )")
-	return false
+
+	local ServiceID = serviceID
+	local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
+
+
+	if PandaAuth:ValidateKey(ServiceID, ClientKey) then
+		print('Authorized Complete')
+	else
+		warn('Failed to Authorized...')
+	end  
 end
 
 local function EvonCheckKey(ClientKey)
@@ -81,12 +65,14 @@ local function EvonCheckKey(ClientKey)
 end
 function Load_CustomFunctions()
 	print("Custom Features successfully loaded...")
-	getgenv().EvonHTTPConnect = function(abc)
-		loadstring(game:HttpGet(KeySystem_Domain..'/servicelib?service=evon&core=roblox&param=v2'))():SetHTTPProtocol(abc)
+
+
+	getgenv().PandaAuthenticate = function(ServiceID, Client_Key, PremiumAuth)
+		-- Built In Panda Authenticate ( Hub utilized Panda-Pelican Development )
 	end
 
-	getgenv().EvonWebsocket = function(ip_address)
-		loadstring(game:HttpGet(KeySystem_Domain..'/servicelib?service=evon&core=roblox&param=v2'))():SetWebsocket(ip_address)
+	getgenv().PandaAuthenticate = function(ServiceID, Client_Key)
+		-- Built In Panda Authenticate ( Hub utilized Panda-Pelican Development )
 	end
 end
 --[[ Settings ]]--
