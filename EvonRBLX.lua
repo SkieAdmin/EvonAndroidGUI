@@ -32,7 +32,7 @@ end
 local http_service = cloneref(game:GetService("HttpService"))
 
 local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
-	local URLs = "https://pandadevelopment.net/failsafeValidation?service="..serviceID.."&hwid="..game:GetService("Players").LocalPlayer.UserId.."&key="..ClientKey
+
 
 	local ServiceID = serviceID
 	local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
@@ -40,8 +40,10 @@ local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
 
 	if PandaAuth:ValidateKey(ServiceID, ClientKey) then
 		print('Authorized Complete')
+		return true
 	else
 		warn('Failed to Authorized...')
+		return false
 	end  
 end
 
@@ -67,12 +69,14 @@ function Load_CustomFunctions()
 	print("Custom Features successfully loaded...")
 
 
-	getgenv().PandaAuthenticate = function(ServiceID, Client_Key, PremiumAuth)
-		-- Built In Panda Authenticate ( Hub utilized Panda-Pelican Development )
-	end
-
 	getgenv().PandaAuthenticate = function(ServiceID, Client_Key)
+		local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
 		-- Built In Panda Authenticate ( Hub utilized Panda-Pelican Development )
+		if PandaAuth:ValidateKey(ServiceID, Client_Key) then
+			return true
+		else
+			return false
+		end  
 	end
 end
 --[[ Settings ]]--
