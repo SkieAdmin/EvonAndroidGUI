@@ -3,7 +3,7 @@ local Developer_Player = "271635429"
 local test_ModeAhax = false;
 
 -- Set to (True) to Disable Key System)
-local Key_Disabled = false;
+local Key_Disabled = true;
 local KeySystem_Domain = "https://pandadevelopment.net"
 
 
