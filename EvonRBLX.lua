@@ -29,7 +29,7 @@ end
 warn("----------------------------------------------------------")
 print("Client Version: ".. arceus.getversion())
 print("Server Version: ".. EvonConfiguration.Version)
-print("Forced Update: ".. EvonConfiguration.Forced_Update)
+print("Forced Update: ".. tostring(EvonConfiguration.Forced_Update))
 warn("----------------------------------------------------------")
 
 local function EvonDebug(text)
