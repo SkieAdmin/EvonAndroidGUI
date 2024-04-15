@@ -2,10 +2,11 @@
 local Developer_Player = "271635429"
 local test_ModeAhax = false;
 
--- Set to (True) to Disable Key System)
-local Key_Disabled = true;
 local KeySystem_Domain = "https://pandadevelopment.net"
 
+-- Evon Basic Configurations
+local ConfigURL = "https://raw.githubusercontent.com/SkieAdmin/EvonAndroidGUI/main/EvonConfig.json"
+local EvonConfiguration = http_service:JSONDecode(game:HttpGet(ConfigURL))
 
 if test_ModeAhax == true then
 	print("********************************************************************************")
@@ -22,6 +23,13 @@ local function EvonNotification(messages)
 	})
 end
 
+-- Get Evon's Version
+warn("----------------------------------------------------------")
+local getversion = clonefunction(arceus.getversion)
+print("Client Version: ".. getversion)
+print("Server Version: ".. EvonConfiguration.Version)
+print("Forced Update: ".. EvonConfiguration.Forced_Update)
+warn("----------------------------------------------------------")
 
 local function EvonDebug(text)
 	if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
@@ -31,36 +39,23 @@ end
 
 local http_service = cloneref(game:GetService("HttpService"))
 
-local function AuthenticateKey(serviceID, ClientKey, HardwareNo)
-
-
-	local ServiceID = serviceID
-	local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
-
-
-	if PandaAuth:ValidateKey(ServiceID, ClientKey) then
-		print('Authorized Complete')
-		return true
-	else
-		warn('Failed to Authorized...')
-		return false
-	end  
-end
-
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
 	local evonID = "evon"
+	local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
 	if ClientKey == "skie" then
 		if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
 			return true
 		end
 		return false
-	elseif Key_Disabled then
+	elseif EvonConfiguration.Keyless then
 		EvonNotification("Key System Disabled...")
 		return true
-	elseif AuthenticateKey(evonID, ClientKey, 1) then
+	elseif PandaAuth:ValidateKey(evonID, ClientKey) then
+		print('Authorized Complete')
 		return true
 	else
+		warn('Failed to Authorized...')
 		return false
 	end
 		------------------------------ Check Key -----------------------------------------
