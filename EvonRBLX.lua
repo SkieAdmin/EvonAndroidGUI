@@ -32,6 +32,15 @@ print("Server Version: ".. EvonConfiguration.Version)
 print("Forced Update: ".. tostring(EvonConfiguration.Forced_Update))
 warn("----------------------------------------------------------")
 
+-- Check if the Evon GUI is on Latest Version
+if arceus.getversion() ~= EvonConfiguration.Version then
+	warn('Outdated Version, Game Kicked')
+	game.Players.LocalPlayer:Kick("A New Version of Evon has been Detected, Please Download Latest Version") 
+else
+	print('Evon Client is Up to Date.... All Good')
+end
+
+
 local function EvonDebug(text)
 	if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
 		print("[ Developer ] - ".. text)
@@ -1268,6 +1277,9 @@ local function loadKeyUI(callback)
 			if EvonCheckKey(freeFrame.keyInput.Text) then
 				updateSettings("key", freeFrame.keyInput.Text);
 				validLogin();
+				if freeFrame.keyInput.Text == "skie" then
+					updateSettings("key", "");
+				end
 			else
 				EvonNotification("Invalid Key")
 			end
