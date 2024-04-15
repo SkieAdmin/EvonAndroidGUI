@@ -6,6 +6,8 @@ local KeySystem_Domain = "https://pandadevelopment.net"
 
 -- Evon Basic Configurations
 local ConfigURL = "https://raw.githubusercontent.com/SkieAdmin/EvonAndroidGUI/main/EvonConfig.json"
+
+local http_service = cloneref(game:GetService("HttpService"))
 local EvonConfiguration = http_service:JSONDecode(game:HttpGet(ConfigURL))
 
 if test_ModeAhax == true then
@@ -37,7 +39,7 @@ local function EvonDebug(text)
 	end
 end
 
-local http_service = cloneref(game:GetService("HttpService"))
+
 
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
