@@ -27,8 +27,7 @@ end
 
 -- Get Evon's Version
 warn("----------------------------------------------------------")
-local getversion = clonefunction(arceus.getversion)
-print("Client Version: ".. getversion)
+print("Client Version: ".. arceus.getversion)
 print("Server Version: ".. EvonConfiguration.Version)
 print("Forced Update: ".. EvonConfiguration.Forced_Update)
 warn("----------------------------------------------------------")
