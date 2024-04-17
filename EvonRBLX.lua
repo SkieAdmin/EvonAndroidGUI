@@ -1268,7 +1268,8 @@ local function loadKeyUI(callback)
 		local enterKey = freeFrame.enterKey;
 
 		getKeyLink.MouseButton1Click:Connect(function()
-			local url = KeySystem_Domain.."/getkey?service=evon&hwid="..game:GetService("Players").LocalPlayer.UserId;
+			local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
+			local url = PandaAuth:GetKey("evon")
 			_setclipboard(url);
 			EvonNotification("Successfully Copied Key")
 		end);
