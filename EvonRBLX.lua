@@ -35,7 +35,7 @@ warn("----------------------------------------------------------")
 -- Check if the Evon GUI is on Latest Version
 if arceus.getversion() ~= EvonConfiguration.Version then
 	warn('Outdated Version, Game Kicked')
-	game.Players.LocalPlayer:Kick("A New Version of Evon has been Detected, Please Download Latest Version") 
+	-- game.Players.LocalPlayer:Kick("A New Version of Evon has been Detected, Please Download Latest Version") 
 else
 	print('Evon Client is Up to Date.... All Good')
 end
