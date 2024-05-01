@@ -5,7 +5,7 @@ local test_ModeAhax = false;
 local KeySystem_Domain = "https://pandadevelopment.net"
 
 -- Evon Basic Configurations
-local ConfigURL = "https://raw.githubusercontent.com/SkieAdmin/EvonAndroidGUI/main/EvonConfig.json"
+local ConfigURL = "https://evon.cc/android/config/EvonConfig.json"
 
 local http_service = cloneref(game:GetService("HttpService"))
 local EvonConfiguration = http_service:JSONDecode(game:HttpGet(ConfigURL))
@@ -34,7 +34,10 @@ warn("----------------------------------------------------------")
 
 -- Check if the Evon GUI is on Latest Version
 if arceus.getversion() ~= EvonConfiguration.Version then
-	warn('Outdated Version, Game Kicked')
+	warn('Client is currently outdated / out of sync, Please send this report to the Developer.')
+	print("Client Version: ".. arceus.getversion())
+	print("Server Version: ".. EvonConfiguration.Version)
+	EvonNotification("New Version has been Detected, See the Console for more details")
 	-- game.Players.LocalPlayer:Kick("A New Version of Evon has been Detected, Please Download Latest Version") 
 else
 	print('Evon Client is Up to Date.... All Good')
