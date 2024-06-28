@@ -25,24 +25,6 @@ local function EvonNotification(messages)
 	})
 end
 
--- Get Evon's Version
-warn("----------------------------------------------------------")
-print("Client Version: ".. arceus.getversion())
-print("Server Version: ".. EvonConfiguration.Version)
-print("Forced Update: ".. tostring(EvonConfiguration.Forced_Update))
-warn("----------------------------------------------------------")
-
--- Check if the Evon GUI is on Latest Version
-if arceus.getversion() ~= EvonConfiguration.Version then
-	warn('Client is currently outdated / out of sync, Please send this report to the Developer.')
-	print("Client Version: ".. arceus.getversion())
-	print("Server Version: ".. EvonConfiguration.Version)
-	EvonNotification("New Version has been Detected, See the Console for more details")
-	-- game.Players.LocalPlayer:Kick("A New Version of Evon has been Detected, Please Download Latest Version") 
-else
-	print('Evon Client is Up to Date.... All Good')
-end
-
 
 local function EvonDebug(text)
 	if tostring(game:GetService("Players").LocalPlayer.UserId) == Developer_Player then
@@ -50,7 +32,7 @@ local function EvonDebug(text)
 	end
 end
 
-
+local IsKeyLess = true -- EvonConfiguration.Keyless
 
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
@@ -61,7 +43,7 @@ local function EvonCheckKey(ClientKey)
 			return true
 		end
 		return false
-	elseif EvonConfiguration.Keyless then
+	elseif IsKeyLess then
 		EvonNotification("Key System Disabled...")
 		return true
 	elseif PandaAuth:ValidateKey(evonID, ClientKey) then
@@ -75,17 +57,6 @@ local function EvonCheckKey(ClientKey)
 end
 function Load_CustomFunctions()
 	print("Custom Features successfully loaded...")
-
-
-	getgenv().PandaAuthenticate = function(ServiceID, Client_Key)
-		local PandaAuth = loadstring(game:HttpGet('https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua'))()
-		-- Built In Panda Authenticate ( Hub utilized Panda-Pelican Development )
-		if PandaAuth:ValidateKey(ServiceID, Client_Key) then
-			return true
-		else
-			return false
-		end  
-	end
 end
 --[[ Settings ]]--
 
