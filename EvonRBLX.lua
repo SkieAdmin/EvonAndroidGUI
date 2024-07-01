@@ -32,7 +32,7 @@ local function EvonDebug(text)
 	end
 end
 
-local IsKeyLess = true -- EvonConfiguration.Keyless
+local IsKeyLess = false -- EvonConfiguration.Keyless
 
 local function EvonCheckKey(ClientKey)
 	------------------------------ Check Key -----------------------------------------
