@@ -2025,11 +2025,8 @@ local function VXUJHM_fake_script() -- VerifyKey.LocalScript
 		if Authenticate_Evon(KeyInserted) then
             ControllerMenuFrame.Visible = true
             KeySysManagement.Visible = false
-        else
-
         end
-
-		print('Key: '.. KeyInserted)8
+		print('Key: '.. KeyInserted)
 	end
 	
 	-- Connect the function to the button's MouseButton1Click event
