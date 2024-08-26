@@ -1,20 +1,8 @@
--- Gui to Lua
--- Version: 3.2
--- Instances:
--- Evon Technology (Settings)
-
 local PandaV2_Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Panda-Repositories/PandaKS_Libraries/main/library/LuaLib/ROBLOX/PandaBetaLib.lua"))()
-
 local isDeveloperModeOn = true -- Set initial state to true
 local isESPModeOn = false -- Set initial state to true
 local isAntiAFKToggle = true -- Set initial state to true
 local isFPSUnlockOn = true -- Set initial state to true
-
-
--- Pasted function from (Old Evon)
-local _getclipboard = clonefunction(getclipboard or _newcclosure(function()
-	return "";
-end));
 local _setclipboard = clonefunction(setclipboard);
 
 local _request = clonefunction(request);
@@ -1514,7 +1502,7 @@ local function TWZIPN_fake_script() -- Paste.Paste
 	
 		script.Parent.MouseButton1Click:Connect(function()
 			-- Pasted Button
-			writeCode.Text = _getclipboard()
+			writeCode.Text = getclipboard()
 		end)
 	end)
 end
@@ -2079,7 +2067,7 @@ local function XTEHCQV_fake_script() -- KeySystem.KeySysHandler
 	local controls = script.Parent.Parent.Controls
 	
 	pasteKey.MouseButton1Click:Connect(function() 
-		textBox.Text = _getclipboard() -- getclipboard()
+		textBox.Text = getclipboard() -- getclipboard()
 	end)
 	
 	verifyKey.MouseButton1Click:Connect(function() 
